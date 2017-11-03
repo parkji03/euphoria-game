@@ -15,4 +15,3 @@
 //= require phaser.min
 //= require rails-ujs
 //= require turbolinks
-//= require_tree .
