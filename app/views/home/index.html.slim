@@ -1,1 +1,38 @@
-h1 Landing page
+.splash
+  button#play-button Play Now
+
+.awards
+  span random
+  br
+  span random
+  br
+  span random
+  br
+  span random
+  br
+  span random
+  br
+  span random
+  br
+  span random
+  br
+
+
+
+
+
+
+javascript:
+  $(document).ready(function() {
+    $(window).scroll(function() {
+      if ($(window).scrollTop() > 100 ){
+        //NOTE: these colors need to be changed to match colors.scss
+        $('#euphoria-navbar').css('background-color', '#F8CA00');
+        $('.euphoria-link').css('color', '#604621')
+      }
+      else {
+        $('#euphoria-navbar').css('background-color', 'transparent');
+        $('.euphoria-link').css('color', '#FFFFFF')
+      };
+    });
+  });
