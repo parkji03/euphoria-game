@@ -1,17 +1,17 @@
-nav.navbar.navbar-default.navbar-fixed-top
+nav#euphoria-navbar.navbar.navbar-default.navbar-fixed-top.transition
   .container-fluid
     .navbar-header
-      button.navbar-toggle type="button" data-toggle="collapse" data-target="#euphoria-navbar"
+      button.navbar-toggle type="button" data-toggle="collapse" data-target="#euphoria-mobile"
         span.icon-bar
         span.icon-bar
         span.icon-bar
 
-    #euphoria-navbar.collapse.navbar-collapse
+    #euphoria-mobile.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-left
-        li = link_to "Euphoria", '#'
+        li = link_to "Euphoria!", '#', class: "euphoria-link transition"
 
       ul.nav.navbar-nav.navbar-right
-        li = link_to "Link 1", '#'
-        li = link_to "Link 2", '#'
-        li = link_to "Link 3", '#'
-        li = link_to "Link 4", '#'
+        li = link_to "Some random link", '#', class: "euphoria-link transition"
+        li = link_to "What do I put here?", '#', class: "euphoria-link transition"
+        li = link_to "I dunno, something I guess", '#', class: "euphoria-link transition"
+        li = link_to "Login?", '#', class: "euphoria-link transition"

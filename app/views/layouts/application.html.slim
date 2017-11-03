@@ -11,13 +11,8 @@ html
     = yield :js
 
   body
-    .wrapper
-      = render 'layouts/navbar'
+    = render 'layouts/navbar'
 
-      / .notice = notice
-      / .alert = alert
+    = yield
 
-      = yield
-
-      .push
     = render 'layouts/footer'
