@@ -1,6 +1,7 @@
 .splash { //TODO: change splash.jpg... parallax?
   background-image: url("/assets/splash.jpg");
   height: 100%;
+  width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -10,4 +11,82 @@
     margin: auto;
   }
 
+}
+
+.row { //to fix a horizontal scroll-bar appearing from the row margin
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.awards {
+  height:100%;
+  background-color: #10EA77;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  padding-top: 5%;
+}
+
+.award {
+  padding: 5%;
+}
+
+.fake-award {
+  height:100px;
+  width: 200px;
+  background-color: #BC8E56;
+  margin: auto;
+}
+
+.price-banner{
+  height: 150px;
+  width: 800px;
+  background-color: #BC8E56;
+  margin: auto;
+  margin-top: 5%
+
+}
+
+.trailer{
+  height: 100%;
+  background-color: #66A7A7;
+  text-align: center;
+  padding-top: 10%;
+}
+
+#trailer-video{
+  margin: auto;
+
+}
+
+.gifs {
+  background-color: #f783c5;
+  padding: 10%;
+}
+
+.gif-container {
+  padding-bottom:100%;
+  position:relative;
+  overflow:hidden;
+
+}
+
+.gif-container img {
+  position: absolute;
+  left:0;
+  top:0;
+  width: 100%;
+  height:auto;
+}
+
+.gifs .row {
+  margin-bottom: 3%;
+}
+
+/*used for differentiating the gif grid while building it*/
+.primary {
+  background: #fed5c3;
+}
+.secondary {
+  background-color: #febabb;
 }
