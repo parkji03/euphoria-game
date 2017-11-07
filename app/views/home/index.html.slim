@@ -1,23 +1,62 @@
+- content_for :js do
+  = javascript_include_tag "home/home.js"
+
 .splash
   button#play-button Play Now
 
 .awards
-  span random
-  br
-  span random
-  br
-  span random
-  br
-  span random
-  br
-  span random
-  br
-  span random
-  br
-  span random
-  br
+  .row
+    .col-md-4.award
+      .fake-award
+        span Voted best indie game by their parents
+    .col-md-4.award
+      .fake-award
+        span "[Euphoria] blew my mind"
+        br
+        span -Brandon's little brother
+    .col-md-4.award
+      .fake-award
+        span "4.2/5"
+        br
+        span -Super Cool Games Monthly
 
+  .price-banner
+    h2 AVAILABLE NOW FOR $FREE.99!
 
+.trailer
+  #trailer-video
+
+.gifs
+  .row
+    .col-md-4.grid
+      .gif-container.primary
+        img[src="/assets/rectangle.png"]
+    .col-md-4.grid
+      .gif-container.secondary
+        img[src="/assets/rectangle.png"]
+    .col-md-4.grid
+      .gif-container.primary
+        img[src="/assets/rectangle.png"]
+  .row
+    .col-md-4.grid
+      .gif-container.secondary
+        img[src="/assets/rectangle.png"]
+    .col-md-4.grid
+      .gif-container.primary
+        img[src="/assets/rectangle.png"]
+    .col-md-4.grid
+      .gif-container.secondary
+        img[src="/assets/rectangle.png"]
+  .row
+    .col-md-4.grid
+      .gif-container.primary
+        img[src="/assets/rectangle.png"]
+    .col-md-4.grid
+      .gif-container.secondary
+        img[src="/assets/rectangle.png"]
+    .col-md-4.grid
+      .gif-container.primary
+        img[src="/assets/rectangle.png"]
 
 
 
@@ -35,4 +74,15 @@ javascript:
         $('.euphoria-link').css('color', '#FFFFFF')
       };
     });
+
+    $('<img />',{ src: '/assets/jaw_breaker.gif'});
+    $('.grid').hover(function(){
+      //appending a random number as a paramater to the file path forces a reload
+      //and prevent Chrome from stopping the gif from playing
+      $(this).find('img').attr("src","/assets/jaw_breaker.gif?p"  + new Date().getTime());
+    },
+      function(){
+          $(this).find('img').attr("src","/assets/rectangle.png")
+      });
+
   });
