@@ -11,6 +11,25 @@ $(document).ready(function() {
     };
   });
 
+  // parallax code
+  $(window).scroll(function() {
+    topDistance = $(window).scrollTop()
+    layers = document.querySelectorAll("[data-type='parallax']")
+
+    layers.forEach(function(layer){
+      depth = layer.getAttribute('data-depth')
+      movement = -(topDistance * depth)
+      translate3d = 'translate3d(0, ' + movement + 'px, 0)'
+      layer.style['-webkit-transform'] = translate3d
+      layer.style['-moz-transform'] = translate3d
+      layer.style['-ms-transform'] = translate3d
+      layer.style['-o-transform'] = translate3d
+      layer.style.transform = translate3d
+
+    })
+
+  });
+
   $('<img />',{ src: '/assets/jaw_breaker.gif'});
   $('.grid').hover(function(){
     //appending a random number as a paramater to the file path forces a reload

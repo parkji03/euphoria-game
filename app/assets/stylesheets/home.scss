@@ -1,16 +1,45 @@
-.splash { //TODO: change splash.jpg... parallax?
-  background-image: url("/assets/splash.jpg");
-  height: 100%;
-  width: 100%;
-  background-position: center;
+// .splash { //TODO: change splash.jpg... parallax?
+//   background-image: url("/assets/splash.jpg");
+//   height: 100%;
+//   width: 100%;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   display: flex;
+//
+//   button { //TODO: move this button and add down scroll arrow button
+//     margin: auto;
+//   }
+//
+// }
+
+#splash {
+  height: 800px;
+  overflow: hidden;
+  position: relative;
+}
+
+.layer {
+  background-position: bottom center;
+  background-size: auto;
   background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
+  width: 100%;
+  height: 800px;
+  position: fixed;
+  z-index: -1;
+}
 
-  button { //TODO: move this button and add down scroll arrow button
-    margin: auto;
-  }
-
+.layer-00 {
+   background-image: url("/assets/parallax/parallax-00");
+}
+.layer-01 {
+   background-image: url("/assets/parallax/parallax-01");
+}
+.layer-02 {
+   background-image: url("/assets/parallax/parallax-02");
+}
+.layer-03 {
+   background-image: url("/assets/parallax/parallax-03");
 }
 
 .row { //to fix a horizontal scroll-bar appearing from the row margin
