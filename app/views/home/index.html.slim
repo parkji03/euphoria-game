@@ -1,7 +1,11 @@
 - content_for :js do
   = javascript_include_tag "home/home.js"
 
-.splash
+#splash
+  .layer.layer-00[data-type="parallax" data-depth="0.10"]
+  .layer.layer-01[data-type="parallax" data-depth="0.30"]
+  .layer.layer-02[data-type="parallax" data-depth="0.60"]
+  .layer.layer-03[data-type="parallax" data-depth="1.00"]
   button#play-button Play Now
 
 .awards
@@ -69,6 +73,25 @@ javascript:
         $('#euphoria-navbar').css('background-color', 'transparent');
         $('.euphoria-link').css('color', '#FFFFFF')
       };
+    });
+
+    // parallax code
+    $(window).scroll(function() {
+      topDistance = $(window).scrollTop()
+      layers = document.querySelectorAll("[data-type='parallax']")
+
+      layers.forEach(function(layer){
+        depth = layer.getAttribute('data-depth')
+        movement = -(topDistance * depth)
+        translate3d = 'translate3d(0, ' + movement + 'px, 0)'
+        layer.style['-webkit-transform'] = translate3d
+        layer.style['-moz-transform'] = translate3d
+        layer.style['-ms-transform'] = translate3d
+        layer.style['-o-transform'] = translate3d
+        layer.style.transform = translate3d
+
+      })
+
     });
 
     $('<img />',{ src: '/assets/jaw_breaker.gif'});
