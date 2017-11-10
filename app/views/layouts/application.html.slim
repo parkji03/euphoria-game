@@ -13,6 +13,9 @@ html
   body
     = render 'layouts/navbar'
 
+    p.notice = notice
+    p.alert = alert
+
     = yield
 
     = render 'layouts/footer'
