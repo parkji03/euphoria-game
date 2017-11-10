@@ -11,7 +11,8 @@
 
   &:hover {
     background-color: rgba($background-color, 0.6);
-    color: white;
+    color: $white;
+    cursor: pointer;
   }
 
   &:focus {
@@ -19,6 +20,54 @@
   }
 }
 
+@mixin social-media-button($background-color, $text-color, $social-icon) {
+  display: inline-block;
+  background: $background-color;
+  color: $text-color;
+  width: 220px;
+  box-shadow: 1px 1px 1px grey;
+  white-space: nowrap;
+
+  span.icon {
+    background: url('/assets/#{$social-icon}') transparent 5px 50% no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: inline-block;
+    vertical-align: middle;
+    width: 42px;
+    height: 42px;
+  }
+
+  span.buttonText {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 14px;
+    // font-weight: bold;
+    /* Use the Roboto font that is loaded in the <head> */
+    font-family: 'Roboto', sans-serif;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 #play-button {
   @include normal-button(200px, 55px, $main, $accent);
 }
+
+#google-login {
+  @include social-media-button($white, $social-gray, 'g-normal.png')
+}
+
+#facebook-login {
+  @include social-media-button($facebook-blue, $white, 'f-normal.png')
+}
+
+// span.label {
+//   color: $social-gray;
+//   font-family: serif;
+//   font-weight: normal;
+// }
