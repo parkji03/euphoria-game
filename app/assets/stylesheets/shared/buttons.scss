@@ -59,15 +59,9 @@
 }
 
 #google-login {
-  @include social-media-button($white, $social-gray, 'g-normal.png')
+  @include social-media-button($white, $social-gray, 'g_normal.png')
 }
 
 #facebook-login {
-  @include social-media-button($facebook-blue, $white, 'f-normal.png')
+  @include social-media-button(#3b5998, $white, 'f_normal.png')
 }
-
-// span.label {
-//   color: $social-gray;
-//   font-family: serif;
-//   font-weight: normal;
-// }
