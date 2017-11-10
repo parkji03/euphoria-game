@@ -13,6 +13,8 @@ gem 'slim-rails', '~> 3.0', '>= 3.0.1'
 gem 'mysql2'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'jquery-rails', '~> 4.1', '>= 4.1.1'
+gem 'devise'
+gem 'omniauth-facebook'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
