@@ -7,8 +7,8 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
 ruby '2.3.3', :patchlevel => '222'
+gem 'rails', '~> 5.1.4'
 gem 'slim-rails', '~> 3.0', '>= 3.0.1'
 gem 'mysql2'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
