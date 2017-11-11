@@ -7,7 +7,7 @@
   font-size: 26px;
   text-transform: uppercase;
   border: none;
-  box-shadow: 1px 1px 1px $black;
+  box-shadow: 1px 1px 1px grey;
 
   &:hover {
     background-color: rgba($background-color, 0.6);
@@ -29,7 +29,7 @@
   white-space: nowrap;
 
   span.icon {
-    background: url('/assets/#{$social-icon}') transparent 5px 50% no-repeat;
+    background: url('/assets/social_media/#{$social-icon}') transparent 5px 50% no-repeat;
     background-size: cover;
     background-position: center center;
     display: inline-block;
@@ -44,8 +44,6 @@
     padding-left: 16px;
     padding-right: 16px;
     font-size: 14px;
-    // font-weight: bold;
-    /* Use the Roboto font that is loaded in the <head> */
     font-family: 'Roboto', sans-serif;
   }
 
