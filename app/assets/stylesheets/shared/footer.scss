@@ -1,0 +1,46 @@
+footer {
+  display: flex;
+  height: 500px;
+  background-color: $dark-dirt;
+  text-align: center;
+  color: $dark-main;
+  font-family: 'Marcellus SC', serif;
+
+  .footer-content {
+    margin: auto;
+
+    .quote-container {
+
+      h1 {
+        text-transform: uppercase;
+        color: $main;
+        font-size: 52px;
+      }
+
+      span {
+        font-size: 26px;
+      }
+    }
+
+    hr {
+      margin-top: 70px;
+      margin-bottom: 70px;
+      width: 70%;
+      color: $dark-main;
+      border-color: $dark-main;
+      background-color: $dark-main;
+    }
+
+    p {
+      font-size: 16px;
+      padding: 0;
+      margin: 0;
+    }
+
+    img {
+      margin-top: 20px;
+      width: 10%;
+      height: 10%;
+    }
+  }
+}
