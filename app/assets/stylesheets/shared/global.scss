@@ -5,6 +5,22 @@ html, body {
   margin: 0;
 }
 
+.notice {
+  position: absolute;
+  margin: 0 auto;
+}
+
+.alert {
+  position: absolute;
+  margin: 0 auto;
+}
+
+a {
+  &:focus {
+    outline: 0;
+  }
+}
+
 h1 {
 
 }

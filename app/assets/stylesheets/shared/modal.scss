@@ -1,0 +1,44 @@
+//NOTE: place holders for actual style
+
+#sign-in-modal {
+  .modal-dialog {
+    border-radius: 0px;
+    border: none;
+    background-color: #fafafa;
+    box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+
+    .modal-content {
+      border-radius: 0px;
+      border: none;
+      background-color: #fafafa;
+
+      .modal-header {
+        button {
+
+        }
+
+        h4 {
+          color: $black;
+        }
+      }
+
+      .modal-body {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        .social-container {
+
+        }
+      }
+
+      .modal-footer {
+        button {
+          border-radius: 0px;
+          border: none;
+          background-color: #d8d8d8;
+          box-shadow: 1px 1px 1px grey;
+        }
+      }
+    }
+  }
+}

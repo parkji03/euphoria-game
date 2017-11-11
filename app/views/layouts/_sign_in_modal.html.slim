@@ -1,0 +1,23 @@
+#sign-in-modal.modal.fade[role="dialog"]
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal"]
+          | ×
+        h4.modal-title
+          | Sign in
+      .modal-body
+        = link_to user_facebook_omniauth_authorize_path do
+          #facebook-login
+            span.icon
+            span.buttonText
+              | Sign in with Facebook
+        = link_to user_google_oauth2_omniauth_authorize_path do
+          #google-login
+            span.icon
+            span.buttonText
+              | Sign in with Google
+
+      .modal-footer
+        button.btn.btn-default[type="button" data-dismiss="modal"]
+          | Close
