@@ -17,11 +17,16 @@ Euphoria.Preloader.prototype = {
     this.load.image('star', 'assets/star.png');
     this.load.spritesheet('dude', 'assets/dude.png', 32, 48);
 
+    this.load.image('titlescreen', 'assets/phaser_assets/backgrounds/baddie.png')
+    this.load.image('button', 'assets/phaser_assets/buttons/baddie.png')
+
+
+
     //LOAD ALL ASSETS
   },
 
   create: function() {
-    this.state.start('Game');
+    this.state.start('MainMenu');
   },
 
   update: function () {
