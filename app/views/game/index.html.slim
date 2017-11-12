@@ -1,5 +1,10 @@
 - content_for :js do
-  = javascript_include_tag "phaserjs/main.js"
+  = javascript_include_tag "phaserjs/Main.js"
+  = javascript_include_tag "phaserjs/states/Boot.js"
+  = javascript_include_tag "phaserjs/states/Preloader.js"
+  = javascript_include_tag "phaserjs/states/MainMenu.js"
+  = javascript_include_tag "phaserjs/states/Game.js"
+
 
 .main
   #game-container
