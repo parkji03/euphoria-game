@@ -7,7 +7,12 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.paths << Emoji.images_path
 # Add Yarn node_modules folder to the asset load path.
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
-Rails.application.config.assets.precompile += %w( phaserjs/main.js )
+Rails.application.config.assets.precompile += %w( phaserjs/Main.js )
+Rails.application.config.assets.precompile += %w( phaserjs/states/Boot.js )
+Rails.application.config.assets.precompile += %w( phaserjs/states/Preloader.js )
+Rails.application.config.assets.precompile += %w( phaserjs/states/MainMenu.js )
+Rails.application.config.assets.precompile += %w( phaserjs/states/Game.js )
+
 Rails.application.config.assets.precompile += %w( home/home.js )
 
 # Precompile additional assets.
