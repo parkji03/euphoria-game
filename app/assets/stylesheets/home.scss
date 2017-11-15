@@ -15,7 +15,6 @@
 
 #splash {
   height: 100%;
-  overflow: hidden;
   position: relative;
 }
 
@@ -30,18 +29,32 @@
 }
 
 .layer-00 {
-   background-image: url("/assets/parallax/parallax-00");
+  background-image: url("/assets/parallax/layer_00.png");
 }
 .layer-01 {
-   background-image: url("/assets/parallax/parallax-01");
+  background-image: url("/assets/parallax/layer_logo.png");
 }
 .layer-02 {
-   background-image: url("/assets/parallax/parallax-02");
+  background-image: url("/assets/parallax/layer_cloud1.png");
 }
 .layer-03 {
-   background-image: url("/assets/parallax/parallax-03");
+  background-image: url("/assets/parallax/layer_cloud2.png");
 }
-
+.layer-04 {
+  background-image: url("/assets/parallax/layer_castle.png");
+}
+.layer-05 {
+  background-image: url("/assets/parallax/layer_hill1.png");
+}
+.layer-06 {
+  background-image: url("/assets/parallax/layer_hill2.png");
+}
+.layer-07 {
+  background-image: url("/assets/parallax/layer_tiles1.png");
+}
+.layer-08 {
+  background-image: url("/assets/parallax/layer_tiles2.png");
+}
 .row { //to fix a horizontal scroll-bar appearing from the row margin
   margin-left: 0;
   margin-right: 0;
