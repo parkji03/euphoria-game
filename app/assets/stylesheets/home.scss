@@ -14,16 +14,16 @@
 // }
 
 #splash {
-  height: 100%;
+  height: 2000px;
   position: relative;
 }
 
 .layer {
-  background-position: bottom center;
+  background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  height: 100%;
+  height: 2000px;
   position: fixed;
   z-index: -1;
 }
