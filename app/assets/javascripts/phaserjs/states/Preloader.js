@@ -21,14 +21,9 @@ Euphoria.Preloader.prototype = {
     this.load.image('titlescreen', 'assets/phaser_assets/logos/title.png');
     this.load.image('button', 'assets/phaser_assets/buttons/button.png');
 
-    this.load.tilemap('map_testmap', 'assets/phaser_assets/maps/testmap.json', null, Phaser.Tilemap.TILED_JSON);
-    this.load.image('tileset_grass', 'assets/phaser_assets/tiles/grass.png');
-    this.load.image('tileset_spike', 'assets/phaser_assets/tiles/test_spike.png');
-
-
-
-
-    //LOAD ALL ASSETS
+    this.load.tilemap('map_testmap', 'assets/phaser_assets/maps/map_testmap.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.image('grass', 'assets/phaser_assets/tiles/grass.png');
+    this.load.image('spike', 'assets/phaser_assets/tiles/test_spike.png');
   },
 
   create: function() {
