@@ -4,6 +4,9 @@ Euphoria.Preloader = function(game) {
 
 Euphoria.Preloader.prototype = {
   preload: function() {
+    //Display FPS
+    this.time.advancedTiming = true;
+
 
     //TODO: load all the assets here
 
