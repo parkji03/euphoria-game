@@ -1,9 +1,13 @@
+//NOTE: with scale, horizontal tile count = 80
+//NOTE: with scale, height tile count = 45
+
 Euphoria.Game = function(game) {
   this.game = game;
   this.canvasWidth = 1280;
   this.canvasHeight = 800;
   this.gameGravity = 2000;
   this.playerVelocity = 600;
+  this.playerJump = -700;
   this.hardScale = 1.5;
 
   this.layer = null;
@@ -116,7 +120,7 @@ function updateGameKeys(game) {
   //NOTE: change this for production
   // if (game.upKey.isDown && game.player.alive && testHit)
   if (game.upKey.isDown && game.player.alive) {
-      game.player.body.velocity.y = -700;
+      game.player.body.velocity.y = game.playerJump;
   }
 }
 
@@ -143,7 +147,7 @@ Euphoria.Game.prototype = {
   },
 
   playerDeath: function() {
-    //TODO: play death animation and stop the player from moving
+    //TODO: play death animation
     this.retryLabel = this.add.text(this.camera.width / 2, this.camera.height / 2 - 100, 'Press \'Spacebar\' to reset', {font: '30px Arial', fill: '#fff'});
     this.retryLabel.anchor.setTo(0.5, 0.5);
     this.retryLabel.fixedToCamera = true;
