@@ -12,6 +12,9 @@ Euphoria.Game = function(game) {
 
   this.testLabel = null;
 
+  this.retryLabel = null;
+  this.testKey = null;
+
 
 };
 
@@ -146,8 +149,20 @@ Euphoria.Game.prototype = {
   },
 
   playerDeath: function() {
+    this.retryLabel = this.add.text(this.camera.width / 2, this.camera.height / 2 - 100, 'Press \'Spacebar\' to reset', {font: '30px Arial', fill: '#fff'});
+    this.retryLabel.anchor.setTo(0.5, 0.5);
+    this.retryLabel.fixedToCamera = true;
+    this.player.kill();
+    // this.retryLabel.inputEnabled = true;
+    this.testKey = this.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
     this.deathCount++;
     this.testLabel.setText("Death Count: " + this.deathCount);
-    this.state.restart();
+    this.testKey.onDown.add(function() {
+      console.log("spacebar clicked and we're dead");
+      this.state.restart();
+
+    }, this);
+
+
   }
 };
