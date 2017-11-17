@@ -1,4 +1,5 @@
 window.onload = function() {
+
   // Create new Phaser game
   var game = new Phaser.Game(1280, 800, Phaser.AUTO, 'game-container');
 
