@@ -20,6 +20,9 @@ Euphoria.Preloader.prototype = {
     this.load.image('star', 'assets/star.png');
     this.load.spritesheet('dude', 'assets/dude.png', 32, 48);
 
+
+    this.load.spritesheet('player', 'assets/phaser_assets/sprites/temp_player.png', 23, 38);
+
     this.load.image('background', 'assets/phaser_assets/backgrounds/background.png')
     this.load.image('titlescreen', 'assets/phaser_assets/logos/title.png');
     this.load.image('button', 'assets/phaser_assets/buttons/button.png');
