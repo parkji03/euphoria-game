@@ -8,6 +8,9 @@ Rails.application.config.assets.version = '1.0'
 # Add Yarn node_modules folder to the asset load path.
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( phaserjs/Main.js )
+Rails.application.config.assets.precompile += %w( phaserjs/World.js )
+Rails.application.config.assets.precompile += %w( phaserjs/Player.js )
+Rails.application.config.assets.precompile += %w( phaserjs/Mob.js )
 Rails.application.config.assets.precompile += %w( phaserjs/states/Boot.js )
 Rails.application.config.assets.precompile += %w( phaserjs/states/Preloader.js )
 Rails.application.config.assets.precompile += %w( phaserjs/states/MainMenu.js )

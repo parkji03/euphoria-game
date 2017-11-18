@@ -28,6 +28,12 @@ Euphoria.Preloader.prototype = {
     this.load.image('jg_4', 'assets/phaser_assets/backgrounds/jungle_parallax/jg_4.png')
     this.load.image('jg_5', 'assets/phaser_assets/backgrounds/jungle_parallax/jg_5.png')
 
+    this.load.spritesheet('dino-red', 'assets/phaser_assets/sprites/dino-red.png', 24, 24);
+    this.load.spritesheet('dino-blue', 'assets/phaser_assets/sprites/dino-blue.png', 24, 24);
+    this.load.spritesheet('dino-yellow', 'assets/phaser_assets/sprites/dino-yellow.png', 24, 24);
+    this.load.spritesheet('dino-green', 'assets/phaser_assets/sprites/dino-green.png', 24, 24);
+
+
 
 
 
