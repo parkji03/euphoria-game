@@ -1,5 +1,6 @@
 Euphoria.MainMenu = function(game) {
   this.mainTitle = null;
+  this.backgroundTitle = null;
   // this.music = null;
   // this.playButton = null;
 };
@@ -22,6 +23,8 @@ Euphoria.MainMenu.prototype = {
     //title screen
     mainTitle = game.add.sprite(game.world.centerX, game.world.centerY - 192, 'titlescreen');
     mainTitle.anchor.setTo(0.5, 0.5);
+
+    //background
   },
 
   update: function(game) {
