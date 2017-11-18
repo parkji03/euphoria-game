@@ -24,6 +24,12 @@ Euphoria.Game = function(game) {
   this.upKey = null;
   this.leftKey = null;
   this.rightKey = null;
+
+  this.jg_1 = null;
+  this.jg_2 = null;
+  this.jg_3 = null;
+  this.jg_4 = null;
+  this.jg_5 = null;
 };
 
 function createGamePhysics(game) {
@@ -33,9 +39,27 @@ function createGamePhysics(game) {
   game.physics.arcade.checkCollision.down = false
 }
 
-function createGameSprites(game) {
-  game.stage.backgroundColor = '#3A5963'
+function createBackgroundParallax(game) {
+  game.jg_1 = game.add.tileSprite(0, 0, 1920, 1080, 'jg_1')
+  game.jg_1.scale.setTo(5, 5);
+  game.jg_2 = game.add.tileSprite(0, 0, 1920, 1080, 'jg_2')
+  game.jg_2.scale.setTo(5, 5);
+  game.jg_3 = game.add.tileSprite(0, 0, 1920, 1080, 'jg_3')
+  game.jg_3.scale.setTo(5, 5);
+  game.jg_4 = game.add.tileSprite(0, 0, 1920, 1080, 'jg_4')
+  game.jg_4.scale.setTo(5, 5);
+  game.jg_5 = game.add.tileSprite(0, 0, 1920, 1080, 'jg_5')
+  game.jg_5.scale.setTo(5, 5);
+}
 
+function updateBackgroundParallax(game) {
+  this.jg_2.x = this.camera.x * 0.01;
+  this.jg_3.x = this.camera.x * 0.02;
+  this.jg_4.x = this.camera.x * 0.05;
+  this.jg_5.x = this.camera.x * 0.10;
+}
+
+function createGameSprites(game) {
   // Create the world map
   game.map = game.add.tilemap('map_testmap');
   game.map.addTilesetImage('grass', 'grass');
@@ -77,14 +101,6 @@ function createGameSprites(game) {
     }
   }, game, game.layer);
 
-  // game.player = game.add.sprite(32, game.world.height - 400, 'dude');
-  // game.player.scale.setTo(game.hardScale, game.hardScale);
-  // game.player.animations.add('left', [0, 1, 2, 3], 10, true);
-  // game.player.animations.add('right', [5, 6, 7, 8], 10, true);
-  // game.physics.arcade.enable(game.player);
-  // // this.player.body.bounce.y = 0.2;
-  // game.player.body.collideWorldBounds = true;
-  // game.camera.follow(game.player, Phaser.Camera.FOLLOW_PLATFORMER);
 }
 
 function createGameKeys(game) {
@@ -164,35 +180,10 @@ function updateGameKeys(game) {
   }
 }
 
-// preload: function() {  // Load our tilesprite image for the background
-//   this.game.load.image('background', 'Path/To/Your/Background.png');
-//   // Load our tilesprite image for the ground
-//   this.game.load.image('ground', 'Path/To/Your/Ground.png');
-// }
-// create: function() {
-//   // Add the tilesprite for the background to the game at position 0, 0
-//   // params - Xpos, Ypos, Width, Height
-//   this.bg = this.game.add.tileSprite(0, 0, backgroundWidth, backgroundWidth, 'background');
-//   // Add the tilesprite for the ground to the game just below the background
-//   this.ground = this.game.add.tileSprite(0, backgroundHeight, groundWidth, groundHeight);
-//   // Now add our ground to the physics engine for collisions with the player
-//   this.game.physics.arcade.enable(this.ground);
-//   // Make sure it doesn't react to gravity
-//   this.ground.body.allowGravity = false;
-//   // Make the ground immovable
-//   this.ground.body.immovable = true;
-// }
-//
-// update: function() {  // Create collision check for player and ground
-//   this.game.physics.arcade.collide(this.player, this.ground);
-//   // Finally we move the two tilesprites at different speeds to simulate parallax
-//   this.bg.tilePosition.x -= 0.5;
-//   this.ground.tilePosition.x -= 1.5;
-// }
-
 Euphoria.Game.prototype = {
   create: function() {
     createGamePhysics(this);
+    createBackgroundParallax(this);
     createGameSprites(this);
     createDeathLabel(this);
     createGameKeys(this);
@@ -200,6 +191,7 @@ Euphoria.Game.prototype = {
 
   update: function() {
     updateGameKeys(this);
+    updateBackgroundParallax(this);
   },
 
   render: function() {

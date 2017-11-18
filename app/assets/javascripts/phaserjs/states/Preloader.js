@@ -22,6 +22,17 @@ Euphoria.Preloader.prototype = {
 
 
     this.load.spritesheet('player', 'assets/phaser_assets/sprites/temp_player.png', 23, 38);
+    this.load.image('jg_1', 'assets/phaser_assets/backgrounds/jungle_parallax/jg_1.png')
+    this.load.image('jg_2', 'assets/phaser_assets/backgrounds/jungle_parallax/jg_2.png')
+    this.load.image('jg_3', 'assets/phaser_assets/backgrounds/jungle_parallax/jg_3.png')
+    this.load.image('jg_4', 'assets/phaser_assets/backgrounds/jungle_parallax/jg_4.png')
+    this.load.image('jg_5', 'assets/phaser_assets/backgrounds/jungle_parallax/jg_5.png')
+
+
+
+
+
+
 
     this.load.image('background', 'assets/phaser_assets/backgrounds/background.png')
     this.load.image('titlescreen', 'assets/phaser_assets/logos/title.png');
