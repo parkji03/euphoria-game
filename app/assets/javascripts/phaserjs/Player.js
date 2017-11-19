@@ -30,15 +30,22 @@ function createPlayer(game) {
 
 }
 
+function checkPlayerMobCollision(game) {
+  game.greenDinoGroup.forEach( function(dino) {
+    if (game.player.overlap(dino)) {
+      playerDeath(game);
+    }
+  }, game);
+}
+
 function updatePlayerMovement(game) {
   // game.physics.arcade.TILE_BIAS = 40;
   game.player.body.velocity.x = 0;
   let testHit = game.physics.arcade.collide(game.player, game.worldLayer);
 
+
   // Set player mob collision detection
-  if (game.player.overlap(game.testMob)) {
-    playerDeath(game);
-  }
+  checkPlayerMobCollision(game);
 
   if (game.leftKey.isDown && game.player.alive) {
       game.player.body.velocity.x = -1 * game.playerVelocity;
