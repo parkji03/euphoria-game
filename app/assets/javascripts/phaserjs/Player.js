@@ -24,17 +24,21 @@ function createPlayer(game) {
   }, game);
 
   // Set player spike collision detection
-  game.map.setTileIndexCallback(46, function () {
-    if (game.player.alive) {
-      playerDeath(game);
-    }
-  }, game, game.layer);
+  game.map.setTileIndexCallback(game.spike_id, function () {
+    playerDeath(game);
+  }, game, game.worldLayer);
+
 }
 
 function updatePlayerMovement(game) {
   // game.physics.arcade.TILE_BIAS = 40;
   game.player.body.velocity.x = 0;
-  let testHit = game.physics.arcade.collide(game.player, game.layer);
+  let testHit = game.physics.arcade.collide(game.player, game.worldLayer);
+
+  // Set player mob collision detection
+  if (game.player.overlap(game.testMob)) {
+    playerDeath(game);
+  }
 
   if (game.leftKey.isDown && game.player.alive) {
       game.player.body.velocity.x = -1 * game.playerVelocity;
@@ -80,17 +84,19 @@ function updatePlayerMovement(game) {
 }
 
 function playerDeath(game) {
-  game.retryLabel = game.add.text(game.camera.width / 2, game.camera.height / 2 - 100, 'Press \'Spacebar\' to reset', { font: '30px Arial', fill: '#FFF' } );
-  game.retryLabel.anchor.setTo(0.5, 0.5);
-  game.retryLabel.fixedToCamera = true;
-  game.player.alive = false;
+  if (game.player.alive) {
+    game.retryLabel = game.add.text(game.camera.width / 2, game.camera.height / 2 - 100, 'Press \'Spacebar\' to reset', { font: '30px Arial', fill: '#FFF' } );
+    game.retryLabel.anchor.setTo(0.5, 0.5);
+    game.retryLabel.fixedToCamera = true;
+    game.player.alive = false;
+    updateDeathLabel(game);
+    game.retryKey = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
+    game.retryKey.onDown.add(function() {
+      game.player.kill();
+      game.state.restart();
+    }, game);
 
-  updateDeathLabel(game);
-  game.retryKey = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
-  game.retryKey.onDown.add(function() {
-    game.player.kill();
-    game.state.restart();
-  }, game);
+  }
 }
 //
 // playerDeath: function() {

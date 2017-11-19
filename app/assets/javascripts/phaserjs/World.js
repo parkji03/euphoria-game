@@ -30,10 +30,21 @@ function createGameWorld(game) {
   game.map = game.add.tilemap('map_testmap');
   game.map.addTilesetImage('grass', 'grass');
   game.map.addTilesetImage('spike', 'spike');
-  game.map.setCollision([0, 1, 2, 3, 4, 5, 15, 16, 17, 18, 19, 20, 21, 28, 30, 31])
-  game.layer = game.map.createLayer('Tile Layer 1');
-  game.layer.setScale(game.hardScale);
-  game.layer.resizeWorld();
+  game.map.addTilesetImage('mob_block', 'mob_block');
+
+  game.worldLayer = game.map.createLayer('World Layer');
+  game.worldLayer.setScale(game.hardScale);
+  game.worldLayer.resizeWorld();
+
+
+
+  game.mobBlockLayer = game.map.createLayer('Mob Block Layer');
+  game.mobBlockLayer.setScale(game.hardScale);
+  game.mobBlockLayer.resizeWorld();
+
+  game.map.setCollision([0, 1, 2, 3, 4, 5, 15, 16, 17, 18, 19, 20, 21, 28, 30, 31], true, game.worldLayer);
+  game.map.setCollision([47], true, game.mobBlockLayer);
+  // game.mobBlockLayer.alpha = 0;
 }
 
 function updateBackgroundParallax(game) {
