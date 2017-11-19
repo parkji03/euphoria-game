@@ -40,54 +40,37 @@ Euphoria.Game = function(game) {
   this.rightKey = null;
 
   // Mob assets
-  this.mobs = null;
   this.testMob = null;
+  this.greenDinoVelocity = 200;
+  this.greenDinoGroup = null;
 };
-
-var mob_direction = 1;
 
 Euphoria.Game.prototype = {
   create: function() {
 
+    // Create the world
     createGameWorld(this);
-    createMob(this);
+
+    // Create mobs
+    createGreenDinoGroup(this);
+
+    // Create player
     createPlayer(this);
 
+    // Create interaction
     createDeathLabel(this);
     createGameKeys(this);
   },
 
   update: function() {
+
+    // Player
     updatePlayerMovement(this);
-    updateMobMovement(this);
 
+    // Mobs
+    updateGreenDinoGroupMovement(this);
 
-    // this.physics.arcade.collide(this.testMob, this.mobBlockLayer);
-    // if(this.physics.arcade.collide(this.player, this.world)) {
-    //   console.log("hey");
-    // }
-    // }
-
-    if (this.physics.arcade.collide(this.testMob, this.mobBlockLayer)) {
-      mob_direction *= -1;
-      console.log('hey');
-    }
-
-    this.testMob.body.velocity.x = mob_direction * 300;
-
-    if (this.testMob.body.velocity.x > 0) {
-      this.testMob.animations.play('right-charge');
-    }
-    else if (this.testMob.body.velocity.x < 0) {
-      this.testMob.animations.play('left-charge');
-    }
-    else {
-      this.testMob.animations.play('right-idle');
-    }
-
-
-
-
+    // Background
     updateBackgroundParallax(this);
   },
 
