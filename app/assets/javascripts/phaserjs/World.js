@@ -44,7 +44,9 @@ function createGameWorld(game) {
 
   game.map.setCollision([0, 1, 2, 3, 4, 5, 15, 16, 17, 18, 19, 20, 21, 28, 30, 31], true, game.worldLayer);
   game.map.setCollision([47], true, game.mobBlockLayer);
-  // game.mobBlockLayer.alpha = 0;
+
+  //NOTE: this will hide or display the Mob Block Layer
+  game.mobBlockLayer.alpha = 0;
 }
 
 function updateBackgroundParallax(game) {

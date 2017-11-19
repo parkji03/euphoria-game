@@ -15,18 +15,24 @@ Euphoria.Game = function(game) {
   // Tile assets
   this.spike_id = 46;
 
-  // World assets
+  // Background assets
   this.jg_1 = null;
   this.jg_2 = null;
   this.jg_3 = null;
   this.jg_4 = null;
   this.jg_5 = null;
+
+  // World assets
   this.map = null;
   this.worldLayer = null;
   this.mobBlockLayer = null;
 
   // Player assets
   this.player = null;
+
+  // Mob assets
+  this.greenDinoVelocity = 200;
+  this.greenDinoGroup = null;
 
   // Interaction assets
   this.retryKey = null;
@@ -38,11 +44,6 @@ Euphoria.Game = function(game) {
   this.upKey = null;
   this.leftKey = null;
   this.rightKey = null;
-
-  // Mob assets
-  this.testMob = null;
-  this.greenDinoVelocity = 200;
-  this.greenDinoGroup = null;
 };
 
 Euphoria.Game.prototype = {
