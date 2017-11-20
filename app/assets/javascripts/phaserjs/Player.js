@@ -31,18 +31,21 @@ function createPlayer(game) {
 }
 
 function checkPlayerMobCollision(game) {
+
+  // Green Dino collisions
   game.greenDinoGroup.forEach( function(dino) {
     if (game.player.overlap(dino)) {
       playerDeath(game);
     }
   }, game);
+
+  // TODO: add more player to group/mob collisions here
 }
 
 function updatePlayerMovement(game) {
   // game.physics.arcade.TILE_BIAS = 40;
   game.player.body.velocity.x = 0;
   let testHit = game.physics.arcade.collide(game.player, game.worldLayer);
-
 
   // Set player mob collision detection
   checkPlayerMobCollision(game);
@@ -105,19 +108,3 @@ function playerDeath(game) {
 
   }
 }
-//
-// playerDeath: function() {
-//   //TODO: play death animation
-//   this.retryLabel = this.add.text(this.camera.width / 2, this.camera.height / 2 - 100, 'Press \'Spacebar\' to reset', {font: '30px Arial', fill: '#fff'});
-//   this.retryLabel.anchor.setTo(0.5, 0.5);
-//   this.retryLabel.fixedToCamera = true;
-//   this.player.alive = false;
-//
-//   updateDeathLabel(this);
-//   this.retryKey = this.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
-//   this.retryKey.onDown.add(function() {
-//     this.player.kill();
-//     // console.log("spacebar clicked and we're dead");
-//     this.state.restart();
-//   }, this);
-// }

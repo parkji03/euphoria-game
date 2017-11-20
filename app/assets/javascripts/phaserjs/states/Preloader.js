@@ -1,5 +1,6 @@
 Euphoria.Preloader = function(game) {
   // this.preloadBar = null;
+
 };
 
 Euphoria.Preloader.prototype = {
@@ -53,6 +54,9 @@ Euphoria.Preloader.prototype = {
   },
 
   update: function () {
+
+
+
 
   //	You don't actually need to do this, but I find it gives a much smoother game experience.
   //	Basically it will wait for our audio file to be decoded before proceeding to the MainMenu.
