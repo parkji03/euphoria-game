@@ -24,7 +24,8 @@ Euphoria.Boot.prototype = {
 
   preload: function() {
     //LOAD PRELOADER LOADING BAR HERE
-    // this.load.image('preloaderBar', 'assets/dude.png');
+    this.load.image('logo', 'assets/phaser_assets/logos/title.png');
+    this.load.image('preload_bar', 'assets/phaser_assets/user_interface/preload_bar.png');
   },
 
   create: function() {

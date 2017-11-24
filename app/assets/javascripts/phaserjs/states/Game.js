@@ -40,6 +40,10 @@ Euphoria.Game = function(game) {
   this.deathCount = 0;
   this.deathLabel = null;
 
+  // User interface assets
+  this.happyBarOutline = null;
+  this.happyBarProgress = null;
+
   // Keyboard assets
   this.upKey = null;
   this.leftKey = null;
@@ -61,6 +65,10 @@ Euphoria.Game.prototype = {
     // Create interaction
     createDeathLabel(this);
     createGameKeys(this);
+
+    //Create user interface
+    this.
+
   },
 
   update: function() {
@@ -77,9 +85,9 @@ Euphoria.Game.prototype = {
 
   render: function() {
     // DEBUGGING
-    this.game.debug.text(this.game.time.fps || '--', 2, 14, "#00ff00");
+    this.game.debug.text(this.game.time.fps || '--', 1260, 14, "#00ff00");
     // this.game.debug.cameraInfo(this.game.camera, 32, 32);
-    this.game.debug.spriteInfo(this.player, 32, 32);
+    this.game.debug.spriteInfo(this.player, 800, 32);
   }
 
   // quitGame: function() {
