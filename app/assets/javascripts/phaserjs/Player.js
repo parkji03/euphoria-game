@@ -62,7 +62,8 @@ function updatePlayerMovement(game) {
   //NOTE: change this for production
   // if (game.upKey.isDown && game.player.alive && testHit && game.player.body.onFloor()) {
   if (game.upKey.isDown && game.player.alive) {
-
+    //temp
+      game.happyBarProgress.width = game.happyBarProgressLength;
       game.player.body.velocity.y = game.playerJump;
       if (game.player.body.velocity.y > 0) {
         game.player.animations.play('right-jump');
@@ -97,6 +98,12 @@ function playerDeath(game) {
     game.retryLabel.anchor.setTo(0.5, 0.5);
     game.retryLabel.fixedToCamera = true;
     game.player.alive = false;
+
+    var deathEmote = game.add.sprite(game.player.position.x, game.player.position.y - 30, 'emoticons');
+    deathEmote.scale.setTo(3);
+    deathEmote.animations.add('empty-skull', [72, 73, 74], 78, true).speed = 2;
+    deathEmote.animations.play('empty-skull');
+
     updateDeathLabel(game);
     game.retryKey = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
     game.retryKey.onDown.add(function() {

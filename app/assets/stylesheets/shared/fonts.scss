@@ -1,14 +1,19 @@
 //fonts
-
-
 @font-face {
-  font-family:'Marcellus SC';
-  src:font-url('MarcellusSC-Regular.ttf') format('truetype');
+  font-family: 'Marcellus SC';
+  src: font-url('MarcellusSC-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family:'Josefin Sans';
-  src:font-url('JosefinSans-Regular.ttf') format('truetype');
+  font-family: 'Josefin Sans';
+  src: font-url('JosefinSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: '8bit_wonder';
+  font-style: normal;
+  font-weight: 400;
+  src: font-url('8bit_wonder.ttf') format('truetype');
 }
 
 // @import url('https://fonts.googleapis.com/css?family=Bubblegum+Sans|Happy+Monkey|Josefin+Sans|Marcellus+SC|Patrick+Hand+SC|Short+Stack|Walter+Turncoat');
