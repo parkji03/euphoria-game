@@ -25,3 +25,7 @@ facebook_api_id: {API_ID}
 facebook_secret: {API_SECRET}
 ```
 All done. :+1:
+
+## Deploying to Heroku
+
+Run `rake assets:precompile RAILS_ENV=production` before deployment.
