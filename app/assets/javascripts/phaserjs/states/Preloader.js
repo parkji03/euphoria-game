@@ -1,5 +1,7 @@
 Euphoria.Preloader = function(game) {
-  // this.preloadBar = null;
+  this.preloadLogo = null;
+  this.preloadBar = null;
+
 };
 
 Euphoria.Preloader.prototype = {
@@ -7,14 +9,13 @@ Euphoria.Preloader.prototype = {
     //Display FPS
     this.time.advancedTiming = true;
 
+    // Preload bar and logo image
+    this.preloadLogo = this.add.sprite(this.world.centerX, this.world.centerY - 192, 'logo');
+    this.preloadLogo.anchor.setTo(0.5);
+    this.preloadBar = this.add.sprite(this.world.centerX, this.world.centerY + 128, 'preload_bar');
+    this.preloadBar.anchor.setTo(0.5);
+    this.load.setPreloadSprite(this.preloadBar);
 
-    //TODO: load all the assets here
-
-
-    // this.preloadBar = this.add.sprite(this.world.centerX, this.world.centerY, 'preloaderBar');
-    // this.preloadBar.anchor.setTo(0.5, 0.5);
-    // this.time.advancedTiming = true;
-    // this.load.setPreloadSprite(this.preloadBar);
     this.load.image('sky', 'assets/sky.png');
     this.load.image('ground', 'assets/platform.png');
     this.load.image('star', 'assets/star.png');
@@ -38,6 +39,20 @@ Euphoria.Preloader.prototype = {
 
     // Title screen
     this.load.image('background', 'assets/phaser_assets/backgrounds/background.png')
+    this.load.image('button', 'assets/phaser_assets/buttons/button.png');
+
+    // World
+    this.load.tilemap('map_testmap', 'assets/phaser_assets/maps/map_testmap.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.image('grass', 'assets/phaser_assets/tiles/grass.png');
+    this.load.image('spike', 'assets/phaser_assets/tiles/spike.png');
+    this.load.image('mob_block', 'assets/phaser_assets/tiles/mob_block.png');
+
+    // User interface
+    this.load.image('happy_bar_outline', 'assets/phaser_assets/user_interface/happy_bar_outline.png');
+    this.load.image('happy_bar_progress', 'assets/phaser_assets/user_interface/happy_bar_progress.png');
+
+    // Title screen
+    this.load.image('background', 'assets/phaser_assets/backgrounds/background.png')
     this.load.image('titlescreen', 'assets/phaser_assets/logos/title.png');
     this.load.image('button', 'assets/phaser_assets/buttons/button.png');
 
@@ -53,6 +68,9 @@ Euphoria.Preloader.prototype = {
   },
 
   update: function () {
+
+
+
 
   //	You don't actually need to do this, but I find it gives a much smoother game experience.
   //	Basically it will wait for our audio file to be decoded before proceeding to the MainMenu.

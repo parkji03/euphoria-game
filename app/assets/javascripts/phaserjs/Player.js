@@ -60,8 +60,9 @@ function updatePlayerMovement(game) {
   }
 
   //NOTE: change this for production
-  if (game.upKey.isDown && game.player.alive && testHit && game.player.body.onFloor()) {
-  // if (game.upKey.isDown && game.player.alive) {
+  // if (game.upKey.isDown && game.player.alive && testHit && game.player.body.onFloor()) {
+  if (game.upKey.isDown && game.player.alive) {
+
       game.player.body.velocity.y = game.playerJump;
       if (game.player.body.velocity.y > 0) {
         game.player.animations.play('right-jump');
@@ -105,19 +106,3 @@ function playerDeath(game) {
 
   }
 }
-//
-// playerDeath: function() {
-//   //TODO: play death animation
-//   this.retryLabel = this.add.text(this.camera.width / 2, this.camera.height / 2 - 100, 'Press \'Spacebar\' to reset', {font: '30px Arial', fill: '#fff'});
-//   this.retryLabel.anchor.setTo(0.5, 0.5);
-//   this.retryLabel.fixedToCamera = true;
-//   this.player.alive = false;
-//
-//   updateDeathLabel(this);
-//   this.retryKey = this.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
-//   this.retryKey.onDown.add(function() {
-//     this.player.kill();
-//     // console.log("spacebar clicked and we're dead");
-//     this.state.restart();
-//   }, this);
-// }

@@ -9,6 +9,8 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( phaserjs/Main.js )
 Rails.application.config.assets.precompile += %w( phaserjs/World.js )
+Rails.application.config.assets.precompile += %w( phaserjs/UI.js )
+Rails.application.config.assets.precompile += %w( phaserjs/Interaction.js )
 Rails.application.config.assets.precompile += %w( phaserjs/Player.js )
 Rails.application.config.assets.precompile += %w( phaserjs/Dino.js )
 Rails.application.config.assets.precompile += %w( phaserjs/states/Boot.js )

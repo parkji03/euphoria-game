@@ -1,12 +1,33 @@
 Euphoria.MainMenu = function(game) {
+  this.menu_jg_1 = null;
+  this.menu_jg_2 = null;
+  this.menu_jg_3 = null;
+  this.menu_jg_4 = null;
+  this.menu_jg_5 = null;
+
   this.mainTitle = null;
   this.backgroundTitle = null;
   // this.music = null;
-  // this.playButton = null;
+
 };
 
 Euphoria.MainMenu.prototype = {
   create: function(game) {
+
+    // Set the background
+    let p_width = 1280;
+    let p_height = 800;
+    let p_scale = 3.34;
+    game.menu_jg_1 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_1')
+    game.menu_jg_1.scale.setTo(p_scale, p_scale);
+    game.menu_jg_2 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_2')
+    game.menu_jg_2.scale.setTo(p_scale, p_scale);
+    game.menu_jg_3 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_3')
+    game.menu_jg_3.scale.setTo(p_scale, p_scale);
+    game.menu_jg_4 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_4')
+    game.menu_jg_4.scale.setTo(p_scale, p_scale);
+    game.menu_jg_5 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_5')
+    game.menu_jg_5.scale.setTo(p_scale, p_scale);
 
     //play button
     this.createButton(game, "Play", game.world.centerX, game.world.centerY + 32, 300, 100,
@@ -21,14 +42,18 @@ Euphoria.MainMenu.prototype = {
       });
 
     //title screen
-    mainTitle = game.add.sprite(game.world.centerX, game.world.centerY - 192, 'titlescreen');
+    mainTitle = game.add.sprite(game.world.centerX, game.world.centerY - 192, 'logo');
     mainTitle.anchor.setTo(0.5, 0.5);
 
     //background
   },
 
   update: function(game) {
-
+    // Move background
+    game.menu_jg_2.x -= 0.05;
+    game.menu_jg_3.x -= 0.09;
+    game.menu_jg_4.x -= 0.13;
+    game.menu_jg_5.x -= 0.16;
   },
 
   createButton: function(game, string, x, y, w, h, callback) {
