@@ -6,9 +6,9 @@ function createGamePhysics(game) {
 }
 
 function createBackgroundParallax(game) {
-  let p_width = 1920;
-  let p_height = 1080;
-  let p_scale = 5;
+  var p_width = 1920;
+  var p_height = 1080;
+  var p_scale = 5;
 
   game.jg_1 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_1')
   game.jg_1.scale.setTo(p_scale, p_scale);

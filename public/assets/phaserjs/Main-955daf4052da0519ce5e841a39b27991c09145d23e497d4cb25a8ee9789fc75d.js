@@ -1,0 +1,1 @@
+window.onload=function(){var a=new Phaser.Game(1280,800,Phaser.AUTO,"game-container");a.state.add("Boot",Euphoria.Boot),a.state.add("Preloader",Euphoria.Preloader),a.state.add("MainMenu",Euphoria.MainMenu),a.state.add("Game",Euphoria.Game),a.state.start("Boot")};

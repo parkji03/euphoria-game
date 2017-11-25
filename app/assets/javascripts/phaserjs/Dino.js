@@ -9,14 +9,14 @@ function createGreenDinoGroup(game) {
 
 function addGreenDino(game, x_location, y_location) {
 
-  let tempMob = game.greenDinoGroup.create(x_location, y_location, 'dino_green');
+  var tempMob = game.greenDinoGroup.create(x_location, y_location, 'dino_green');
   tempMob.scale.setTo(game.hardScale, game.hardScale);
 
   game.physics.arcade.enable(tempMob);
   tempMob.body.collisionWorldBounds = true;
 
   // Randomize the default direction of each green dino
-  let initDirection = Math.floor(Math.random() * 2);
+  var initDirection = Math.floor(Math.random() * 2);
   if (initDirection == 1) {
     tempMob.mob_direction = 1;
   }

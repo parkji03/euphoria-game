@@ -41,7 +41,7 @@ function checkPlayerMobCollision(game) {
 function updatePlayerMovement(game) {
   // game.physics.arcade.TILE_BIAS = 40;
   game.player.body.velocity.x = 0;
-  let testHit = game.physics.arcade.collide(game.player, game.worldLayer);
+  var testHit = game.physics.arcade.collide(game.player, game.worldLayer);
 
 
   // Set player mob collision detection

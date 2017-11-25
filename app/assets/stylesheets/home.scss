@@ -1,63 +1,49 @@
-// .splash { //TODO: change splash.jpg... parallax?
-//   background-image: url("/assets/splash.jpg");
-//   height: 100%;
-//   width: 100%;
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   display: flex;
-//
-//   button { //TODO: move this button and add down scroll arrow button
-//     margin: auto;
-//   }
-//
-// }
-
 #splash {
   height: 3500px;
   position: relative;
+
+  .layer {
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 3500px;
+    position: fixed;
+    z-index: -1;
+  }
+
+  .layer-00 {
+    background-image: url("/assets/parallax/layer_00.png");
+  }
+  .layer-01 {
+    background-image: url("/assets/parallax/layer_logo.png");
+  }
+  .layer-02 {
+    background-image: url("/assets/parallax/layer_cloud1.png");
+  }
+  .layer-03 {
+    background-image: url("/assets/parallax/layer_cloud2.png");
+  }
+  .layer-04 {
+    background-image: url("/assets/parallax/layer_castle.png");
+  }
+  .layer-05 {
+    background-image: url("/assets/parallax/layer_hill1.png");
+  }
+  .layer-06 {
+    background-image: url("/assets/parallax/layer_hill2.png");
+  }
+  .layer-07 {
+    background-image: url("/assets/parallax/layer_tiles1.png");
+  }
+  .layer-08 {
+    background-image: url("/assets/parallax/layer_tiles2.png");
+  }
+  .layer-09 {
+    background-image: url("/assets/parallax/layer_phori.png");
+  }
 }
 
-.layer {
-  background-position: top center;
-  // background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 3500px;
-  position: fixed;
-  z-index: -1;
-}
-
-.layer-00 {
-  background-image: url("/assets/parallax/layer_00.png");
-}
-.layer-01 {
-  background-image: url("/assets/parallax/layer_logo.png");
-}
-.layer-02 {
-  background-image: url("/assets/parallax/layer_cloud1.png");
-}
-.layer-03 {
-  background-image: url("/assets/parallax/layer_cloud2.png");
-}
-.layer-04 {
-  background-image: url("/assets/parallax/layer_castle.png");
-}
-.layer-05 {
-  background-image: url("/assets/parallax/layer_hill1.png");
-}
-.layer-06 {
-  background-image: url("/assets/parallax/layer_hill2.png");
-}
-.layer-07 {
-  background-image: url("/assets/parallax/layer_tiles1.png");
-}
-.layer-08 {
-  background-image: url("/assets/parallax/layer_tiles2.png");
-}
-.layer-09 {
-  background-image: url("/assets/parallax/layer_phori.png");
-}
 .row { //to fix a horizontal scroll-bar appearing from the row margin
   margin-left: 0;
   margin-right: 0;
