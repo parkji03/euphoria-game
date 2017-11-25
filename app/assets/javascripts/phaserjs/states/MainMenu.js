@@ -15,9 +15,9 @@ Euphoria.MainMenu.prototype = {
   create: function(game) {
 
     // Set the background
-    let p_width = 1280;
-    let p_height = 800;
-    let p_scale = 3.34;
+    var p_width = 1280;
+    var p_height = 800;
+    var p_scale = 3.34;
     game.menu_jg_1 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_1')
     game.menu_jg_1.scale.setTo(p_scale, p_scale);
     game.menu_jg_2 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_2')
