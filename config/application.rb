@@ -12,7 +12,6 @@ module EuphoriaGame
     config.load_defaults 5.1
     # config.assets.initialize_on_precompile = false
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
-    config.assets.paths << Rails.root.join("app", "assets", "images")
 
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'local_env.yml')
