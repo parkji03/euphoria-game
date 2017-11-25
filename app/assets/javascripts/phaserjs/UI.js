@@ -30,7 +30,7 @@ function createHappyBar(game) {
 function halfWayTrigger(game) {
   if (game.happyBarProgress.width < game.happyBarProgressLength / 2 && !game.halfTriggered) {
     game.playerEmote.visible = true;
-    game.playerEmote.animations.play('skull', 4, false);
+    game.playerEmote.animations.play('scramble', 8, false);
     game.halfTriggered = true;
   }
 
@@ -41,7 +41,7 @@ function halfWayTrigger(game) {
 }
 
 function happyBarEmoteTriggers(game) {
-  resetHalfWayTrigger(game);
+  halfWayTrigger(game);
 }
 
 function createDeathLabel(game) {

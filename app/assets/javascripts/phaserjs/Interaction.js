@@ -8,10 +8,10 @@ function createPlayerEmote(game) {
   game.playerEmote = game.add.sprite(0, game.world.height - 300, 'emoticons');
   game.playerEmote.scale.setTo(game.hardScale);
 
-  game.playerEmote.animations.add('exclamation', [47, 46, 45, 44, 0, 1, 2], 78, true).onComplete.add(function() {
+  game.playerEmote.animations.add('exclamation', [47, 46, 45, 44, 0, 1, 2, 45, 46], 78, true).onComplete.add(function() {
     game.playerEmote.visible = false;
   });
-  game.playerEmote.animations.add('question', [47, 46, 45, 44, 3, 4, 5], 78, true).onComplete.add(function() {
+  game.playerEmote.animations.add('question', [47, 46, 45, 44, 3, 4, 5, 45, 46], 78, true).onComplete.add(function() {
     game.playerEmote.visible = false;
   });
   game.playerEmote.animations.add('empty-exclamation', [6, 7, 8], 78, true).onComplete.add(function() {
@@ -20,34 +20,34 @@ function createPlayerEmote(game) {
   game.playerEmote.animations.add('empty-question', [9, 10, 11], 78, true).onComplete.add(function() {
     game.playerEmote.visible = false;
   });
-  game.playerEmote.animations.add('sweat', [47, 46, 45, 44, 12, 13, 14], 78, true).onComplete.add(function() {
+  game.playerEmote.animations.add('sweat', [47, 46, 45, 44, 12, 13, 14, 45, 46], 78, true).onComplete.add(function() {
     game.playerEmote.visible = false;
   });
-  game.playerEmote.animations.add('heart', [47, 46, 45, 44, 15, 16, 17], 78, true).onComplete.add(function() {
+  game.playerEmote.animations.add('heart', [47, 46, 45, 44, 15, 16, 17, 45, 46], 78, true).onComplete.add(function() {
     game.playerEmote.visible = false;
   });
-  game.playerEmote.animations.add('dotdotdot', [47, 46, 45, 44, 18, 19, 20], 78, true).onComplete.add(function() {
+  game.playerEmote.animations.add('dotdotdot', [47, 46, 45, 44, 18, 18, 19, 19, 20, 20, 45, 46], 78, true).onComplete.add(function() {
     game.playerEmote.visible = false;
   });
-  game.playerEmote.animations.add('music', [47, 46, 45, 44, 21, 22, 23], 78, true).onComplete.add(function() {
+  game.playerEmote.animations.add('music', [47, 46, 45, 44, 21, 22, 23, 45, 46], 78, true).onComplete.add(function() {
     game.playerEmote.visible = false;
   });
-  game.playerEmote.animations.add('zzz', [47, 46, 45, 44, 24, 25, 26], 78, true).onComplete.add(function() {
+  game.playerEmote.animations.add('zzz', [47, 46, 45, 44, 24, 25, 26, 45, 46], 78, true).onComplete.add(function() {
     game.playerEmote.visible = false;
   });
-  game.playerEmote.animations.add('scramble', [47, 46, 45, 44, 27, 28, 29], 78, true).onComplete.add(function() {
+  game.playerEmote.animations.add('scramble', [47, 46, 45, 44, 27, 28, 29, 28, 27, 45, 46], 78, true).onComplete.add(function() {
     game.playerEmote.visible = false;
   });
-  game.playerEmote.animations.add('blush', [47, 46, 45, 44, 30, 31, 32], 78, true).onComplete.add(function() {
+  game.playerEmote.animations.add('blush', [47, 46, 45, 44, 30, 31, 32, 45, 46], 78, true).onComplete.add(function() {
     game.playerEmote.visible = false;
   });
-  game.playerEmote.animations.add('light-bulb', [47, 46, 45, 44, 33, 34, 35], 78, true).onComplete.add(function() {
+  game.playerEmote.animations.add('light-bulb', [47, 46, 45, 44, 33, 34, 35, 45, 46], 78, true).onComplete.add(function() {
     game.playerEmote.visible = false;
   });
-  game.playerEmote.animations.add('skull', [47, 46, 45, 44, 36, 37, 38], 78, true).onComplete.add(function() {
+  game.playerEmote.animations.add('skull', [47, 46, 45, 44, 36, 37, 38, 45, 46], 78, true).onComplete.add(function() {
     game.playerEmote.visible = false;
   });
-  game.playerEmote.animations.add('angry', [47, 46, 45, 44, 39, 40, 41], 78, true).onComplete.add(function() {
+  game.playerEmote.animations.add('angry', [47, 46, 45, 44, 39, 40, 41, 40, 39, 45, 46], 78, true).onComplete.add(function() {
     game.playerEmote.visible = false;
   });
   game.playerEmote.animations.add('empty-sweat', [48, 49, 50], 78, true).onComplete.add(function() {
@@ -82,7 +82,18 @@ function createPlayerEmote(game) {
   });
 
   // Spawn emote.. play different ones depending on death count
-  game.playerEmote.animations.play('exclamation', 5, false);
+  if (game.deathCount < 5) {
+    game.playerEmote.animations.play('exclamation', 8, false);
+  }
+  else if (game.deathCount < 10) {
+    game.playerEmote.animations.play('sweat', 8, false);
+  }
+  else if (game.deathCount < 15) {
+    game.playerEmote.animations.play('dotdotdot', 8, false);
+  }
+  else if (game.deathCount < 20) {
+    game.playerEmote.animations.play('angry', 8, false);
+  }
 }
 
 function updatePlayerEmote(game) {

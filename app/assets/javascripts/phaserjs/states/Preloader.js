@@ -23,11 +23,12 @@ Euphoria.Preloader.prototype = {
 
     // Game sprites
     this.load.spritesheet('player', 'assets/phaser_assets/sprites/temp_player.png', 23, 38);
+    this.load.spritesheet('dino_red', 'assets/phaser_assets/sprites/dinos/dino_red.png', 18, 18);
+    this.load.spritesheet('dino_blue', 'assets/phaser_assets/sprites/dinos/dino_blue.png', 18, 18);
+    this.load.spritesheet('dino_yellow', 'assets/phaser_assets/sprites/dinos/dino_yellow.png', 18, 18);
+    this.load.spritesheet('dino_green', 'assets/phaser_assets/sprites/dinos/dino_green.png', 18, 18);
 
-    this.load.spritesheet('dino_red', 'assets/phaser_assets/sprites/dino_red.png', 18, 18);
-    this.load.spritesheet('dino_blue', 'assets/phaser_assets/sprites/dino_blue.png', 18, 18);
-    this.load.spritesheet('dino_yellow', 'assets/phaser_assets/sprites/dino_yellow.png', 18, 18);
-    this.load.spritesheet('dino_green', 'assets/phaser_assets/sprites/dino_green.png', 18, 18);
+    this.load.image('player_food', 'assets/phaser_assets/sprites/food/food_34.png');
 
     // Title screen
     this.load.image('background', 'assets/phaser_assets/backgrounds/background.png');
