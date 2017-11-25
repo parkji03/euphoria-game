@@ -1,0 +1,1 @@
+function createGameKeys(e){e.upKey=e.input.keyboard.addKey(Phaser.KeyCode.W),e.leftKey=e.input.keyboard.addKey(Phaser.KeyCode.A),e.rightKey=e.input.keyboard.addKey(Phaser.KeyCode.D)}
