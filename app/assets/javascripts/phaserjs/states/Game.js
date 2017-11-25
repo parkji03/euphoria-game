@@ -92,6 +92,7 @@ Euphoria.Game.prototype = {
     this.game.debug.text(this.game.time.fps || '--', 1260, 14, "#00ff00");
     // this.game.debug.cameraInfo(this.game.camera, 32, 32);
     this.game.debug.spriteInfo(this.player, 800, 32);
+
   }
 
   // quitGame: function() {

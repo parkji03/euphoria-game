@@ -31,21 +31,18 @@ function createPlayer(game) {
 }
 
 function checkPlayerMobCollision(game) {
-
-  // Green Dino collisions
   game.greenDinoGroup.forEach( function(dino) {
     if (game.player.overlap(dino)) {
       playerDeath(game);
     }
   }, game);
-
-  // TODO: add more player to group/mob collisions here
 }
 
 function updatePlayerMovement(game) {
   // game.physics.arcade.TILE_BIAS = 40;
   game.player.body.velocity.x = 0;
   let testHit = game.physics.arcade.collide(game.player, game.worldLayer);
+
 
   // Set player mob collision detection
   checkPlayerMobCollision(game);
@@ -65,6 +62,7 @@ function updatePlayerMovement(game) {
   //NOTE: change this for production
   // if (game.upKey.isDown && game.player.alive && testHit && game.player.body.onFloor()) {
   if (game.upKey.isDown && game.player.alive) {
+
       game.player.body.velocity.y = game.playerJump;
       if (game.player.body.velocity.y > 0) {
         game.player.animations.play('right-jump');

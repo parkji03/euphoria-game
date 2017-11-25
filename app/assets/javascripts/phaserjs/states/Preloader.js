@@ -51,7 +51,16 @@ Euphoria.Preloader.prototype = {
     this.load.image('happy_bar_outline', 'assets/phaser_assets/user_interface/happy_bar_outline.png');
     this.load.image('happy_bar_progress', 'assets/phaser_assets/user_interface/happy_bar_progress.png');
 
+    // Title screen
+    this.load.image('background', 'assets/phaser_assets/backgrounds/background.png')
+    this.load.image('titlescreen', 'assets/phaser_assets/logos/title.png');
+    this.load.image('button', 'assets/phaser_assets/buttons/button.png');
 
+    // World
+    this.load.tilemap('map_testmap', 'assets/phaser_assets/maps/map_testmap.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.image('grass', 'assets/phaser_assets/tiles/grass.png');
+    this.load.image('spike', 'assets/phaser_assets/tiles/spike.png');
+    this.load.image('mob_block', 'assets/phaser_assets/tiles/mob_block.png');
   },
 
   create: function() {
