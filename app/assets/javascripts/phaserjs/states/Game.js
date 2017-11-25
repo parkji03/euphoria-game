@@ -43,6 +43,8 @@ Euphoria.Game = function(game) {
   // User interface assets
   this.happyBarOutline = null;
   this.happyBarProgress = null;
+  this.happyBarTenth = null;
+  this.happyBarHundredth = null;
 
   // Keyboard assets
   this.upKey = null;
@@ -67,8 +69,7 @@ Euphoria.Game.prototype = {
     createGameKeys(this);
 
     //Create user interface
-    this.
-
+    createHappyBar(this);
   },
 
   update: function() {
@@ -81,6 +82,9 @@ Euphoria.Game.prototype = {
 
     // Background
     updateBackgroundParallax(this);
+
+    // User interface
+    // updateHappyBar(this);
   },
 
   render: function() {
