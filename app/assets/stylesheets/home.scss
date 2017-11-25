@@ -14,34 +14,50 @@
 // }
 
 #splash {
-  height: 100%;
-  overflow: hidden;
+  height: 3500px;
   position: relative;
 }
 
 .layer {
-  background-position: bottom center;
-  background-size: cover;
+  background-position: top center;
+  // background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  height: 100%;
+  height: 3500px;
   position: fixed;
   z-index: -1;
 }
 
 .layer-00 {
-   background-image: url("/assets/parallax/parallax-00");
+  background-image: url("/assets/parallax/layer_00.png");
 }
 .layer-01 {
-   background-image: url("/assets/parallax/parallax-01");
+  background-image: url("/assets/parallax/layer_logo.png");
 }
 .layer-02 {
-   background-image: url("/assets/parallax/parallax-02");
+  background-image: url("/assets/parallax/layer_cloud1.png");
 }
 .layer-03 {
-   background-image: url("/assets/parallax/parallax-03");
+  background-image: url("/assets/parallax/layer_cloud2.png");
 }
-
+.layer-04 {
+  background-image: url("/assets/parallax/layer_castle.png");
+}
+.layer-05 {
+  background-image: url("/assets/parallax/layer_hill1.png");
+}
+.layer-06 {
+  background-image: url("/assets/parallax/layer_hill2.png");
+}
+.layer-07 {
+  background-image: url("/assets/parallax/layer_tiles1.png");
+}
+.layer-08 {
+  background-image: url("/assets/parallax/layer_tiles2.png");
+}
+.layer-09 {
+  background-image: url("/assets/parallax/layer_phori.png");
+}
 .row { //to fix a horizontal scroll-bar appearing from the row margin
   margin-left: 0;
   margin-right: 0;
@@ -49,7 +65,7 @@
 
 .awards {
   height:80%;
-  background-color: #10EA77;
+  background-color: $dark-dirt;
   margin-right: auto;
   margin-left: auto;
   text-align: center;
@@ -58,6 +74,7 @@
 
 .award {
   padding: 5%;
+  text-align: center;
 }
 
 .fake-award {
@@ -66,14 +83,22 @@
 
 .price-banner{
   margin: auto;
+  width: 1296px;
+  height: 180px;
+  background: url('/assets/neon-sign-sprites.png');
+  background-repeat: no-repeat;
+  // background-position: calc(100%-648px);
+  animation: neon-sign 4s steps(10) infinite;
+}
 
+@keyframes neon-sign {
+  100% { background-position: 0px -1800px; }
 }
 
 .trailer{
   height: 100%;
-  background-color: #66A7A7;
+  background-color: $dark-dirt;
   text-align: center;
-  padding-top: 10%;
 }
 
 #trailer-video{
