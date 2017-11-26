@@ -29,6 +29,7 @@ Euphoria.Game = function(game) {
 
   // Player assets
   this.player = null;
+  this.playerEmote = null;
 
   // Mob assets
   this.greenDinoVelocity = 200;
@@ -40,11 +41,20 @@ Euphoria.Game = function(game) {
   this.deathCount = 0;
   this.deathLabel = null;
 
+  this.coinGroup = null;
+
   // User interface assets
+  this.fontStyle = { font: "14px 8bit_wonder", fill: "#FFF" };
+  this.coinText = null;
+  this.coinCount = 0;
+
   this.happyBarOutline = null;
   this.happyBarProgress = null;
+  this.happyBarProgressLength = null;
   this.happyBarTenth = null;
   this.happyBarHundredth = null;
+  this.happyBarEmoteSignal = null;
+  this.halfTriggered = false;
 
   // Keyboard assets
   this.upKey = null;
@@ -60,28 +70,35 @@ Euphoria.Game.prototype = {
 
     // Create mobs
     createGreenDinoGroup(this);
+    createCoinGroup(this);
 
     // Create player
     createPlayer(this);
 
     // Create interaction
-    createDeathLabel(this);
     createGameKeys(this);
+    createPlayerEmote(this);
 
     //Create user interface
+    createDeathLabel(this);
     createHappyBar(this);
+    createCoinText(this);
   },
 
   update: function() {
-
     // Player
     updatePlayerMovement(this);
 
     // Mobs
     updateGreenDinoGroupMovement(this);
+    updateCoinMovement(this);
 
     // Background
     updateBackgroundParallax(this);
+
+    // Interaction
+    updatePlayerEmote(this);
+    happyBarEmoteTriggers(this);
 
     // User interface
     // updateHappyBar(this);

@@ -3,6 +3,7 @@ function createHappyBar(game) {
   game.happyBarProgress = game.add.image(16, 16, 'happy_bar_progress');
   game.happyBarProgress.scale.setTo(game.hardScale);
   game.happyBarProgress.fixedToCamera = true;
+  game.happyBarProgressLength = game.happyBarProgress.width;
   game.happyBarTenth = game.happyBarProgress.width / 10;
   game.happyBarHundredth = game.happyBarTenth / 10;
   game.happyBarOutline = game.add.image(16, 16, 'happy_bar_outline');
@@ -16,14 +17,31 @@ function createHappyBar(game) {
       game.happyBarProgress.width = Math.floor(game.happyBarProgress.width - game.happyBarHundredth);
     }
 
-    if (game.happyBarProgress.width < 0) {
+    if (game.happyBarProgress.width < 0) { // Capped at width 0
       game.happyBarProgress.width = 0;
     }
   }, game);
 }
 
+function halfWayTrigger(game) {
+  if (game.happyBarProgress.width < game.happyBarProgressLength / 2 && !game.halfTriggered) {
+    game.playerEmote.visible = true;
+    game.playerEmote.animations.play('scramble', 8, false);
+    game.halfTriggered = true;
+  }
+
+  // Reset the half way trigger
+  if (game.happyBarProgress.width > (game.happyBarProgressLength / 2)) {
+    game.halfTriggered = false;
+  }
+}
+
+function happyBarEmoteTriggers(game) {
+  halfWayTrigger(game);
+}
+
 function createDeathLabel(game) {
-  game.deathLabel = game.add.text(345, 16, 'Death Count: ' + game.deathCount, {font: '24px Arial', fill: '#fff'});
+  game.deathLabel = game.add.text(345, 16, 'Death Count: ' + game.deathCount, game.fontStyle);
   // game.deathLabel.anchor.setTo(0.5, 0.5);
   game.deathLabel.fixedToCamera = true;
   game.deathLabel.inputEnabled = true;
@@ -44,13 +62,3 @@ function updateDeathLabel(game) {
   game.deathCount++;
   game.deathLabel.setText("Death Count: " + game.deathCount);
 }
-
-
-
-// function increaseHappiness(game) {
-//
-// }
-//
-// function updateHappyBar(game) {
-//   // game.time.events.repeat(Phaser.Timer.SECOND, decreaseHappiness(game), game);
-// }

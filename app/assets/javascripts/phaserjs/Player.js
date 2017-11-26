@@ -31,11 +31,24 @@ function createPlayer(game) {
 }
 
 function checkPlayerMobCollision(game) {
-  game.greenDinoGroup.forEach( function(dino) {
-    if (game.player.overlap(dino)) {
-      playerDeath(game);
+  game.physics.arcade.overlap(game.player, game.greenDinoGroup, function(player, dino) {
+    playerDeath(game);
+  }, null, game);
+}
+
+function checkPlayerCoinCollision(game) {
+  game.physics.arcade.overlap(game.player, game.coinGroup, function(player, coin) {
+    coin.kill();
+    game.coinCount += 1;
+    game.coinText.text = 'Score: ' + game.coinCount;
+
+    if (game.happyBarProgress.width + game.happyBarTenth > game.happyBarProgressLength) {
+      game.happyBarProgress.width = game.happyBarProgressLength;
     }
-  }, game);
+    else {
+      game.happyBarProgress.width += game.happyBarTenth;
+    }
+  }, null, game);
 }
 
 function updatePlayerMovement(game) {
@@ -46,6 +59,7 @@ function updatePlayerMovement(game) {
 
   // Set player mob collision detection
   checkPlayerMobCollision(game);
+  checkPlayerCoinCollision(game);
 
   if (game.leftKey.isDown && game.player.alive) {
       game.player.body.velocity.x = -1 * game.playerVelocity;
@@ -62,14 +76,13 @@ function updatePlayerMovement(game) {
   //NOTE: change this for production
   // if (game.upKey.isDown && game.player.alive && testHit && game.player.body.onFloor()) {
   if (game.upKey.isDown && game.player.alive) {
-
-      game.player.body.velocity.y = game.playerJump;
-      if (game.player.body.velocity.y > 0) {
-        game.player.animations.play('right-jump');
-      }
-      else {
-        game.player.animations.play('left-jump');
-      }
+    game.player.body.velocity.y = game.playerJump;
+    if (game.player.body.velocity.y > 0) {
+      game.player.animations.play('right-jump');
+    }
+    else {
+      game.player.animations.play('left-jump');
+    }
   }
 
   if (game.player.body.velocity.y < 0) {
@@ -97,6 +110,12 @@ function playerDeath(game) {
     game.retryLabel.anchor.setTo(0.5, 0.5);
     game.retryLabel.fixedToCamera = true;
     game.player.alive = false;
+
+    var deathEmote = game.add.sprite(game.player.position.x, game.player.position.y - 30, 'emoticons');
+    deathEmote.scale.setTo(3);
+    deathEmote.animations.add('empty-skull', [72, 73, 74], 78, true).speed = 2;
+    deathEmote.animations.play('empty-skull');
+
     updateDeathLabel(game);
     game.retryKey = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
     game.retryKey.onDown.add(function() {

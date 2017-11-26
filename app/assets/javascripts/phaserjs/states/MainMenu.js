@@ -5,6 +5,10 @@ Euphoria.MainMenu = function(game) {
   this.menu_jg_4 = null;
   this.menu_jg_5 = null;
 
+  this.cloud_1 = null;
+  this.cloud_2 = null;
+
+
   this.mainTitle = null;
   this.backgroundTitle = null;
   // this.music = null;
@@ -18,16 +22,22 @@ Euphoria.MainMenu.prototype = {
     var p_width = 1280;
     var p_height = 800;
     var p_scale = 3.34;
-    game.menu_jg_1 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_1')
+    game.menu_jg_1 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_1');
     game.menu_jg_1.scale.setTo(p_scale, p_scale);
-    game.menu_jg_2 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_2')
+    game.menu_jg_2 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_2');
     game.menu_jg_2.scale.setTo(p_scale, p_scale);
-    game.menu_jg_3 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_3')
+    game.menu_jg_3 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_3');
     game.menu_jg_3.scale.setTo(p_scale, p_scale);
-    game.menu_jg_4 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_4')
+    game.menu_jg_4 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_4');
     game.menu_jg_4.scale.setTo(p_scale, p_scale);
-    game.menu_jg_5 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_5')
+    game.menu_jg_5 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_5');
     game.menu_jg_5.scale.setTo(p_scale, p_scale);
+
+    // game.cloud_1 = game.add.tileSprite(0, 0, 24, 22, 'cloud');
+    // game.cloud_1.scale.setTo(2, 2);
+    // game.cloud_2 = game.add.tileSprite(45, 345, 24, 22, 'cloud');
+    // game.cloud_2.scale.setTo(3, 3);
+
 
     //play button
     this.createButton(game, "Play", game.world.centerX, game.world.centerY + 32, 300, 100,
@@ -45,7 +55,6 @@ Euphoria.MainMenu.prototype = {
     mainTitle = game.add.sprite(game.world.centerX, game.world.centerY - 192, 'logo');
     mainTitle.anchor.setTo(0.5, 0.5);
 
-    //background
   },
 
   update: function(game) {
@@ -54,6 +63,10 @@ Euphoria.MainMenu.prototype = {
     game.menu_jg_3.x -= 0.09;
     game.menu_jg_4.x -= 0.13;
     game.menu_jg_5.x -= 0.16;
+
+    // game.cloud_1.tilePosition.x -= 0.10;
+    // game.cloud_2.tilePosition.x -= 0.15;
+
   },
 
   createButton: function(game, string, x, y, w, h, callback) {
