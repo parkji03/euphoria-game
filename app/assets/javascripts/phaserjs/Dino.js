@@ -1,5 +1,6 @@
 function createGreenDinoGroup(game) {
   game.greenDinoGroup = game.add.group();
+  game.greenDinoGroup.enableBody = true;
 
   // Insert Additional Green Dinos here
   // NOTE: x and y has to be hard coded depending on the world map

@@ -41,8 +41,12 @@ Euphoria.Game = function(game) {
   this.deathCount = 0;
   this.deathLabel = null;
 
+  this.coinGroup = null;
+
   // User interface assets
   this.fontStyle = { font: "14px 8bit_wonder", fill: "#FFF" };
+  this.coinText = null;
+  this.coinCount = 0;
 
   this.happyBarOutline = null;
   this.happyBarProgress = null;
@@ -58,10 +62,6 @@ Euphoria.Game = function(game) {
   this.rightKey = null;
 };
 
-var tempFood;
-var oPos;
-var oDir;
-
 Euphoria.Game.prototype = {
   create: function() {
 
@@ -70,6 +70,7 @@ Euphoria.Game.prototype = {
 
     // Create mobs
     createGreenDinoGroup(this);
+    createCoinGroup(this);
 
     // Create player
     createPlayer(this);
@@ -81,36 +82,16 @@ Euphoria.Game.prototype = {
     //Create user interface
     createDeathLabel(this);
     createHappyBar(this);
-
-    tempFood = this.add.sprite(32, this.world.height - 300, 'player_food');
-    oPos = tempFood.position.y;
-    tempFood.scale.setTo(this.hardScale);
-    oDir = 1;
-    // this.game.physics.arcade.enable(tempFood);
-    // this.physics.arcade.moveToObject(this.playerEmote, this.player, 200);
+    createCoinText(this);
   },
 
   update: function() {
-    // this.game.physics.arcade.collide(tempFood, this.worldLayer);
-
-
-    console.log(oPos);
-    console.log(tempFood.position.y);
-    if (tempFood.position.y < oPos - 10) {
-      oDir = 1;
-    }
-    else if (tempFood.position.y > oPos + 10 ) {
-      oDir = -1;
-    }
-
-    tempFood.position.y += oDir * 0.3;
-
-
     // Player
     updatePlayerMovement(this);
 
     // Mobs
     updateGreenDinoGroupMovement(this);
+    updateCoinMovement(this);
 
     // Background
     updateBackgroundParallax(this);

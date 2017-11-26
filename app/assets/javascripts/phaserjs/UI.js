@@ -21,10 +21,6 @@ function createHappyBar(game) {
       game.happyBarProgress.width = 0;
     }
   }, game);
-
-  // Trigger emotes that occur at the half-way point but only once
-
-
 }
 
 function halfWayTrigger(game) {
