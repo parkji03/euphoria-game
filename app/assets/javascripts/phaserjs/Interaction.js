@@ -102,22 +102,9 @@ function updatePlayerEmote(game) {
 }
 
 function createCoinText(game) {
+  game.coinCount = 0;
   game.coinText = game.add.text(345, 40, 'Score: ' + game.coinCount, game.fontStyle);
   game.coinText.fixedToCamera = true;
-}
-
-function collectCoin(player, coin) {
-  // game.coinCount += 1;
-  // game.coinText.text = 'Score: ' + game.coinCount;
-  //
-  // if (game.happyBarProgress.width + game.happyBarTenth > game.happyBarProgressLength) {
-  //   game.happyBarProgress.width = game.happyBarProgressLength;
-  // }
-  // else {
-  //   game.happyBarProgress.width += game.happyBarTenth;
-  // }
-  // console.log('hey');
-  // coin.kill();
 }
 
 function createCoinGroup(game) {
