@@ -1,4 +1,5 @@
 Euphoria.MainMenu = function(game) {
+  // Background parallax
   this.menu_jg_1 = null;
   this.menu_jg_2 = null;
   this.menu_jg_3 = null;
@@ -8,64 +9,218 @@ Euphoria.MainMenu = function(game) {
   this.cloud_1 = null;
   this.cloud_2 = null;
 
+  // Logo
+  this.logo = null;
 
-  this.mainTitle = null;
-  this.backgroundTitle = null;
+  // Main menu tilemap and layer
+  this.mainMenuMap = null;
+  this.mainMenuLayer = null;
+
+  // Main menu sprites
+  this.mainMenuCharacter = null;
+  this.mainMenuCharEmote = null;
+  this.mainMenuMobs = null;
+  this.dinoEmote = null;
+
+  this.topLeftSprite = null;
+  this.topLeftEmote = null;
+  this.topRightSprite = null;
+  this.topRightEmote = null;
+  this.bottomLeftSprite = null;
+  this.bottomRightSprite = null;
+
   // this.music = null;
+
 
 };
 
-Euphoria.MainMenu.prototype = {
-  create: function(game) {
+// function moveMobs(game) {
+  // game.mainMenuMobs.forEach(function(dino) {
+  //   dino
+  // }, game);
+// }
 
+Euphoria.MainMenu.prototype = {
+  create: function() {
+    this.physics.startSystem(Phaser.Physics.ARCADE);
+    this.physics.arcade.gravity.y = 0;
+    // Let player fall below the world
+    // this.physics.arcade.checkCollision.down = false
     // Set the background
+    var gameHardScale = 1.5;
     var p_width = 1280;
     var p_height = 800;
     var p_scale = 3.34;
-    game.menu_jg_1 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_1');
-    game.menu_jg_1.scale.setTo(p_scale, p_scale);
-    game.menu_jg_2 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_2');
-    game.menu_jg_2.scale.setTo(p_scale, p_scale);
-    game.menu_jg_3 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_3');
-    game.menu_jg_3.scale.setTo(p_scale, p_scale);
-    game.menu_jg_4 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_4');
-    game.menu_jg_4.scale.setTo(p_scale, p_scale);
-    game.menu_jg_5 = game.add.tileSprite(0, 0, p_width, p_height, 'jg_5');
-    game.menu_jg_5.scale.setTo(p_scale, p_scale);
+    this.menu_jg_1 = this.add.tileSprite(0, 0, p_width, p_height, 'jg_1');
+    this.menu_jg_1.scale.setTo(p_scale, p_scale);
+    this.menu_jg_2 = this.add.tileSprite(0, 0, p_width, p_height, 'jg_2');
+    this.menu_jg_2.scale.setTo(p_scale, p_scale);
+    this.menu_jg_3 = this.add.tileSprite(0, 0, p_width, p_height, 'jg_3');
+    this.menu_jg_3.scale.setTo(p_scale, p_scale);
+    this.menu_jg_4 = this.add.tileSprite(0, 0, p_width, p_height, 'jg_4');
+    this.menu_jg_4.scale.setTo(p_scale, p_scale);
+    this.menu_jg_5 = this.add.tileSprite(0, 0, p_width, p_height, 'jg_5');
+    this.menu_jg_5.scale.setTo(p_scale, p_scale);
 
-    // game.cloud_1 = game.add.tileSprite(0, 0, 24, 22, 'cloud');
-    // game.cloud_1.scale.setTo(2, 2);
-    // game.cloud_2 = game.add.tileSprite(45, 345, 24, 22, 'cloud');
-    // game.cloud_2.scale.setTo(3, 3);
+    // Map and Layer
+    this.mainMenuMap = this.add.tilemap('main_menu_map');
+    this.mainMenuMap.addTilesetImage('grass', 'grass');
 
+    this.mainMenuLayer = this.mainMenuMap.createLayer('Tile Layer 1');
+    this.mainMenuLayer.setScale(gameHardScale);
+    this.mainMenuLayer.resizeWorld();
 
-    //play button
-    this.createButton(game, "Play", game.world.centerX, game.world.centerY + 32, 300, 100,
+    this.mainMenuMap.setCollision([0, 1, 2, 3, 4, 5, 15, 16, 17, 18, 19, 20, 21, 28, 30, 31], true, this.mainMenuLayer);
+
+    // Logo
+    this.logo = this.add.sprite(this.world.centerX, this.world.centerY - 192, 'logo');
+    this.logo.anchor.setTo(0.5, 0.5);
+
+    // Play button
+    this.createButton(this, "Play", this.world.centerX, this.world.centerY + 38, 270, 98,
       function() {
         this.state.start('Game');
-      });
+      }
+    );
 
-    //random button
-    this.createButton(game, "About", game.world.centerX, game.world.centerY + 192, 300, 100,
-      function() {
-        console.log("Clicked About");
-      });
+    // Create sprites
+    this.mainMenuMobs = this.add.group();
 
-    //title screen
-    mainTitle = game.add.sprite(game.world.centerX, game.world.centerY - 192, 'logo');
-    mainTitle.anchor.setTo(0.5, 0.5);
+    var tempMob2 = this.mainMenuMobs.create(-490, 638, 'dino_red');
+    tempMob2.scale.setTo(2);
+    this.physics.arcade.enable(tempMob2);
+    tempMob2.animations.add('left-charge', [5, 4, 3, 2, 1, 0], 48, true).speed = 15;
+    tempMob2.animations.add('right-charge', [42, 43, 44, 45, 46, 47], 48, true).speed = 15;
+    tempMob2.moveDirection = 1;
+    tempMob2.moveLeftBound = -300;
+    tempMob2.moveRightBound = 1700;
+    tempMob2.moveSpeed = 3;
+    tempMob2.animations.play('right-charge');
+
+    var tempMob1 = this.mainMenuMobs.create(-450, 638, 'dino_blue');
+    tempMob1.scale.setTo(2);
+    this.physics.arcade.enable(tempMob1);
+    tempMob1.animations.add('left-charge', [5, 4, 3, 2, 1, 0], 48, true).speed = 15;
+    tempMob1.animations.add('right-charge', [42, 43, 44, 45, 46, 47], 48, true).speed = 15;
+    tempMob1.moveDirection = 1;
+    tempMob1.moveLeftBound = -300;
+    tempMob1.moveRightBound = 1700;
+    tempMob1.moveSpeed = 3;
+    tempMob1.animations.play('right-charge');
+
+    var tempMob3 = this.mainMenuMobs.create(-530, 638, 'dino_green');
+    tempMob3.scale.setTo(2);
+    this.physics.arcade.enable(tempMob3);
+    tempMob3.animations.add('left-charge', [5, 4, 3, 2, 1, 0], 48, true).speed = 15;
+    tempMob3.animations.add('right-charge', [42, 43, 44, 45, 46, 47], 48, true).speed = 15;
+    tempMob3.moveDirection = 1;
+    tempMob3.moveLeftBound = -300;
+    tempMob3.moveRightBound = 1700;
+    tempMob3.moveSpeed = 3;
+    tempMob3.animations.play('right-charge');
+
+    var tempMob4 = this.mainMenuMobs.create(-200, 638, 'dino_yellow');
+    tempMob4.scale.setTo(2);
+    this.physics.arcade.enable(tempMob4);
+    tempMob4.animations.add('left-charge', [19, 18, 17, 16, 15, 14], 48, true).speed = 8;
+    tempMob4.animations.add('right-charge', [28, 29, 30, 31, 32, 33], 48, true).speed = 8;
+    tempMob4.moveDirection = 1;
+    tempMob4.moveLeftBound = -200;
+    tempMob4.moveRightBound = 1400;
+    tempMob4.moveSpeed = 1.5;
+    tempMob4.animations.play('right-charge');
+
+    this.dinoEmote = this.add.sprite(0, 0, 'emoticons');
+    this.dinoEmote.scale.setTo(gameHardScale);
+    // this.dinoEmote.animations.add('dotdotdot', [42, 42, 18, 18, 19, 19, 20, 20], 78, true).speed = 4;
+    this.dinoEmote.animations.add('dotdotdot', [3, 4, 5, 4, 5, 4], 78, true).speed = 4;
+    this.dinoEmote.animations.play('dotdotdot');
+
+    this.mainMenuCharacter = this.add.sprite(-350, 616, 'player');
+    this.mainMenuCharacter.scale.setTo(gameHardScale);
+    this.physics.arcade.enable(this.mainMenuCharacter);
+    this.mainMenuCharacter.animations.add('left-run', [11, 10, 9, 8, 7, 6, 5, 4], 36, true).speed = 13;
+    this.mainMenuCharacter.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
+    this.mainMenuCharacter.animations.add('right-run', [24, 25, 26, 27, 28, 29, 30, 31], 36, true).speed = 13;
+    this.mainMenuCharacter.moveDirection = 1;
+    this.mainMenuCharacter.moveLeftBound = -300;
+    this.mainMenuCharacter.moveRightBound = 1700;
+    this.mainMenuCharacter.animations.play('right-run');
+
+    this.mainMenuCharEmote = this.add.sprite(0, 0, 'emoticons');
+    this.mainMenuCharEmote.scale.setTo(gameHardScale);
+    this.mainMenuCharEmote.animations.add('scramble', [27, 28, 29, 28, 29], 78, true).speed = 4;
+    this.mainMenuCharEmote.animations.play('scramble');
+
+    this.topLeftSprite = this.add.sprite(190, 207, 'player');
+    this.topLeftSprite.scale.setTo(gameHardScale);
+    this.topLeftSprite.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
+    this.topLeftSprite.animations.play('idle');
+
+    this.topLeftEmote = this.add.sprite(190, 186, 'emoticons');
+    this.topLeftEmote.scale.setTo(gameHardScale);
+    this.topLeftEmote.animations.add('exclamation', [2, 2, 2], 78, true).speed = 4;
+    this.topLeftEmote.animations.play('exclamation');
+
+    this.topRightSprite = this.add.sprite(1110, 207, 'player');
+    this.topRightSprite.scale.setTo(-gameHardScale, gameHardScale);
+    this.topRightSprite.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
+    this.topRightSprite.animations.play('idle');
+
+    this.bottomLeftSprite = this.add.sprite(190, 423, 'player');
+    this.bottomLeftSprite.scale.setTo(gameHardScale);
+    this.bottomLeftSprite.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
+    this.bottomLeftSprite.animations.play('idle');
+
+    // this.bottomRightSprite = this.add.sprite()
+    this.bottomRightSprite = this.add.sprite(1110, 423, 'player');
+    this.bottomRightSprite.scale.setTo(-gameHardScale, gameHardScale);
+    this.bottomRightSprite.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
+    this.bottomRightSprite.animations.play('idle');
+
 
   },
 
-  update: function(game) {
-    // Move background
-    game.menu_jg_2.x -= 0.05;
-    game.menu_jg_3.x -= 0.09;
-    game.menu_jg_4.x -= 0.13;
-    game.menu_jg_5.x -= 0.16;
+  update: function() {
+    this.physics.arcade.collide(this.mainMenuCharacter, this.mainMenuLayer);
 
-    // game.cloud_1.tilePosition.x -= 0.10;
-    // game.cloud_2.tilePosition.x -= 0.15;
+    if (this.mainMenuCharacter.position.x > this.mainMenuCharacter.moveRightBound) {
+      this.mainMenuCharacter.moveDirection = -1;
+      this.mainMenuCharacter.animations.play('left-run');
+    }
+    else if (this.mainMenuCharacter.position.x < this.mainMenuCharacter.moveLeftBound){
+      this.mainMenuCharacter.moveDirection = 1;
+      this.mainMenuCharacter.animations.play('right-run');
+    }
+    this.mainMenuCharacter.position.x += this.mainMenuCharacter.moveDirection * 3;
+
+    this.physics.arcade.collide(this.mainMenuMobs, this.mainMenuLayer);
+    this.mainMenuMobs.forEach( function(dino) {
+      if (dino.position.x > dino.moveRightBound) {
+        dino.moveDirection = -1;
+        dino.animations.play('left-charge');
+      }
+      else if (dino.position.x < dino.moveLeftBound) {
+        dino.moveDirection = 1;
+        dino.animations.play('right-charge');
+      }
+
+      dino.position.x += dino.moveDirection * dino.moveSpeed;
+
+    }, this);
+
+    this.dinoEmote.position.x = this.mainMenuMobs.children[3].position.x;
+    this.dinoEmote.position.y = this.mainMenuMobs.children[3].position.y - 24;
+
+    this.mainMenuCharEmote.position.x = this.mainMenuCharacter.position.x;
+    this.mainMenuCharEmote.position.y = this.mainMenuCharacter.position.y - 18;
+
+
+    // Move background
+    this.menu_jg_2.tilePosition.x -= 0.008;
+    this.menu_jg_3.tilePosition.x -= 0.009;
+    this.menu_jg_4.tilePosition.x -= 0.02;
+    this.menu_jg_5.tilePosition.x -= 0.04;
 
   },
 
@@ -75,9 +230,10 @@ Euphoria.MainMenu.prototype = {
     button1.anchor.setTo(0.5, 0.5);
     button1.width = w;
     button1.height = h;
+    // button1.alpha = 0;
 
     var txt = game.add.text(button1.x, button1.y, string, {
-      font: "14px Arial",
+      font: "24px 8bit_wonder",
       fill: "#fff",
       align: "center"
     });

@@ -31,9 +31,12 @@ Euphoria.Preloader.prototype = {
     this.load.image('player_food', 'assets/phaser_assets/sprites/food/food_34.png');
     this.load.spritesheet('coin', 'assets/phaser_assets/sprites/coin.png', 18, 18);
 
-    // Title screen
+    // Intro screen
     this.load.image('background', 'assets/phaser_assets/backgrounds/background.png');
     this.load.image('button', 'assets/phaser_assets/buttons/button.png');
+
+    this.load.tilemap('main_menu_map', 'assets/phaser_assets/maps/main_menu_map.json', null, Phaser.Tilemap.TILED_JSON);
+
 
     // World
     this.load.tilemap('map_testmap', 'assets/phaser_assets/maps/map_testmap.json', null, Phaser.Tilemap.TILED_JSON);

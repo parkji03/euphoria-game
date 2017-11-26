@@ -4,9 +4,9 @@ function createPlayer(game) {
   game.player.scale.setTo(game.hardScale, game.hardScale);
 
   // Add animations
-  game.player.animations.add('left-fall', [0, 1], 36, true).speed = 10;
-  game.player.animations.add('left-jump', [2, 3], 36, true).speed = 10;
-  game.player.animations.add('left-run', [4, 5, 6, 7, 8, 9, 10, 11], 36, true).speed = 13;
+  game.player.animations.add('left-fall', [1, 0], 36, true).speed = 10;
+  game.player.animations.add('left-jump', [3, 2], 36, true).speed = 10;
+  game.player.animations.add('left-run', [11, 10, 9, 8, 7, 6, 5, 4], 36, true).speed = 13;
   game.player.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
   game.player.animations.add('right-run', [24, 25, 26, 27, 28, 29, 30, 31], 36, true).speed = 13;
   game.player.animations.add('right-jump', [32, 33], 36, true).speed = 10;
