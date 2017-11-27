@@ -50,8 +50,12 @@ function createGameWorld(game) {
 }
 
 function updateBackgroundParallax(game) {
-  game.jg_2.x = game.camera.x * 0.01;
-  game.jg_3.x = game.camera.x * 0.02;
-  game.jg_4.x = game.camera.x * 0.05;
-  game.jg_5.x = game.camera.x * 0.10;
+  game.jg_2.x = game.camera.x * 0.10;
+  game.jg_3.x = game.camera.x * 0.05;
+  game.jg_4.x = game.camera.x * 0.02;
+  game.jg_5.x = game.camera.x * 0.01;
+  // game.jg_2.x = game.camera.x * 0.01;
+  // game.jg_3.x = game.camera.x * 0.02;
+  // game.jg_4.x = game.camera.x * 0.05;
+  // game.jg_5.x = game.camera.x * 0.10;
 }
