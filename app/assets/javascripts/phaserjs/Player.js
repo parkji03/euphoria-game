@@ -74,8 +74,8 @@ function updatePlayerMovement(game) {
   }
 
   //NOTE: change this for production
-  // if (game.upKey.isDown && game.player.alive && testHit && game.player.body.onFloor()) {
-  if (game.upKey.isDown && game.player.alive) {
+  if (game.upKey.isDown && game.player.alive && testHit && game.player.body.onFloor()) {
+  // if (game.upKey.isDown && game.player.alive) {
     game.player.body.velocity.y = game.playerJump;
     if (game.player.body.velocity.y > 0) {
       game.player.animations.play('right-jump');
