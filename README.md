@@ -29,3 +29,5 @@ All done. :+1:
 ## Deploying to Heroku
 
 Run `rake assets:precompile RAILS_ENV=production` before deployment.
+
+Don't forget to migrate the Heroku database `heroku run rake db:migrate --app euphoria-game`
