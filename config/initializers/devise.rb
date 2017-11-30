@@ -275,7 +275,7 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
-  config.omniauth :facebook, "#{Rails.application.secrets.facebook_api_id}", "#{Rails.application.secrets.facebook_secret}", callback_url: "http://localhost:3000/users/auth/facebook/callback"
+  config.omniauth :facebook, "#{Rails.application.secrets.facebook_api_id}", "#{Rails.application.secrets.facebook_secret}", callback_url: "https://euphoria-game.herokuapp.com/users/auth/facebook/callback"
   require 'omniauth-google-oauth2'
   config.omniauth :google_oauth2, "#{Rails.application.secrets.google_api_id}", "#{Rails.application.secrets.google_secret}", { access_type: "offline", approval_prompt: "" }
 end
