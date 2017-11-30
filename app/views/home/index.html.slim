@@ -2,6 +2,7 @@
   = javascript_include_tag "home/home.js"
 
 #splash
+
   .layer.layer-00[data-type="parallax" data-depth="0.05"]
   .layer.layer-01[data-type="parallax" data-depth="0.10"]
   .layer.layer-02[data-type="parallax" data-depth="0.10"]
@@ -24,30 +25,10 @@
   .row
     .col-md-4.grid
       .gif-container.primary
-        img[src="/assets/rectangle.png"]
+        img[src="/assets/rectangle.png" data-type="idle"]
     .col-md-4.grid
       .gif-container.secondary
-        img[src="/assets/rectangle.png"]
+        img#game-gif[src="/assets/rectangle.png" data-type="run"]
     .col-md-4.grid
       .gif-container.primary
-        img[src="/assets/rectangle.png"]
-  .row
-    .col-md-4.grid
-      .gif-container.secondary
-        img[src="/assets/rectangle.png"]
-    .col-md-4.grid
-      .gif-container.primary
-        img[src="/assets/rectangle.png"]
-    .col-md-4.grid
-      .gif-container.secondary
-        img[src="/assets/rectangle.png"]
-  .row
-    .col-md-4.grid
-      .gif-container.primary
-        img[src="/assets/rectangle.png"]
-    .col-md-4.grid
-      .gif-container.secondary
-        img[src="/assets/rectangle.png"]
-    .col-md-4.grid
-      .gif-container.primary
-        img[src="/assets/rectangle.png"]
+        img#game-gif[src="/assets/rectangle.png" data-type="idle"]

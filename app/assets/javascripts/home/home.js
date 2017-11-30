@@ -31,12 +31,23 @@ $(document).ready(function() {
   });
 
   $('<img />',{ src: '/assets/jaw_breaker.gif'});
+  $('<img />',{ src: '/assets/run.gif'});
+  $('<img />',{ src: '/assets/idle.gif'});
   $('.grid').hover(function(){
-    //appending a random number as a paramater to the file path forces a reload
-    //and prevent Chrome from stopping the gif from playing
-    $(this).find('img').attr("src","/assets/jaw_breaker.gif?p"  + new Date().getTime());
+    type =  $(this).find('img').attr('data-type')
+    if(type === 'run') {
+      //appending a random number as a paramater to the file path forces a reload
+      //and prevent Chrome from stopping the gif from playing
+       $(this).find('img').attr("src","/assets/run.gif?p"  + new Date().getTime());
+
+    }
+    else if(type === 'idle') {
+     $(this).find('img').attr("src","/assets/idle.gif?p"  + new Date().getTime());
+    }
+
   },
     function(){
+
         $(this).find('img').attr("src","/assets/rectangle.png")
     });
 
