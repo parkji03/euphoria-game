@@ -1,0 +1,1 @@
+Euphoria.World1=function(){},Euphoria.World1.prototype={create:function(){},update:function(){},render:function(){}};
