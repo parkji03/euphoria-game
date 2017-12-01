@@ -37,6 +37,10 @@ var WORLD = {
     this.grass_bg_2.x = game.camera.x * 0.05;
     this.grass_bg_3.x = game.camera.x * 0.02;
   },
+
+  update: function(game) {
+    this.updateBackground(game);
+  },
 };
 
 var UI = {
@@ -186,7 +190,100 @@ var PLAYER = {
     this.keySpaceBar = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
   },
 
+  createEmote: function(game) {
+    this.emote = game.add.sprite(10, 10, 'emoticons');
+    this.emote.scale.setTo(WORLD.scale);
+    var emotePointer = this.emote;
+
+    emotePointer.animations.add('exclamation', [47, 46, 45, 44, 0, 1, 2, 45, 46], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('question', [47, 46, 45, 44, 3, 4, 5, 45, 46], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('empty-exclamation', [6, 7, 8], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('empty-question', [9, 10, 11], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('sweat', [47, 46, 45, 44, 12, 13, 14, 45, 46], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('heart', [47, 46, 45, 44, 15, 16, 17, 45, 46], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('dotdotdot', [47, 46, 45, 44, 18, 18, 19, 19, 20, 20, 45, 46], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('music', [47, 46, 45, 44, 21, 22, 23, 45, 46], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('zzz', [47, 46, 45, 44, 24, 25, 26, 45, 46], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('scramble', [47, 46, 45, 44, 27, 28, 29, 28, 27, 45, 46], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('blush', [47, 46, 45, 44, 30, 31, 32, 45, 46], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('light-bulb', [47, 46, 45, 44, 33, 34, 35, 45, 46], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('skull', [47, 46, 45, 44, 36, 37, 38, 45, 46], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('angry', [47, 46, 45, 44, 39, 40, 41, 40, 39, 45, 46], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('empty-sweat', [48, 49, 50], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('empty-heart', [51, 52, 53], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('empty-dotdotdot', [54, 55, 56], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('empty-music', [57, 58, 59], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('empty-zzz', [60, 61, 62], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('empty-scramble', [63, 64, 65], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('empty-blush', [66, 67, 68], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('empty-lightbulb', [69, 70, 71], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('empty-skull', [72, 73, 74], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+    emotePointer.animations.add('empty-angry', [75, 76, 77], 78, true).onComplete.add(function() {
+      emotePointer.visible = false;
+    });
+
+    if (UI.deathCount < 5) {
+      this.emote.animations.play('exclamation', 8, false);
+    }
+    else if (UI.deathCount < 10) {
+      this.emote.animations.play('sweat', 8, false);
+    }
+    else if (UI.deathCount < 15) {
+      this.emote.animations.play('dotdotdot', 8, false);
+    }
+    else if (UI.deathCount < 20) {
+      this.emote.animations.play('angry', 8, false);
+    }
+  },
+
   create: function(game, x, y) {
+    this.createGameKeys(game);
     // Create sprite
     this.alive = true;
     this.sprite = game.add.sprite(x, y, 'phori');
@@ -211,6 +308,8 @@ var PLAYER = {
     this.sprite.events.onOutOfBounds.add(function() {
       playerDeath(game);
     }, game);
+
+    this.createEmote(game);
   },
 
   update: function(game) {
@@ -253,6 +352,10 @@ var PLAYER = {
         this.sprite.animations.play('right-fall');
       }
     }
+
+    // Emote
+    this.emote.position.x = this.sprite.position.x;
+    this.emote.position.y = this.sprite.position.y - 18;
   },
 };
 

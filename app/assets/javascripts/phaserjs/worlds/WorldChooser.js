@@ -8,9 +8,9 @@ Euphoria.WorldChooser.prototype = {
     WORLD_CHOOSER.create(this);
 
     // Mobs
+    // MOB.create(this)
 
     // Player
-    PLAYER.createGameKeys(this);
     PLAYER.create(this, 10, 600);
 
     // UI
@@ -19,7 +19,7 @@ Euphoria.WorldChooser.prototype = {
 
   update: function() {
     PLAYER.update(this);
-    WORLD.updateBackground(this);
+    WORLD.update(this);
     UI.update(this);
   },
 
