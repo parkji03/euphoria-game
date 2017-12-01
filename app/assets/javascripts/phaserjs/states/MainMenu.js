@@ -79,7 +79,7 @@ Euphoria.MainMenu.prototype = {
     // Play button
     this.createButton(this, "Play", this.world.centerX, this.world.centerY + 38, 270, 98,
       function() {
-        this.state.start('Game');
+        this.state.start('WorldChooser');
       }
     );
 

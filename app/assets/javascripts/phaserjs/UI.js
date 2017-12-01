@@ -39,26 +39,3 @@ function halfWayTrigger(game) {
 function happyBarEmoteTriggers(game) {
   halfWayTrigger(game);
 }
-
-function createDeathLabel(game) {
-  game.deathLabel = game.add.text(345, 16, 'Death Count: ' + game.deathCount, game.fontStyle);
-  // game.deathLabel.anchor.setTo(0.5, 0.5);
-  game.deathLabel.fixedToCamera = true;
-  game.deathLabel.inputEnabled = true;
-  game.deathLabel.events.onInputUp.add(function () {
-      console.log("hit");
-      // this.paused = true;
-      // // Then add the menu
-      // menu = this.add.sprite(w/2, h/2, 'menu');
-      // menu.anchor.setTo(0.5, 0.5);
-      //
-      // // And a label to illustrate which menu item was chosen. (This is not necessary)
-      // choiseLabel = game.add.text(w/2, h-150, 'Click outside menu to continue', { font: '30px Arial', fill: '#fff' });
-      // choiseLabel.anchor.setTo(0.5, 0.5);
-  });
-}
-
-function updateDeathLabel(game) {
-  game.deathCount++;
-  game.deathLabel.setText("Death Count: " + game.deathCount);
-}
