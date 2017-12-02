@@ -104,24 +104,11 @@ function updatePlayerMovement(game) {
   }
 }
 
-function playerDeath(game) {
-  if (game.player.alive) {
-    game.retryLabel = game.add.text(game.camera.width / 2, game.camera.height / 2 - 100, 'Press \'Spacebar\' to reset', { font: '30px Arial', fill: '#FFF' } );
-    game.retryLabel.anchor.setTo(0.5, 0.5);
-    game.retryLabel.fixedToCamera = true;
-    game.player.alive = false;
-
-    var deathEmote = game.add.sprite(game.player.position.x, game.player.position.y - 30, 'emoticons');
-    deathEmote.scale.setTo(3);
-    deathEmote.animations.add('empty-skull', [72, 73, 74], 78, true).speed = 2;
-    deathEmote.animations.play('empty-skull');
-
-    updateDeathLabel(game);
-    game.retryKey = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
-    game.retryKey.onDown.add(function() {
-      game.player.kill();
-      game.state.restart();
-    }, game);
-
-  }
-}
+// function playerDeath(game) {
+//   if (PLAYER.alive) {
+//     var deathEmote = game.add.sprite(game.player.position.x, game.player.position.y - 30, 'emoticons');
+//     deathEmote.scale.setTo(3);
+//     deathEmote.animations.add('empty-skull', [72, 73, 74], 78, true).speed = 2;
+//     deathEmote.animations.play('empty-skull');
+//   }
+// }
