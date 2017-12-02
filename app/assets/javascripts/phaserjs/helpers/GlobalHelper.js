@@ -68,15 +68,59 @@ var UI = {
   happyBarHundredth: null,
   halfTriggered: false,
 
+  // Bottom text overlay
+  bottomTextOverlay: null,
+  bottomText: null,
+  // isBottomOverlayShowing: false,
+
+  createBottomText: function(game) {
+    this.bottomTextOverlay = game.add.image(0, 700, 'overlay');
+    this.bottomTextOverlay.fixedToCamera = true;
+
+    var bottomTextStyle = {
+      font: '20px 8bit_wonder',
+      fill: '#FFF',
+      align: 'left',
+      wordWrap: true,
+      wordWrapWidth: 1100,
+      stroke: '#000000',
+      strokeThickness: 6
+    };
+    this.bottomText = game.add.text(640, 750, '', bottomTextStyle);
+    this.bottomText.anchor.setTo(0.5);
+    this.bottomText.fixedToCamera = true;
+    this.hideBottomOverlay();
+  },
+
+  showBottomOverlay: function(text) {
+    // this.bottomText.text = '';
+    // var letters = [];
+    // var letterIndex = 0;
+    // var letterDelay = 20;
+    // letters = text.split('');
+    // game.time.events.repeat(letterDelay, text.length, function() {
+    //   UI.bottomText.text += letters[letterIndex];
+    //   letterIndex++;
+    // }, game);
+
+    this.bottomText.text = text;
+    this.bottomTextOverlay.visible = true;
+    this.bottomText.visible = true;
+  },
+
+  hideBottomOverlay: function() {
+    this.bottomTextOverlay.visible = false;
+    this.bottomText.visible = false;
+  },
+
   createDeathRetryText: function(game) {
-    var deathRetryTextStyle = { font: '30px 8bit_wonder',
-                                fill: '#CCC',
-                                align: 'center',
-                                // wordWrap: true,
-                                // wordWrapWidth: 450,
-                                stroke: '#000000',
-                                strokeThickness: 6
-                              };
+    var deathRetryTextStyle = {
+      font: '30px 8bit_wonder',
+      fill: '#CCC',
+      align: 'center',
+      stroke: '#000000',
+      strokeThickness: 6
+    };
     this.deathRetryText = game.add.text(game.camera.width / 2, game.camera.height / 2, 'Press Spacebar to reset', deathRetryTextStyle);
     this.deathRetryText.anchor.setTo(0.5);
     this.deathRetryText.fixedToCamera = true;
@@ -102,6 +146,7 @@ var UI = {
   },
 
   create: function(game) {
+    // this.createLetter(game);
     // #################
     // ##  Happy bar  ##
     // #################
@@ -141,12 +186,17 @@ var UI = {
     this.scoreText = game.add.text(345, 40, 'Score: ' + this.scoreCount, this.fontStyle1);
     this.scoreText.fixedToCamera = true;
 
+    // ######################
+    // ##  Bottom Overlay  ##
+    // ######################
+    this.createBottomText(game);
   },
 
   update: function(game) {
     // Happy bar trigger
     if (this.happyBarProgress.width < this.happyBarProgressLength / 2 && !this.halfTriggered) {
-      console.log("half way triggered");
+      PLAYER.emote.visible = true;
+      PLAYER.emote.animations.play('scramble', 8, false);
       this.halfTriggered = true;
     }
     // Reset trigger
@@ -181,12 +231,14 @@ var PLAYER = {
   keyW: null,
   keyA: null,
   keyD: null,
+  keyE: null,
   keySpaceBar: null,
 
   createGameKeys: function(game) {
     this.keyW = game.input.keyboard.addKey(Phaser.KeyCode.W);
     this.keyA = game.input.keyboard.addKey(Phaser.KeyCode.A);
     this.keyD = game.input.keyboard.addKey(Phaser.KeyCode.D);
+    this.keyE = game.input.keyboard.addKey(Phaser.KeyCode.E);
     this.keySpaceBar = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
   },
 

@@ -21,7 +21,9 @@ Euphoria.Preloader.prototype = {
     this.load.tilemap('map_worldchooser', 'assets/phaser_assets/maps/world_chooser.json', null, Phaser.Tilemap.TILED_JSON);
 
     this.load.image('wooden_sign', 'assets/phaser_assets/temp/wooden_sign.png');
-
+    this.load.spritesheet('door', 'assets/phaser_assets/temp/door_39x50.png', 39, 50);
+    this.load.spritesheet('pointer', 'assets/phaser_assets/temp/pointer.png', 20, 48);
+    this.load.image('overlay', 'assets/phaser_assets/temp/overlay.png');
 
     // Background parallax
     this.load.image('jg_1', 'assets/phaser_assets/backgrounds/jungle_parallax/jg_1.png');

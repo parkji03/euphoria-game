@@ -21,11 +21,12 @@ Euphoria.WorldChooser.prototype = {
     PLAYER.update(this);
     WORLD.update(this);
     UI.update(this);
+    WORLD_CHOOSER.update(this);
   },
 
   render: function() {
     this.game.debug.text(this.game.time.fps || '--', 1260, 14, "#00ff00");
     // this.game.debug.cameraInfo(this.game.camera, 32, 32);
-    // this.game.debug.spriteInfo(this.player, 800, 32);
+    this.game.debug.spriteInfo(PLAYER.sprite, 800, 32);
   }
 };
