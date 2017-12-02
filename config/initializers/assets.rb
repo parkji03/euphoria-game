@@ -24,8 +24,14 @@ Rails.application.config.assets.precompile += %w( phaserjs/states/Preloader.js )
 Rails.application.config.assets.precompile += %w( phaserjs/states/MainMenu.js )
 
 # Helpers
-Rails.application.config.assets.precompile += %w( phaserjs/helpers/GlobalHelper.js )
+Rails.application.config.assets.precompile += %w( phaserjs/helpers/global/World.js )
+Rails.application.config.assets.precompile += %w( phaserjs/helpers/global/UI.js )
+Rails.application.config.assets.precompile += %w( phaserjs/helpers/global/Player.js )
+Rails.application.config.assets.precompile += %w( phaserjs/helpers/global/MovingPlatform.js )
+
 Rails.application.config.assets.precompile += %w( phaserjs/helpers/WorldChooserHelper.js )
+Rails.application.config.assets.precompile += %w( phaserjs/helpers/World1Helper.js )
+
 
 # Worlds
 Rails.application.config.assets.precompile += %w( phaserjs/worlds/WorldChooser.js )

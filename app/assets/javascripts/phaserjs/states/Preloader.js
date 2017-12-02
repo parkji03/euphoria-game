@@ -13,17 +13,49 @@ Euphoria.Preloader.prototype = {
     this.preloadBar.anchor.setTo(0.5);
     this.load.setPreloadSprite(this.preloadBar);
 
-    // New assets
+    // Maps
+    this.load.tilemap('map_worldchooser', 'assets/phaser_assets/maps/world_chooser.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.tilemap('map_world1', 'assets/phaser_assets/maps/world1.json', null, Phaser.Tilemap.TILED_JSON);
+    // this.load.tilemap('map_world2', 'assets/phaser_assets/maps/world2.json', null, Phaser.Tilemap.TILED_JSON);
+    // this.load.tilemap('map_world3', 'assets/phaser_assets/maps/world3.json', null, Phaser.Tilemap.TILED_JSON);
+
+    // Background
     this.load.image('grass_bg_1', 'assets/phaser_assets/backgrounds/jungle_parallax/jg_3.png');
     this.load.image('grass_bg_2', 'assets/phaser_assets/backgrounds/jungle_parallax/jg_4.png');
     this.load.image('grass_bg_3', 'assets/phaser_assets/backgrounds/jungle_parallax/jg_5.png');
-    this.load.spritesheet('phori', 'assets/phaser_assets/sprites/temp_player.png', 23, 38);
-    this.load.tilemap('map_worldchooser', 'assets/phaser_assets/maps/world_chooser.json', null, Phaser.Tilemap.TILED_JSON);
 
+    // Sprites
+    this.load.spritesheet('phori', 'assets/phaser_assets/sprites/temp_player.png', 23, 38);
+
+    // UI
+    this.load.image('overlay', 'assets/phaser_assets/temp/overlay.png');
+
+
+
+
+    // Temp
     this.load.image('wooden_sign', 'assets/phaser_assets/temp/wooden_sign.png');
     this.load.spritesheet('door', 'assets/phaser_assets/temp/door_39x50.png', 39, 50);
     this.load.spritesheet('pointer', 'assets/phaser_assets/temp/pointer.png', 20, 48);
-    this.load.image('overlay', 'assets/phaser_assets/temp/overlay.png');
+    this.load.image('cloud_platform', 'assets/phaser_assets/temp/cloud_platform.png');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Background parallax
     this.load.image('jg_1', 'assets/phaser_assets/backgrounds/jungle_parallax/jg_1.png');

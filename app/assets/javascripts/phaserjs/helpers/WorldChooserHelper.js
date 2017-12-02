@@ -7,7 +7,7 @@ var WORLD_CHOOSER = {
   createDoor: function(game, x, y) {
     var door = this.doors.create(x, y, 'door');
     door.scale.setTo(3);
-    door.body.gravity.y = -WORLD.gravity;
+    door.body.allowGravity = false;
     door.animations.add('open', [0, 1, 2, 3, 4], 5, true).onComplete.add(function() {
       // console.log(door.startState);
       // TODO: Do something when door opens
@@ -55,7 +55,7 @@ var WORLD_CHOOSER = {
     WORLD.worldLayer = WORLD.map.createLayer('Layer1');
     WORLD.worldLayer.setScale(WORLD.scale);
     WORLD.worldLayer.resizeWorld();
-    WORLD.map.setCollisionBetween(0, 31, true, WORLD.worldLayer);
+    WORLD.map.setCollisionBetween(0, 45, true, WORLD.worldLayer);
 
     this.createDoors(game);
     this.createPointers(game);
