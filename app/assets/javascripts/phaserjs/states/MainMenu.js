@@ -6,6 +6,20 @@ Euphoria.MainMenu = function(game) {
   this.menu_jg_4 = null;
   this.menu_jg_5 = null;
 
+  this.menu_plain_1 = null;
+  this.menu_plain_2 = null;
+  this.menu_plain_3 = null;
+
+  this.gc_1 = null;
+  this.gc_2 = null;
+  this.gc_3 = null;
+  this.gc_4 = null;
+  this.gc_5 = null;
+  this.gc_6 = null;
+  this.gc_7 = null;
+
+
+
   this.cloud_1 = null;
   this.cloud_2 = null;
 
@@ -51,16 +65,51 @@ Euphoria.MainMenu.prototype = {
     var p_width = 1280;
     var p_height = 800;
     var p_scale = 3.34;
-    this.menu_jg_1 = this.add.tileSprite(0, 0, p_width, p_height, 'jg_1');
-    this.menu_jg_1.scale.setTo(p_scale, p_scale);
-    this.menu_jg_2 = this.add.tileSprite(0, 0, p_width, p_height, 'jg_2');
-    this.menu_jg_2.scale.setTo(p_scale, p_scale);
-    this.menu_jg_3 = this.add.tileSprite(0, 0, p_width, p_height, 'jg_3');
-    this.menu_jg_3.scale.setTo(p_scale, p_scale);
-    this.menu_jg_4 = this.add.tileSprite(0, 0, p_width, p_height, 'jg_4');
-    this.menu_jg_4.scale.setTo(p_scale, p_scale);
-    this.menu_jg_5 = this.add.tileSprite(0, 0, p_width, p_height, 'jg_5');
-    this.menu_jg_5.scale.setTo(p_scale, p_scale);
+    // this.menu_jg_1 = this.add.tileSprite(0, 0, p_width, p_height, 'jg_1');
+    // this.menu_jg_1.scale.setTo(p_scale, p_scale);
+    // this.menu_jg_2 = this.add.tileSprite(0, 0, p_width, p_height, 'jg_2');
+    // this.menu_jg_2.scale.setTo(p_scale, p_scale);
+    // this.menu_jg_3 = this.add.tileSprite(0, 0, p_width, p_height, 'jg_3');
+    // this.menu_jg_3.scale.setTo(p_scale, p_scale);
+    // this.menu_jg_4 = this.add.tileSprite(0, 0, p_width, p_height, 'jg_4');
+    // this.menu_jg_4.scale.setTo(p_scale, p_scale);
+    // this.menu_jg_5 = this.add.tileSprite(0, 0, p_width, p_height, 'jg_5');
+    // this.menu_jg_5.scale.setTo(p_scale, p_scale);
+
+    // this.menu_plain_1 = this.add.tileSprite(0, -800, 2474, 2000, 'plain_1');
+    // // this.menu_plain_1.scale.setTo(0.8);
+    // this.menu_plain_2 = this.add.tileSprite(0, -800, 2474, 2000, 'plain_2');
+    // // this.menu_plain_2.scale.setTo(0.518, 0.4);
+    //
+    // this.menu_plain_3 = this.add.tileSprite(0, -1000, 2474, 2000, 'plain_3');
+    // this.menu_plain_3.scale.setTo(0.518, 0.4);
+
+    this.gc_1 = this.add.tileSprite(0, 0, 1920, 1080, 'gc_1');
+    this.gc_2 = this.add.tileSprite(0, 0, 1920, 1080, 'gc_2');
+    this.gc_3 = this.add.tileSprite(0, 0, 1920, 1080, 'gc_3');
+    this.gc_4 = this.add.tileSprite(0, 0, 1920, 1080, 'gc_4');
+    this.gc_5 = this.add.tileSprite(280, 30, 1920, 1080, 'gc_5');
+    this.gc_6 = this.add.tileSprite(0, 0, 1920, 1080, 'gc_6');
+    this.gc_7 = this.add.tileSprite(0, 0, 1920, 1080, 'gc_7');
+
+    this.gc_1.scale.setTo(0.667);
+    this.gc_2.scale.setTo(0.667);
+    this.gc_3.scale.setTo(0.667);
+    this.gc_4.scale.setTo(0.667);
+    this.gc_5.scale.setTo(0.667);
+    this.gc_6.scale.setTo(0.667);
+    this.gc_7.scale.setTo(0.667);
+
+    //   this.grass_bg_1.x = game.camera.x * 0.10;
+    //   this.grass_bg_2.x = game.camera.x * 0.05;
+    //   this.grass_bg_3.x = game.camera.x * 0.02;
+
+
+
+
+
+
+
 
     // Map and Layer
     this.mainMenuMap = this.add.tilemap('main_menu_map');
@@ -72,16 +121,26 @@ Euphoria.MainMenu.prototype = {
 
     this.mainMenuMap.setCollision([0, 1, 2, 3, 4, 5, 15, 16, 17, 18, 19, 20, 21, 28, 30, 31], true, this.mainMenuLayer);
 
+    // var logoShadow = this.add.sprite(this.world.centerX + 7, this.world.centerY - 185, 'logo');
+    // // logoShadow.scale.setTo(1.05);
+    // logoShadow.anchor.setTo(0.5);
+    // logoShadow.tint = 0x000000;
+    // logoShadow.alpha = 0.6;
+
     // Logo
     this.logo = this.add.sprite(this.world.centerX, this.world.centerY - 192, 'logo');
     this.logo.anchor.setTo(0.5, 0.5);
 
+
+    // this.add.tween(logoShadow).from( { y: -200 }, 2000, Phaser.Easing.Bounce.Out, true)
+    this.add.tween(this.logo).from( { y: -200 }, 2000, Phaser.Easing.Bounce.Out, true);
+
     // Play button
-    this.createButton(this, "Play", this.world.centerX, this.world.centerY + 38, 270, 98,
-      function() {
-        this.state.start('WorldChooser');
-      }
-    );
+    // this.createButton(this, "Play", this.world.centerX, this.world.centerY + 38, 270, 98,
+    //   function() {
+    //     this.state.start('WorldChooser');
+    //   }
+    // );
 
     // Create sprites
     this.mainMenuMobs = this.add.group();
@@ -152,33 +211,42 @@ Euphoria.MainMenu.prototype = {
     this.mainMenuCharEmote.animations.add('scramble', [27, 28, 29, 28, 29], 78, true).speed = 4;
     this.mainMenuCharEmote.animations.play('scramble');
 
-    this.topLeftSprite = this.add.sprite(190, 207, 'player');
-    this.topLeftSprite.scale.setTo(gameHardScale);
-    this.topLeftSprite.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
-    this.topLeftSprite.animations.play('idle');
+    // this.topLeftSprite = this.add.sprite(190, 207, 'player');
+    // this.topLeftSprite.scale.setTo(gameHardScale);
+    // this.topLeftSprite.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
+    // this.topLeftSprite.animations.play('idle');
+    //
+    // this.topLeftEmote = this.add.sprite(190, 186, 'emoticons');
+    // this.topLeftEmote.scale.setTo(gameHardScale);
+    // this.topLeftEmote.animations.add('exclamation', [2, 2, 2], 78, true).speed = 4;
+    // this.topLeftEmote.animations.play('exclamation');
+    //
+    // this.topRightSprite = this.add.sprite(1110, 207, 'player');
+    // this.topRightSprite.scale.setTo(-gameHardScale, gameHardScale);
+    // this.topRightSprite.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
+    // this.topRightSprite.animations.play('idle');
+    //
+    // this.bottomLeftSprite = this.add.sprite(190, 423, 'player');
+    // this.bottomLeftSprite.scale.setTo(gameHardScale);
+    // this.bottomLeftSprite.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
+    // this.bottomLeftSprite.animations.play('idle');
+    //
+    // // this.bottomRightSprite = this.add.sprite()
+    // this.bottomRightSprite = this.add.sprite(1110, 423, 'player');
+    // this.bottomRightSprite.scale.setTo(-gameHardScale, gameHardScale);
+    // this.bottomRightSprite.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
+    // this.bottomRightSprite.animations.play('idle');
 
-    this.topLeftEmote = this.add.sprite(190, 186, 'emoticons');
-    this.topLeftEmote.scale.setTo(gameHardScale);
-    this.topLeftEmote.animations.add('exclamation', [2, 2, 2], 78, true).speed = 4;
-    this.topLeftEmote.animations.play('exclamation');
+    UI.createBottomText(this);
+    UI.showBottomOverlay('Press Enter to play.');
+    this.add.tween(UI.bottomText).to( { alpha: 0 }, 1100, Phaser.Easing.Linear.None, true, 0, 500, true);
 
-    this.topRightSprite = this.add.sprite(1110, 207, 'player');
-    this.topRightSprite.scale.setTo(-gameHardScale, gameHardScale);
-    this.topRightSprite.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
-    this.topRightSprite.animations.play('idle');
+    var gamePointer = this;
 
-    this.bottomLeftSprite = this.add.sprite(190, 423, 'player');
-    this.bottomLeftSprite.scale.setTo(gameHardScale);
-    this.bottomLeftSprite.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
-    this.bottomLeftSprite.animations.play('idle');
-
-    // this.bottomRightSprite = this.add.sprite()
-    this.bottomRightSprite = this.add.sprite(1110, 423, 'player');
-    this.bottomRightSprite.scale.setTo(-gameHardScale, gameHardScale);
-    this.bottomRightSprite.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
-    this.bottomRightSprite.animations.play('idle');
-
-
+    var menuEnter = this.input.keyboard.addKey(Phaser.KeyCode.ENTER);
+    menuEnter.onDown.addOnce(function() {
+      gamePointer.state.start('WorldChooser');
+    }, this);
   },
 
   update: function() {
@@ -217,10 +285,15 @@ Euphoria.MainMenu.prototype = {
 
 
     // Move background
-    this.menu_jg_2.tilePosition.x -= 0.008;
-    this.menu_jg_3.tilePosition.x -= 0.009;
-    this.menu_jg_4.tilePosition.x -= 0.02;
-    this.menu_jg_5.tilePosition.x -= 0.04;
+    // this.menu_jg_2.tilePosition.x -= 0.008;
+    // this.menu_jg_3.tilePosition.x -= 0.009;
+    // this.menu_jg_4.tilePosition.x -= 0.02;
+    // this.menu_jg_5.tilePosition.x -= 0.04;
+
+    // this.menu_plain_2.tilePosition.x -= 0.008;
+    // this.menu_plain_3.tilePosition.x -= 0.02;
+
+    this.gc_4.tilePosition.x -= 0.06;
 
   },
 

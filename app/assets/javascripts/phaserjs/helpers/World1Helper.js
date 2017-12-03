@@ -1,8 +1,8 @@
 var WORLD1 = {
   createClouds: function(game) {
     WORLD.clouds = game.add.group();
-    var cloud1 = WORLD.createCloud(game, 820, 1100, WORLD.clouds);
-    WORLD.addCloudMotion(game, cloud1, 820, 1100, 3000, "Sine.easeIn", "Sine.easeOut", 0, 500);
+    var cloud1 = WORLD.createCloud(game, 820, 1080, WORLD.clouds);
+    WORLD.addCloudMotion(game, cloud1, 820, 1080, 3000, "Sine.easeIn", "Sine.easeOut", 0, 500);
   },
 
   dispatchUI: function(game) {
@@ -12,7 +12,7 @@ var WORLD1 = {
   create: function(game) {
     this.ballTrapTriggered = false;
     WORLD.enablePhysics(game);
-    WORLD.createBackground(game);
+    // WORLD.createBackground(game);
     WORLD.map = game.add.tilemap('map_world1');
     WORLD.map.addTilesetImage('grass', 'grass');
     WORLD.map.addTilesetImage('spike', 'spike');
@@ -37,16 +37,20 @@ var WORLD1 = {
   },
 
   update: function(game) {
-    // if (!this.ballTrapTriggered && PLAYER.sprite.body.position.x > 1150) {
-    //   CANVAS.shakeCanvas(game, 10, 100, 4, 1000);
-    //   this.ballTrapTriggered = true;
-    // }
+
   },
 };
 
 var WORLD1_INTERACTION = {
-  gumballTriggered: false,
+  projectileTrap: null,
+  projectileTrapTriggered: false,
+
+  createProjectileTrap: function(game) {
+    
+  },
+
   gumball: null,
+  gumballTriggered: false,
 
   createGumball: function(game) {
     this.gumball = game.add.sprite(2000, 530, 'gumball');
@@ -61,13 +65,23 @@ var WORLD1_INTERACTION = {
     }, game);
   },
 
+  createCollectible: function(game) {
+    WORLD.collectibles = game.add.group();
+    WORLD.createCollectible(game, 764, 520, WORLD.collectibles);
+    WORLD.createCollectible(game, 804, 520, WORLD.collectibles);
+    WORLD.createCollectible(game, 844, 520, WORLD.collectibles);
+
+
+  },
+
   create: function(game) {
     this.gumballTriggered = false;
     this.createGumball(game);
+    this.createCollectible(game);
   },
 
   update: function(game) {
-    if (PLAYER.sprite.body.position.x > 1150 && !this.gumballTriggered) {
+    if (PLAYER.sprite.body.position.x > 1200 && !this.gumballTriggered) {
       game.physics.arcade.enable(this.gumball);
       this.gumball.body.velocity.x = -650;
       this.gumballTriggered = true;
@@ -80,5 +94,7 @@ var WORLD1_INTERACTION = {
       }, null, game);
     }
 
+    WORLD.updateCollectibleMovement(game);
+    WORLD.enableCollectibleCollision(game);
   },
 };

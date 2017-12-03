@@ -19,6 +19,56 @@ var WORLD = {
   spikeID: 46,
 
   clouds: null,
+  collectibles: null,
+
+  createCollectible: function(game, x, y, group) {
+    var collectible = group.create(x, y, 'collectible');
+    collectible.scale.setTo(WORLD.scale);
+    game.physics.arcade.enable(collectible);
+    collectible.body.allowGravity = false;
+    collectible.body.immovable = true;
+    collectible.animations.add('default', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true);
+
+    collectible.origin = collectible.position.y;
+    collectible.floatSpeed = (Math.floor(Math.random() * 7) + 1) / 10.0;
+    var initDirection = Math.floor(Math.random() * 2);
+    if (initDirection === 1) {
+      collectible.floatDirection = 1;
+    }
+    else {
+      collectible.floatDirection = -1;
+    }
+  },
+
+  enableCollectibleCollision: function(game) {
+    game.physics.arcade.overlap(PLAYER.sprite, this.collectibles, function(player, collectible) {
+      collectible.kill();
+      UI.scoreCount++;
+      UI.scoreText.text = 'Score: ' + UI.scoreCount;
+
+      if (UI.happyBarProgress.width + UI.happyBarTenth > UI.happyBarProgressLength) {
+        UI.happyBarProgress.width = UI.happyBarProgressLength;
+      }
+      else {
+        UI.happyBarProgress.width += UI.happyBarTenth;
+      }
+    }, null, game);
+  },
+
+  updateCollectibleMovement: function(game) {
+    this.collectibles.forEach(function(collectible) {
+      collectible.animations.play('default');
+
+      if (collectible.position.y < collectible.origin - 7) {
+        collectible.floatDirection = 1;
+      }
+      else if (collectible.position.y > collectible.origin + 7) {
+        collectible.floatDirection = -1;
+      }
+
+      collectible.position.y += collectible.floatDirection * collectible.floatSpeed;
+    }, game);
+  },
 
   // NOTE: up-down, or side-to-side only
   addCloudMotion: function(game, cloud, positionX, positionY, speed, type1, type2, offsetX, offsetY) {
@@ -83,22 +133,22 @@ var WORLD = {
     }, game, WORLD.worldLayer);
   },
 
-  createBackground: function(game) {
-    this.grass_bg_1 = game.add.tileSprite(0, 0, this.width, this.height, 'grass_bg_1');
-    this.grass_bg_1.scale.setTo(this.bg_scale);
-    this.grass_bg_2 = game.add.tileSprite(0, 0, this.width, this.height, 'grass_bg_2');
-    this.grass_bg_2.scale.setTo(this.bg_scale);
-    this.grass_bg_3 = game.add.tileSprite(0, 0, this.width, this.height, 'grass_bg_3');
-    this.grass_bg_3.scale.setTo(this.bg_scale);
-  },
-
-  updateBackground: function(game) {
-    this.grass_bg_1.x = game.camera.x * 0.10;
-    this.grass_bg_2.x = game.camera.x * 0.05;
-    this.grass_bg_3.x = game.camera.x * 0.02;
-  },
+  // createBackground: function(game) {
+  //   this.grass_bg_1 = game.add.tileSprite(0, 0, this.width, this.height, 'grass_bg_1');
+  //   this.grass_bg_1.scale.setTo(this.bg_scale);
+  //   this.grass_bg_2 = game.add.tileSprite(0, 0, this.width, this.height, 'grass_bg_2');
+  //   this.grass_bg_2.scale.setTo(this.bg_scale);
+  //   this.grass_bg_3 = game.add.tileSprite(0, 0, this.width, this.height, 'grass_bg_3');
+  //   this.grass_bg_3.scale.setTo(this.bg_scale);
+  // },
+  //
+  // updateBackground: function(game) {
+  //   this.grass_bg_1.x = game.camera.x * 0.10;
+  //   this.grass_bg_2.x = game.camera.x * 0.05;
+  //   this.grass_bg_3.x = game.camera.x * 0.02;
+  // },
 
   update: function(game) {
-    this.updateBackground(game);
+    // this.updateBackground(game);
   },
 };

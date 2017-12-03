@@ -114,6 +114,9 @@ var PLAYER = {
     else if (UI.deathCount < 20) {
       this.emote.animations.play('angry', 8, false);
     }
+    else {
+      this.emote.animations.play('angry', 8, false);
+    }
 
     this.emote.signal = new Phaser.Signal();
     this.emote.signal.add(function(animation) {
@@ -223,7 +226,7 @@ var PLAYER = {
       PLAYER.alive = false;
 
       UI.updateDeathCount();
-      
+
       //emote
       this.deathEmote.visible = true;
 

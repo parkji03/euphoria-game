@@ -144,6 +144,8 @@ var UI = {
   },
 
   create: function(game) {
+    this.scoreCount = 0;
+
     // this.createLetter(game);
     // #################
     // ##  Happy bar  ##

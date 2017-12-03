@@ -24,6 +24,20 @@ Euphoria.Preloader.prototype = {
     this.load.image('grass_bg_2', 'assets/phaser_assets/backgrounds/jungle_parallax/jg_4.png');
     this.load.image('grass_bg_3', 'assets/phaser_assets/backgrounds/jungle_parallax/jg_5.png');
 
+    this.load.image('plain_1', 'assets/phaser_assets/backgrounds/plain_sky/plain_1.png');
+    this.load.image('plain_2', 'assets/phaser_assets/backgrounds/plain_sky/plain_2.png');
+    this.load.image('plain_3', 'assets/phaser_assets/backgrounds/plain_sky/plain_3.png');
+
+    this.load.image('gc_1', 'assets/phaser_assets/backgrounds/grass_castle/1.png');
+    this.load.image('gc_2', 'assets/phaser_assets/backgrounds/grass_castle/2.png');
+    this.load.image('gc_3', 'assets/phaser_assets/backgrounds/grass_castle/3.png');
+    this.load.image('gc_4', 'assets/phaser_assets/backgrounds/grass_castle/4.png');
+    this.load.image('gc_5', 'assets/phaser_assets/backgrounds/grass_castle/5.png');
+    this.load.image('gc_6', 'assets/phaser_assets/backgrounds/grass_castle/6.png');
+    this.load.image('gc_7', 'assets/phaser_assets/backgrounds/grass_castle/7.png');
+  
+
+
     // Sprites
     this.load.spritesheet('phori', 'assets/phaser_assets/sprites/temp_player.png', 23, 38);
 
@@ -39,6 +53,7 @@ Euphoria.Preloader.prototype = {
     this.load.spritesheet('pointer', 'assets/phaser_assets/temp/pointer.png', 20, 48);
     this.load.image('cloud_platform', 'assets/phaser_assets/temp/cloud_platform.png');
     this.load.spritesheet('gumball', 'assets/phaser_assets/temp/gumball.png', 64, 64);
+    this.load.spritesheet('collectible', 'assets/phaser_assets/sprites/coin.png', 18, 18);
 
 
 
@@ -71,7 +86,6 @@ Euphoria.Preloader.prototype = {
     this.load.spritesheet('dino_green', 'assets/phaser_assets/sprites/dinos/dino_green.png', 18, 18);
 
     this.load.image('player_food', 'assets/phaser_assets/sprites/food/food_34.png');
-    this.load.spritesheet('coin', 'assets/phaser_assets/sprites/coin.png', 18, 18);
 
     // Intro screen
     this.load.image('background', 'assets/phaser_assets/backgrounds/background.png');
