@@ -7,6 +7,9 @@ Euphoria.World1.prototype = {
     // World
     WORLD1.create(this);
 
+    // Interaction
+    WORLD1_INTERACTION.create(this);
+
     // Mobs
 
     // Player
@@ -22,6 +25,7 @@ Euphoria.World1.prototype = {
     WORLD.update(this);
     UI.update(this);
     WORLD1.update(this);
+    WORLD1_INTERACTION.update(this);
   },
 
   render: function() {

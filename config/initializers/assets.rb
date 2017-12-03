@@ -23,11 +23,13 @@ Rails.application.config.assets.precompile += %w( phaserjs/states/Boot.js )
 Rails.application.config.assets.precompile += %w( phaserjs/states/Preloader.js )
 Rails.application.config.assets.precompile += %w( phaserjs/states/MainMenu.js )
 
-# Helpers
+# Global Helpers
 Rails.application.config.assets.precompile += %w( phaserjs/helpers/global/World.js )
 Rails.application.config.assets.precompile += %w( phaserjs/helpers/global/UI.js )
 Rails.application.config.assets.precompile += %w( phaserjs/helpers/global/Player.js )
+Rails.application.config.assets.precompile += %w( phaserjs/helpers/global/Canvas.js )
 
+# Helpers
 Rails.application.config.assets.precompile += %w( phaserjs/helpers/WorldChooserHelper.js )
 Rails.application.config.assets.precompile += %w( phaserjs/helpers/World1Helper.js )
 

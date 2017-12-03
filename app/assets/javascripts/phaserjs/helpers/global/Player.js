@@ -7,6 +7,7 @@ var PLAYER = {
   // Sprite
   sprite: null,
   emote: null,
+  deathEmote: null,
 
   // Keyboard
   keyW: null,
@@ -149,6 +150,12 @@ var PLAYER = {
     }, game);
 
     this.createEmote(game);
+
+    this.deathEmote = game.add.sprite(this.sprite.position.x, this.sprite.position.y - 30, 'emoticons');
+    this.deathEmote.scale.setTo(3);
+    this.deathEmote.animations.add('empty-skull', [72, 73, 74], 78, true).speed = 2;
+    this.deathEmote.animations.play('empty-skull');
+    this.deathEmote.visible = false;
   },
 
   update: function(game) {
@@ -205,6 +212,9 @@ var PLAYER = {
     // Emote
     this.emote.position.x = this.sprite.position.x;
     this.emote.position.y = this.sprite.position.y - 18;
+
+    this.deathEmote.position.x = this.sprite.position.x;
+    this.deathEmote.position.y = this.sprite.position.y - 30;
   },
 
   death: function(game) {
@@ -213,7 +223,10 @@ var PLAYER = {
       PLAYER.alive = false;
 
       UI.updateDeathCount();
+      
       //emote
+      this.deathEmote.visible = true;
+
       PLAYER.keySpaceBar.onDown.add(function() {
         PLAYER.sprite.kill();
         game.state.restart();

@@ -75,6 +75,14 @@ var WORLD = {
     game.physics.arcade.checkCollision.down = false;
   },
 
+  enableSpikeCollision: function(game) {
+    this.map.setTileIndexCallback(this.spikeID, function(sprite) {
+      if (sprite.key === 'phori') {
+        PLAYER.death(game);
+      }
+    }, game, WORLD.worldLayer);
+  },
+
   createBackground: function(game) {
     this.grass_bg_1 = game.add.tileSprite(0, 0, this.width, this.height, 'grass_bg_1');
     this.grass_bg_1.scale.setTo(this.bg_scale);

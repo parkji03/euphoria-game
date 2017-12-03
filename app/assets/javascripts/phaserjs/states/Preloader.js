@@ -38,7 +38,7 @@ Euphoria.Preloader.prototype = {
     this.load.spritesheet('door', 'assets/phaser_assets/temp/door_39x50.png', 39, 50);
     this.load.spritesheet('pointer', 'assets/phaser_assets/temp/pointer.png', 20, 48);
     this.load.image('cloud_platform', 'assets/phaser_assets/temp/cloud_platform.png');
-
+    this.load.spritesheet('gumball', 'assets/phaser_assets/temp/gumball.png', 64, 64);
 
 
 
