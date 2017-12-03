@@ -1,4 +1,11 @@
-var WORLD_1 = {
+var WORLD1 = {
+
+  createClouds: function(game) {
+    WORLD.clouds = game.add.group();
+    var cloud1 = WORLD.createCloud(game, 820, 1100, WORLD.clouds);
+    WORLD.addCloudMotion(game, cloud1, 820, 1100, 3000, "Sine.easeIn", "Sine.easeOut", 0, 500);
+  },
+
   dispatchUI: function(game) {
     UI.centerText.signal.dispatch("LEVEL 1");
   },
@@ -25,10 +32,9 @@ var WORLD_1 = {
     WORLD.mobBlockLayer.alpha = .5;
 
     // Test
-    WORLD.createClouds(game);
+    this.createClouds(game);
   },
 
   update: function(game) {
-
   },
 };

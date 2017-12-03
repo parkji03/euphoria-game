@@ -157,6 +157,14 @@ var PLAYER = {
     // Collision
     this.sprite.body.velocity.x = 0;
     var isHittingLayer = game.physics.arcade.collide(this.sprite, WORLD.worldLayer);
+    var onCloud = game.physics.arcade.collide(PLAYER.sprite, WORLD.clouds, function(player, platform) {
+      if (player.body.touching.down) {
+        // Make player position follow platform deltaX and Y
+        player.body.position.x = player.body.position.x + platform.deltaX;
+        player.body.position.y = player.body.position.y + platform.deltaY;
+      }
+    });
+    var standing = this.sprite.body.touching.down && onCloud || this.sprite.body.onFloor();
 
     // Left and right animations
     if (this.keyA.isDown && this.alive) {
@@ -174,7 +182,7 @@ var PLAYER = {
     // Jump animations
     // NOTE: change this for production/development
     // if (PLAYER.keyW.isDown && PLAYER.alive) {
-    if (this.keyW.isDown && this.alive && isHittingLayer && this.sprite.body.onFloor()) {
+    if (this.keyW.isDown && this.alive && standing) {
       this.sprite.body.velocity.y = this.jump;
       if (this.sprite.body.velocity.y > 0) {
         this.sprite.animations.play('right-jump');

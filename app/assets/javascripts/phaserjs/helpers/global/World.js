@@ -18,17 +18,55 @@ var WORLD = {
   mobBlockLayer: null,
   spikeID: 46,
 
-  // Cloud (Moving Platform)
   clouds: null,
 
-  createClouds: function(game) {
-    this.clouds = game.add.group();
+  // NOTE: up-down, or side-to-side only
+  addCloudMotion: function(game, cloud, positionX, positionY, speed, type1, type2, offsetX, offsetY) {
+    cloud.tweenX = game.add.tween(cloud).to( {
+      x: positionX
+    }, speed, type1);
 
-    var cloud1 = new CloudPlatform(game, 400, 400, 'cloud_platform', this.clouds);
-    cloud1.addMotionPath([
-      { x: "+0", xSpeed: 2000, xEase: "Linear", y: "+300", ySpeed: 2000, yEase: "Sine.easeIn" },
-      { x: "-0", xSpeed: 2000, xEase: "Linear", y: "-300", ySpeed: 2000, yEase: "Sine.easeOut" }
-    ]);
+    cloud.rTweenX = game.add.tween(cloud).to( {
+      x: positionX - offsetX
+    }, speed, type2);
+
+    cloud.tweenY = game.add.tween(cloud).to( {
+      y: positionY
+    }, speed, type1);
+
+    cloud.rTweenY = game.add.tween(cloud).to( {
+      y: positionY - offsetY
+    }, speed, type2);
+
+    cloud.tweenX.start();
+    cloud.tweenY.start();
+
+    cloud.tweenX.onComplete.add(function() {
+      cloud.rTweenX.start();
+    }, game);
+
+    cloud.rTweenX.onComplete.add(function() {
+      cloud.tweenX.start();
+    }, game);
+
+    cloud.tweenY.onComplete.add(function() {
+      cloud.rTweenY.start();
+    }, game);
+
+    cloud.rTweenY.onComplete.add(function() {
+      cloud.tweenY.start();
+    }, game);
+  },
+
+  // Cloud (Moving Platform)
+  createCloud: function(game, x, y, group) {
+    var cloud = group.create(x, y, 'cloud_platform');
+    cloud.scale.setTo(0.3);
+    cloud.anchor.setTo(0.5);
+    game.physics.arcade.enable(cloud);
+    cloud.body.allowGravity = false;
+    cloud.body.immovable = true;
+    return cloud;
   },
 
   enablePhysics: function(game) {

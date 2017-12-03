@@ -5,7 +5,7 @@ Euphoria.World1 = function(game) {
 Euphoria.World1.prototype = {
   create: function() {
     // World
-    WORLD_1.create(this);
+    WORLD1.create(this);
 
     // Mobs
 
@@ -14,14 +14,14 @@ Euphoria.World1.prototype = {
 
     // UI
     UI.create(this);
-    WORLD_1.dispatchUI(this);
+    WORLD1.dispatchUI(this);
   },
 
   update: function() {
     PLAYER.update(this);
     WORLD.update(this);
     UI.update(this);
-    WORLD_1.update(this);
+    WORLD1.update(this);
   },
 
   render: function() {
