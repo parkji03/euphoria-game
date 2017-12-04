@@ -1,8 +1,40 @@
 var WORLD1 = {
+  // NOTE: these need to match the size of the tilemap
+  width: 5760,
+  height: 1100,
+
   createClouds: function(game) {
     WORLD.clouds = game.add.group();
     var cloud1 = WORLD.createCloud(game, 820, 1080, WORLD.clouds);
     WORLD.addCloudMotion(game, cloud1, 820, 1080, 3000, "Sine.easeIn", "Sine.easeOut", 0, 500);
+  },
+
+  bgClouds: null,
+  bgCastle: null,
+  bg1: null,
+  bg2: null,
+  bg3: null,
+  bg4: null,
+  bg5: null,
+
+  createBackground: function(game) {
+    this.bg1 = game.add.tileSprite(0, 0, WORLD1.width, WORLD1.height, 'gc_1');
+    this.bgClouds = game.add.tileSprite(0, 0, WORLD1.width, WORLD1. height, 'clouds');
+
+    this.bg2 = game.add.tileSprite(0, 0, WORLD1.width, WORLD1.height, 'gc_2');
+    this.bgCastle = game.add.tileSprite(4740, 350, 1920, 1080, 'gc_5');
+    this.bgCastle.scale.setTo(0.4);
+    this.bg3 = game.add.tileSprite(0, 0, WORLD1.width, WORLD1.height, 'gc_3');
+    // this.bg4 = game.add.tileSprite(0, -200, WORLD1.width, WORLD1.height, 'gc_6');
+    // this.bg5 = game.add.tileSprite(0, -200, WORLD1.width, WORLD1.height, 'gc_7');
+  },
+
+  updateBackground: function(game) {
+    this.bgClouds.tilePosition.x -= 0.07
+    this.bg2.x = game.camera.x * 0.07;
+    this.bg3.x = game.camera.x * 0.05;
+    // this.bg4.x = game.camera.x * 0.03;
+    // this.bg5.x = game.camera.x * 0.01;
   },
 
   dispatchUI: function(game) {
@@ -12,6 +44,7 @@ var WORLD1 = {
   create: function(game) {
     this.ballTrapTriggered = false;
     WORLD.enablePhysics(game);
+    this.createBackground(game);
     // WORLD.createBackground(game);
     WORLD.map = game.add.tilemap('map_world1');
     WORLD.map.addTilesetImage('grass', 'grass');
@@ -37,7 +70,7 @@ var WORLD1 = {
   },
 
   update: function(game) {
-
+    this.updateBackground(game);
   },
 };
 
@@ -46,7 +79,7 @@ var WORLD1_INTERACTION = {
   projectileTrapTriggered: false,
 
   createProjectileTrap: function(game) {
-    
+
   },
 
   gumball: null,
@@ -81,9 +114,9 @@ var WORLD1_INTERACTION = {
   },
 
   update: function(game) {
-    if (PLAYER.sprite.body.position.x > 1200 && !this.gumballTriggered) {
+    if (PLAYER.sprite.body.position.x > 1300 && !this.gumballTriggered) {
       game.physics.arcade.enable(this.gumball);
-      this.gumball.body.velocity.x = -650;
+      this.gumball.body.velocity.x = -700;
       this.gumballTriggered = true;
     }
 

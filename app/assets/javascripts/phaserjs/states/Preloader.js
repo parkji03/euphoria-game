@@ -4,6 +4,10 @@ Euphoria.Preloader = function(game) {
 
 };
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 Euphoria.Preloader.prototype = {
   preload: function() {
     // Preload bar and logo image
@@ -12,6 +16,41 @@ Euphoria.Preloader.prototype = {
     this.preloadBar = this.add.sprite(this.world.centerX, this.world.centerY + 128, 'preload_bar');
     this.preloadBar.anchor.setTo(0.5);
     this.load.setPreloadSprite(this.preloadBar);
+
+    var textStyle = {
+      font: '20px 8bit_wonder',
+      fill: '#FFF',
+      align: 'center',
+      stroke: '#000000',
+      strokeThickness: 6
+    };
+    var preloadText = this.add.text(this.world.centerX, this.world.centerY + 256, '', textStyle);
+    preloadText.anchor.setTo(0.5);
+
+    var loadingFlavorInt = getRandomInt(0, 5);
+    if (loadingFlavorInt === 0) {
+      preloadText.text = 'Loading gummy bears...';
+    }
+    else if (loadingFlavorInt === 1) {
+      preloadText.text = 'Arming traps...';
+
+    }
+    else if (loadingFlavorInt === 2) {
+      preloadText.text = 'Restocking gumball machines...';
+
+    }
+    else if (loadingFlavorInt === 3) {
+      preloadText.text = 'Prepping bear suit...';
+
+    }
+    else if (loadingFlavorInt === 4) {
+      preloadText.text = 'Sharpening spikes...';
+
+    }
+    else if (loadingFlavorInt === 5) {
+      preloadText.text = 'Beautifying user interface...';
+
+    }
 
     // Maps
     this.load.tilemap('map_worldchooser', 'assets/phaser_assets/maps/world_chooser.json', null, Phaser.Tilemap.TILED_JSON);
@@ -35,11 +74,23 @@ Euphoria.Preloader.prototype = {
     this.load.image('gc_5', 'assets/phaser_assets/backgrounds/grass_castle/5.png');
     this.load.image('gc_6', 'assets/phaser_assets/backgrounds/grass_castle/6.png');
     this.load.image('gc_7', 'assets/phaser_assets/backgrounds/grass_castle/7.png');
-  
+
+    this.load.image('clouds', 'assets/phaser_assets/backgrounds/grass_castle/4.png');
+
 
 
     // Sprites
     this.load.spritesheet('phori', 'assets/phaser_assets/sprites/temp_player.png', 23, 38);
+    this.load.spritesheet('gumball_marchine', 'assets/phaser_assets/sprites/gumball_machine.png', 25, 33);
+
+    this.load.spritesheet('red_gumball', 'assets/phaser_assets/sprites/projectiles/red_projectile.png', 8, 8);
+    this.load.spritesheet('blue_gumball', 'assets/phaser_assets/sprites/projectiles/blue_projectile.png', 8, 8);
+    this.load.spritesheet('green_gumball', 'assets/phaser_assets/sprites/projectiles/green_projectile.png', 8, 8);
+    this.load.spritesheet('orange_gumball', 'assets/phaser_assets/sprites/projectiles/orange_projectile.png', 8, 8);
+    this.load.spritesheet('yellow_gumball', 'assets/phaser_assets/sprites/projectiles/yellow_projectile.png', 8, 8);
+    this.load.spritesheet('pink_gumball', 'assets/phaser_assets/sprites/projectiles/pink_projectile.png', 8, 8);
+
+
 
     // UI
     this.load.image('overlay', 'assets/phaser_assets/temp/overlay.png');
@@ -92,7 +143,6 @@ Euphoria.Preloader.prototype = {
     this.load.image('button', 'assets/phaser_assets/buttons/button.png');
 
     this.load.tilemap('main_menu_map', 'assets/phaser_assets/maps/main_menu_map.json', null, Phaser.Tilemap.TILED_JSON);
-
 
     // World
     this.load.tilemap('map_testmap', 'assets/phaser_assets/maps/map_testmap.json', null, Phaser.Tilemap.TILED_JSON);

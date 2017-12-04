@@ -33,8 +33,15 @@ Euphoria.Boot.prototype = {
   },
 
   create: function() {
-    this.add.text(0, 0, "hack", {font: "1px 8bit_wonder", fill: "#FFFFFF" });
-    // this.add.text(0, 0, "hack", {font: "1px 8bit_wonder", fill: "#FFFFFF" });
+    this.add.text(0, 0, "text", {font: "1px 8bit_wonder", fill: "#FFFFFF" });
+    this.add.text(0, 0, "text", {font: "1px 8bit_wonder", fill: "#FFFFFF" });
+    this.add.text(0, 0, "text", {font: "1px 8bit_wonder", fill: "#FFFFFF" });
+    this.add.text(0, 0, "text", {font: "1px 8bit_wonder", fill: "#FFFFFF" });
+    this.add.text(0, 0, "text", {font: "1px 8bit_wonder", fill: "#FFFFFF" });
+    this.add.text(0, 0, "text", {font: "1px 8bit_wonder", fill: "#FFFFFF" });
+    this.add.text(0, 0, "text", {font: "1px 8bit_wonder", fill: "#FFFFFF" });
+
+
 
 
     this.state.start('Preloader');
