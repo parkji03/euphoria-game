@@ -81,7 +81,7 @@ Euphoria.Preloader.prototype = {
 
     // Sprites
     this.load.spritesheet('phori', 'assets/phaser_assets/sprites/temp_player.png', 23, 38);
-    this.load.spritesheet('gumball_marchine', 'assets/phaser_assets/sprites/gumball_machine.png', 25, 33);
+    this.load.spritesheet('gumball_machine', 'assets/phaser_assets/sprites/gumball_machine.png', 25, 33);
 
     this.load.spritesheet('red_gumball', 'assets/phaser_assets/sprites/projectiles/red_projectile.png', 8, 8);
     this.load.spritesheet('blue_gumball', 'assets/phaser_assets/sprites/projectiles/blue_projectile.png', 8, 8);

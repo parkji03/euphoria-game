@@ -18,6 +18,11 @@ Euphoria.World1.prototype = {
     // UI
     UI.create(this);
     WORLD1.dispatchUI(this);
+    // 
+    // var temp = this.add.sprite(400, 400, 'gumball_machine');
+    // temp.scale.setTo(3);
+    // temp.animations.add('shoot', [0, 1, 1, 2, 2, 3, 0, 0, 0], 4, true).speed = 8;
+    // temp.animations.play('shoot');
   },
 
   update: function() {
