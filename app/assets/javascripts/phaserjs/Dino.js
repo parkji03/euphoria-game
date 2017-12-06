@@ -8,6 +8,12 @@ function createGreenDinoGroup(game) {
   addGreenDino(game, 1500, 800);
 }
 
+function checkPlayerMobCollision(game) {
+  game.physics.arcade.overlap(game.player, game.greenDinoGroup, function(player, dino) {
+    playerDeath(game);
+  }, null, game);
+}
+
 function addGreenDino(game, x_location, y_location) {
 
   var tempMob = game.greenDinoGroup.create(x_location, y_location, 'dino_green');
