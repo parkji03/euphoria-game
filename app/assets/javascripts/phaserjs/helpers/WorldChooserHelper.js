@@ -114,7 +114,6 @@ var WORLD_CHOOSER = {
   },
 
   update: function(game) {
-    UI.hideBottomOverlay();
     this.updateDoorCollision(game);
 
     // Move clouds

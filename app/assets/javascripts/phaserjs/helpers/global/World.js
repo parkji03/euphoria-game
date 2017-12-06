@@ -44,7 +44,7 @@ var WORLD = {
     game.physics.arcade.overlap(PLAYER.sprite, this.collectibles, function(player, collectible) {
       collectible.kill();
       UI.scoreCount++;
-      UI.scoreText.text = 'Score: ' + UI.scoreCount;
+      UI.scoreText.text = UI.scoreCount.pad(3);
 
       if (UI.happyBarProgress.width + UI.happyBarTenth > UI.happyBarProgressLength) {
         UI.happyBarProgress.width = UI.happyBarProgressLength;
@@ -133,22 +133,7 @@ var WORLD = {
     }, game, WORLD.worldLayer);
   },
 
-  // createBackground: function(game) {
-  //   this.grass_bg_1 = game.add.tileSprite(0, 0, this.width, this.height, 'grass_bg_1');
-  //   this.grass_bg_1.scale.setTo(this.bg_scale);
-  //   this.grass_bg_2 = game.add.tileSprite(0, 0, this.width, this.height, 'grass_bg_2');
-  //   this.grass_bg_2.scale.setTo(this.bg_scale);
-  //   this.grass_bg_3 = game.add.tileSprite(0, 0, this.width, this.height, 'grass_bg_3');
-  //   this.grass_bg_3.scale.setTo(this.bg_scale);
-  // },
-  //
-  // updateBackground: function(game) {
-  //   this.grass_bg_1.x = game.camera.x * 0.10;
-  //   this.grass_bg_2.x = game.camera.x * 0.05;
-  //   this.grass_bg_3.x = game.camera.x * 0.02;
-  // },
-
   update: function(game) {
-    // this.updateBackground(game);
+    // Update
   },
 };

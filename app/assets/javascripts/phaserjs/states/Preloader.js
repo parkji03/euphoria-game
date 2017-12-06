@@ -94,9 +94,16 @@ Euphoria.Preloader.prototype = {
 
     // UI
     this.load.image('overlay', 'assets/phaser_assets/temp/overlay.png');
-
-
-
+    this.load.image('happy_bar_outline', 'assets/phaser_assets/user_interface/happy_bar_outline.png');
+    this.load.image('happy_bar_progress', 'assets/phaser_assets/user_interface/happy_bar_progress.png');
+    this.load.image('death_ui', 'assets/phaser_assets/user_interface/death_ui.png');
+    this.load.image('honey_ui', 'assets/phaser_assets/user_interface/honey_ui.png');
+    this.load.image('back_ui', 'assets/phaser_assets/user_interface/back_ui.png');
+    this.load.image('menu_ui', 'assets/phaser_assets/user_interface/menu_ui.png');
+    this.load.image('wooden_button_ui', 'assets/phaser_assets/user_interface/wooden_button_ui.png');
+    this.load.image('backdrop_ui', 'assets/phaser_assets/user_interface/backdrop_ui.png');
+    this.load.image('menu_button_ui', 'assets/phaser_assets/user_interface/menu_button_ui.png');
+    
 
     // Temp
     this.load.image('wooden_sign', 'assets/phaser_assets/temp/wooden_sign.png');
@@ -151,8 +158,7 @@ Euphoria.Preloader.prototype = {
     this.load.image('mob_block', 'assets/phaser_assets/tiles/mob_block.png');
 
     // User interface
-    this.load.image('happy_bar_outline', 'assets/phaser_assets/user_interface/happy_bar_outline.png');
-    this.load.image('happy_bar_progress', 'assets/phaser_assets/user_interface/happy_bar_progress.png');
+
 
     // Interactions
     this.load.spritesheet('emoticons', 'assets/phaser_assets/interactions/emoticons.png', 16, 16);

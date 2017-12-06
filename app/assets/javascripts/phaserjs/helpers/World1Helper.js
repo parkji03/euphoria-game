@@ -14,8 +14,6 @@ var WORLD1 = {
   bg1: null,
   bg2: null,
   bg3: null,
-  bg4: null,
-  bg5: null,
 
   createBackground: function(game) {
     this.bg1 = game.add.tileSprite(0, 0, WORLD1.width, WORLD1.height, 'gc_1');
@@ -25,16 +23,12 @@ var WORLD1 = {
     this.bgCastle = game.add.tileSprite(4740, 350, 1920, 1080, 'gc_5');
     this.bgCastle.scale.setTo(0.4);
     this.bg3 = game.add.tileSprite(0, 0, WORLD1.width, WORLD1.height, 'gc_3');
-    // this.bg4 = game.add.tileSprite(0, -200, WORLD1.width, WORLD1.height, 'gc_6');
-    // this.bg5 = game.add.tileSprite(0, -200, WORLD1.width, WORLD1.height, 'gc_7');
   },
 
   updateBackground: function(game) {
     this.bgClouds.tilePosition.x -= 0.07
     this.bg2.x = game.camera.x * 0.07;
     this.bg3.x = game.camera.x * 0.05;
-    // this.bg4.x = game.camera.x * 0.03;
-    // this.bg5.x = game.camera.x * 0.01;
   },
 
   dispatchUI: function(game) {
@@ -44,8 +38,9 @@ var WORLD1 = {
   create: function(game) {
     this.ballTrapTriggered = false;
     WORLD.enablePhysics(game);
+
+    // Create unique world
     this.createBackground(game);
-    // WORLD.createBackground(game);
     WORLD.map = game.add.tilemap('map_world1');
     WORLD.map.addTilesetImage('grass', 'grass');
     WORLD.map.addTilesetImage('spike', 'spike');
@@ -75,13 +70,6 @@ var WORLD1 = {
 };
 
 var WORLD1_INTERACTION = {
-  projectileTrap: null,
-  projectileTrapTriggered: false,
-
-  createProjectileTrap: function(game) {
-
-  },
-
   gumball: null,
   gumballTriggered: false,
 
@@ -98,19 +86,30 @@ var WORLD1_INTERACTION = {
     }, game);
   },
 
-  createCollectible: function(game) {
+  createCollectibles: function(game) {
     WORLD.collectibles = game.add.group();
+
+    // Add collectibles by hand
     WORLD.createCollectible(game, 764, 520, WORLD.collectibles);
     WORLD.createCollectible(game, 804, 520, WORLD.collectibles);
     WORLD.createCollectible(game, 844, 520, WORLD.collectibles);
+  },
 
+  createGumballMachines: function(game) {
+    MOB.gumballMachines = game.add.group();
+
+    // Add gumball machines by hand
+    var m0 = MOB.createGumballMachine(game, 400, 400, MOB.gumballMachines, 'right');
+    var m1 = MOB.createGumballMachine(game, 500, 400, MOB.gumballMachines, 'left');
+    
 
   },
 
   create: function(game) {
     this.gumballTriggered = false;
     this.createGumball(game);
-    this.createCollectible(game);
+    this.createCollectibles(game);
+    this.createGumballMachines(game);
   },
 
   update: function(game) {

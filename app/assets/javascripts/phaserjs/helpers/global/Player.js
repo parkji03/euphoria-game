@@ -177,40 +177,43 @@ var PLAYER = {
     var standing = this.sprite.body.touching.down && onCloud || this.sprite.body.onFloor();
 
     // Left and right animations
-    if (this.keyA.isDown && this.alive) {
-      this.sprite.body.velocity.x = -1 * this.velocity;
-      this.sprite.animations.play('left-run');
-    }
-    else if (this.keyD.isDown && this.alive) {
-      this.sprite.body.velocity.x = this.velocity;
-      this.sprite.animations.play('right-run');
-    }
-    else {
-      this.sprite.animations.play('idle');
-    }
+    if (!UI.menuTriggered) {
+      if (this.keyA.isDown && this.alive) {
+        this.sprite.body.velocity.x = -1 * this.velocity;
+        this.sprite.animations.play('left-run');
+      }
+      else if (this.keyD.isDown && this.alive) {
+        this.sprite.body.velocity.x = this.velocity;
+        this.sprite.animations.play('right-run');
+      }
+      else {
+        this.sprite.animations.play('idle');
+      }
 
-    // Jump animations
-    // NOTE: change this for production/development
-    // if (PLAYER.keyW.isDown && PLAYER.alive) {
-    if (this.keyW.isDown && this.alive && standing) {
-      this.sprite.body.velocity.y = this.jump;
+      // Jump animations
+      // NOTE: change this for production/development
+      // if (PLAYER.keyW.isDown && PLAYER.alive) {
+      if (this.keyW.isDown && this.alive && standing) {
+        this.sprite.body.velocity.y = this.jump;
+        if (this.sprite.body.velocity.y > 0) {
+          this.sprite.animations.play('right-jump');
+        }
+        else {
+          this.sprite.animations.play('left-jump');
+        }
+      }
+
+      // Falling animations
       if (this.sprite.body.velocity.y > 0) {
-        this.sprite.animations.play('right-jump');
-      }
-      else {
-        this.sprite.animations.play('left-jump');
+        if (this.sprite.body.velocity.x < 0) {
+          this.sprite.animations.play('left-fall');
+        }
+        else {
+          this.sprite.animations.play('right-fall');
+        }
       }
     }
 
-    // Falling animations
-    if (this.sprite.body.velocity.y > 0) {
-      if (this.sprite.body.velocity.x < 0) {
-        this.sprite.animations.play('left-fall');
-      }
-      else {
-        this.sprite.animations.play('right-fall');
-      }
-    }
 
     // Emote
     this.emote.position.x = this.sprite.position.x;
@@ -231,8 +234,10 @@ var PLAYER = {
       this.deathEmote.visible = true;
 
       PLAYER.keySpaceBar.onDown.add(function() {
-        PLAYER.sprite.kill();
-        game.state.restart();
+        if (!UI.menuTriggered) {
+          PLAYER.sprite.kill();
+          game.state.restart();
+        }
       }, game);
     }
   },

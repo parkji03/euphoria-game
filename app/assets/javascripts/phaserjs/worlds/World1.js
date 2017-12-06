@@ -11,6 +11,7 @@ Euphoria.World1.prototype = {
     WORLD1_INTERACTION.create(this);
 
     // Mobs
+    MOB.create(this);
 
     // Player
     PLAYER.create(this, 10, 614);
@@ -18,15 +19,12 @@ Euphoria.World1.prototype = {
     // UI
     UI.create(this);
     WORLD1.dispatchUI(this);
-    // 
-    // var temp = this.add.sprite(400, 400, 'gumball_machine');
-    // temp.scale.setTo(3);
-    // temp.animations.add('shoot', [0, 1, 1, 2, 2, 3, 0, 0, 0], 4, true).speed = 8;
-    // temp.animations.play('shoot');
+
   },
 
   update: function() {
     PLAYER.update(this);
+    MOB.update(this);
     WORLD.update(this);
     UI.update(this);
     WORLD1.update(this);
@@ -34,7 +32,7 @@ Euphoria.World1.prototype = {
   },
 
   render: function() {
-    this.game.debug.text(this.game.time.fps || '--', 1260, 14, "#00ff00");
-    this.game.debug.spriteInfo(PLAYER.sprite, 800, 32);
+    this.game.debug.text(this.game.time.fps || '--', 1260, 400, "#00ff00");
+    this.game.debug.spriteInfo(PLAYER.sprite, 800, 400);
   }
 };
