@@ -95,6 +95,12 @@ var WORLD1_INTERACTION = {
     WORLD.createCollectible(game, 844, 520, WORLD.collectibles);
   },
 
+  createHoneycombs: function(game) {
+    WORLD.honeycombs = game.add.group();
+
+    WORLD.createHoneycomb(game, 400, 400, WORLD.honeycombs);
+  },
+
   createGumballMachines: function(game) {
     MOB.gumballMachines = game.add.group();
 
@@ -108,8 +114,10 @@ var WORLD1_INTERACTION = {
   create: function(game) {
     this.gumballTriggered = false;
     this.createGumball(game);
+    this.createHoneycombs(game);
     this.createCollectibles(game);
     this.createGumballMachines(game);
+
   },
 
   update: function(game) {
@@ -126,6 +134,7 @@ var WORLD1_INTERACTION = {
       }, null, game);
     }
 
+    WORLD.updateHoneycombMovement(game);
     WORLD.updateCollectibleMovement(game);
     WORLD.enableCollectibleCollision(game);
   },

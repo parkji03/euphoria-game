@@ -21,6 +21,38 @@ var WORLD = {
   clouds: null,
   collectibles: null,
 
+  honeycombs: null,
+
+  createHoneycomb: function(game, x, y, group) {
+    var honeycomb = group.create(x, y, 'honeycomb');
+    honeycomb.scale.setTo(WORLD.scale);
+    game.physics.arcade.enable(honeycomb);
+    honeycomb.body.allowGravity = false;
+    honeycomb.body.immovable = true;
+
+    honeycomb.origin = honeycomb.position.y;
+    honeycomb.floatSpeed = (Math.floor(Math.random() * 7) + 1) / 10.0;
+    var initDirection = Math.floor(Math.random() * 2);
+    if (initDirection === 1) {
+      honeycomb.floatDirection = 1;
+    }
+    else {
+      honeycomb.floatDirection = -1;
+    }
+  },
+
+  updateHoneycombMovement: function(game) {
+    this.honeycombs.forEach(function(honeycomb) {
+      if (honeycomb.position.y < honeycomb.origin - 7) {
+        honeycomb.floatDirection = 1;
+      }
+      else if (honeycomb.position.y > honeycomb.origin + 7) {
+        honeycomb.floatDirection = -1;
+      }
+      honeycomb.position.y += honeycomb.floatDirection * honeycomb.floatSpeed;
+    }, game);
+  },
+
   createCollectible: function(game, x, y, group) {
     var collectible = group.create(x, y, 'collectible');
     collectible.scale.setTo(WORLD.scale);
@@ -69,6 +101,8 @@ var WORLD = {
       collectible.position.y += collectible.floatDirection * collectible.floatSpeed;
     }, game);
   },
+
+
 
   // NOTE: up-down, or side-to-side only
   addCloudMotion: function(game, cloud, positionX, positionY, speed, type1, type2, offsetX, offsetY) {
