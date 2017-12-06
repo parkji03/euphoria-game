@@ -4,10 +4,19 @@ var WORLD_CHOOSER = {
   door2Locked: true,
   door3Locked: true,
 
+  gc1: null,
+  gc2: null,
+  gc3: null,
+  gc4: null,
+  gc5: null,
+  gc6: null,
+  gc7: null,
+
+
   createDoor: function(game, x, y) {
     var door = this.doors.create(x, y, 'door');
     door.scale.setTo(3);
-    door.body.gravity.y = -WORLD.gravity;
+    door.body.allowGravity = false;
     door.animations.add('open', [0, 1, 2, 3, 4], 5, true).onComplete.add(function() {
       // console.log(door.startState);
       // TODO: Do something when door opens
@@ -49,13 +58,33 @@ var WORLD_CHOOSER = {
 
   create: function(game) {
     WORLD.enablePhysics(game);
-    WORLD.createBackground(game);
+
+    // WORLD.createBackground(game);
+    this.gc1 = game.add.tileSprite(0, 0, 1920, 1080, 'gc_1');
+    this.gc2 = game.add.tileSprite(0, 0, 1920, 1080, 'gc_2');
+    this.gc5 = game.add.tileSprite(600, 270, 1920, 1080, 'gc_5');
+    this.gc3 = game.add.tileSprite(0, 0, 1920, 1080, 'gc_3');
+    this.gc4 = game.add.tileSprite(0, 0, 1920, 1080, 'gc_4');
+    // this.gc6 = game.add.tileSprite(0, 0, 1920, 1080, 'gc_6');
+    // this.gc7 = game.add.tileSprite(0, 0, 1920, 1080, 'gc_7');
+
+    // this.gc1.scale.setTo(0.667);
+    // this.gc2.scale.setTo(0.667);
+    // this.gc3.scale.setTo(0.667);
+    // this.gc4.scale.setTo(0.667);
+    this.gc5.scale.setTo(0.50);
+    // this.gc6.scale.setTo(0.667);
+    // this.gc7.scale.setTo(0.667);
+
+
+
+
     WORLD.map = game.add.tilemap('map_worldchooser');
     WORLD.map.addTilesetImage('grass', 'grass');
     WORLD.worldLayer = WORLD.map.createLayer('Layer1');
     WORLD.worldLayer.setScale(WORLD.scale);
     WORLD.worldLayer.resizeWorld();
-    WORLD.map.setCollisionBetween(0, 31, true, WORLD.worldLayer);
+    WORLD.map.setCollisionBetween(0, 45, true, WORLD.worldLayer);
 
     this.createDoors(game);
     this.createPointers(game);
@@ -85,8 +114,17 @@ var WORLD_CHOOSER = {
   },
 
   update: function(game) {
-    UI.hideBottomOverlay();
     this.updateDoorCollision(game);
+
+    // Move clouds
+    this.gc4.tilePosition.x -= 0.06;
+
+    this.gc2.x = game.camera.x * 0.08;
+    this.gc3.x = game.camera.x * 0.04;
+    this.gc4.x = game.camera.x * 0.03;
+    // this.gc6.x = game.camera.x * 0.02;
+    // this.gc7.x = game.camera.x * 0.01;
+
 
     // If the door is locked, no pointers...
     this.doors.forEach(function(door) {

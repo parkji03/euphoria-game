@@ -3,23 +3,26 @@
   = javascript_include_tag "phaserjs/Main.js"
 
   / Assets
-  = javascript_include_tag "phaserjs/World.js"
-  = javascript_include_tag "phaserjs/UI.js"
-  = javascript_include_tag "phaserjs/Interaction.js"
-  = javascript_include_tag "phaserjs/Player.js"
-  = javascript_include_tag "phaserjs/Dino.js"
+  / = javascript_include_tag "phaserjs/Player.js"
+  / = javascript_include_tag "phaserjs/Dino.js"
 
   / States
   = javascript_include_tag "phaserjs/states/Boot.js"
   = javascript_include_tag "phaserjs/states/Preloader.js"
   = javascript_include_tag "phaserjs/states/MainMenu.js"
 
+  / Global Helpers
+  = javascript_include_tag "phaserjs/helpers/global/World.js"
+  = javascript_include_tag "phaserjs/helpers/global/UI.js"
+  = javascript_include_tag "phaserjs/helpers/global/Player.js"
+  = javascript_include_tag "phaserjs/helpers/global/Mob.js"
+  = javascript_include_tag "phaserjs/helpers/global/Canvas.js"
+
   / Helpers
-  = javascript_include_tag "phaserjs/helpers/GlobalHelper.js"
   = javascript_include_tag "phaserjs/helpers/WorldChooserHelper.js"
+  = javascript_include_tag "phaserjs/helpers/World1Helper.js"
 
   / Game
-  = javascript_include_tag "phaserjs/states/Game.js"
   = javascript_include_tag "phaserjs/worlds/WorldChooser.js"
   = javascript_include_tag "phaserjs/worlds/World1.js"
   = javascript_include_tag "phaserjs/worlds/World2.js"
