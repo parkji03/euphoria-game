@@ -135,6 +135,7 @@ var WORLD1_INTERACTION = {
     }
 
     WORLD.updateHoneycombMovement(game);
+    WORLD.enableHoneycombCollision(game);
     WORLD.updateCollectibleMovement(game);
     WORLD.enableCollectibleCollision(game);
   },

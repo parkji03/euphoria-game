@@ -53,6 +53,15 @@ var WORLD = {
     }, game);
   },
 
+  enableHoneycombCollision: function(game) {
+    game.physics.arcade.overlap(PLAYER.sprite, this.honeycombs, function(player, honeycomb) {
+      honeycomb.kill();
+      UI.scoreCount++;
+      UI.scoreText.text = UI.scoreCount.pad(3);
+      UI.happyBarProgressWidth = UI.happyBarProgressLength;
+    }, null, game);
+  },
+
   createCollectible: function(game, x, y, group) {
     var collectible = group.create(x, y, 'collectible');
     collectible.scale.setTo(WORLD.scale);
@@ -75,8 +84,8 @@ var WORLD = {
   enableCollectibleCollision: function(game) {
     game.physics.arcade.overlap(PLAYER.sprite, this.collectibles, function(player, collectible) {
       collectible.kill();
-      UI.scoreCount++;
-      UI.scoreText.text = UI.scoreCount.pad(3);
+      // UI.scoreCount++;
+      // UI.scoreText.text = UI.scoreCount.pad(3);
 
       if (UI.happyBarProgress.width + UI.happyBarTenth > UI.happyBarProgressLength) {
         UI.happyBarProgress.width = UI.happyBarProgressLength;
