@@ -90,9 +90,9 @@ var WORLD1_INTERACTION = {
     WORLD.collectibles = game.add.group();
 
     // Add collectibles by hand
-    WORLD.createCollectible(game, 764, 520, WORLD.collectibles);
-    WORLD.createCollectible(game, 804, 520, WORLD.collectibles);
-    WORLD.createCollectible(game, 844, 520, WORLD.collectibles);
+    WORLD.createCollectible(game, 764, 610, WORLD.collectibles);
+    WORLD.createCollectible(game, 804, 610, WORLD.collectibles);
+    WORLD.createCollectible(game, 844, 610, WORLD.collectibles);
   },
 
   createHoneycombs: function(game) {

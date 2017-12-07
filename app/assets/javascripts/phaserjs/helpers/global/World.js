@@ -27,7 +27,7 @@ var WORLD = {
 
   createSign: function(game, x, y, group, text) {
     var sign = group.create(x, y, 'sign');
-    sign.scale.setTo(WORLD.scale);
+    sign.scale.setTo(1.2);
     sign.body.allowGravity = false;
     sign.signText = text;
     // sign.signColor = color;

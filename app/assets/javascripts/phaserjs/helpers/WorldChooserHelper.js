@@ -16,7 +16,7 @@ var WORLD_CHOOSER = {
     WORLD.signs = game.add.group();
     WORLD.signs.enableBody = true;
 
-    WORLD.createSign(game, 10, 600, WORLD.signs, 'Use  \" W A S D \"  to move.');
+    WORLD.createSign(game, 38, 600, WORLD.signs, 'Use  \" W A S D \"  to move.');
   },
 
   createDoor: function(game, x, y) {

@@ -3,6 +3,7 @@ var PLAYER = {
   velocity: 500,
   jump: -700,
   alive: true,
+  direction: 'right',
 
   // Sprite
   sprite: null,
@@ -140,6 +141,7 @@ var PLAYER = {
     this.sprite.animations.add('left-run', [27, 26, 25, 24, 23, 22, 21, 20], 36, true).speed = 13;
     this.sprite.animations.add('right-jump', [28, 29], 36, true).speed = 10;
     this.sprite.animations.add('right-fall', [30, 31], 36, true).speed = 10;
+    // this.sprite.animations.add('death', [36, 37, 38, 39, 40, 41, 42, 43, 44, 45])
 
     // Camera movement
     game.physics.arcade.enable(this.sprite);
