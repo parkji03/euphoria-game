@@ -2,7 +2,7 @@ $(document).ready(function() {
   $('#navbar-logo').hide();
   // navbar code
   $(window).scroll(function() {
-    if ($(window).scrollTop() > 700 ){
+    if ($(window).scrollTop() > 1000 ){
       //NOTE: these colors need to be changed to match colors.scss
       $('#euphoria-navbar').css('background-color', '#F8CA00');
       $('.euphoria-link').css('color', '#604621');
@@ -13,7 +13,15 @@ $(document).ready(function() {
       $('.euphoria-link').css('color', '#FFFFFF');
       $('#navbar-logo').hide();
     };
+    if ($(window).scrollTop() > 100 ){
+      $('#down-arrow').css('opacity', 0);
+    } else {
+      $('#down-arrow').css('opacity', 1);
+    }
   });
+
+  //onClick for the arrow
+
 
   // smooth scroll code
   $("a").on('click', function(event) {
