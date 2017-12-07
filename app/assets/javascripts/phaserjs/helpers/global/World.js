@@ -23,6 +23,24 @@ var WORLD = {
 
   honeycombs: null,
 
+  signs: null,
+
+  createSign: function(game, x, y, group, text) {
+    var sign = group.create(x, y, 'sign');
+    sign.scale.setTo(WORLD.scale);
+    sign.body.allowGravity = false;
+    sign.signText = text;
+    // sign.signColor = color;
+    // sign.signMin = min;
+    // sign.signMax = max;
+  },
+
+  updateSignCollision(game) {
+    game.physics.arcade.overlap(PLAYER.sprite, this.signs, function(player, sign) {
+      UI.showBottomOverlay(sign.signText);
+    }, null, game);
+  },
+
   createHoneycomb: function(game, x, y, group) {
     var honeycomb = group.create(x, y, 'honeycomb');
     honeycomb.scale.setTo(2);

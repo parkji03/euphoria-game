@@ -251,6 +251,7 @@ var UI = {
   },
 
   showBottomOverlay: function(text) {
+
     // this.bottomText.text = '';
     // var letters = [];
     // var letterIndex = 0;
@@ -266,7 +267,10 @@ var UI = {
     this.bottomText.visible = true;
   },
 
+
+
   hideBottomOverlay: function() {
+    // this.bottomText.addColor('#FFFFFF', 0);
     this.bottomTextOverlay.visible = false;
     this.bottomText.visible = false;
   },
