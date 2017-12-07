@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  $('#navbar-logo').hide();
   // navbar code
   $(window).scroll(function() {
     if ($(window).scrollTop() > 700 ){
