@@ -8,11 +8,11 @@ nav#euphoria-navbar.navbar.navbar-default.navbar-fixed-top.transition
 
     #euphoria-mobile.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-left
-        li = link_to "Euphoria!", '#', class: "euphoria-link transition"
+        li = link_to "Euphoria!", '#splash', class: "euphoria-link transition", id: "navbar-logo"
 
       ul.nav.navbar-nav.navbar-right
         - if current_user
-          li = link_to "Welcome #{current_user.name}!", '#', class: "euphoria-link tranition"
+          li = link_to "Welcome #{current_user.name}!", '#', class: "euphoria-link transition"
         / li = link_to "Some random link", '#', class: "euphoria-link transition"
         / li = link_to "What do I put here?", '#', class: "euphoria-link transition"
         / li = link_to "I dunno, something I guess", '#', class: "euphoria-link transition"

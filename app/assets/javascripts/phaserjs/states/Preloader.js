@@ -81,7 +81,7 @@ Euphoria.Preloader.prototype = {
     this.load.image('clouds', 'assets/phaser_assets/backgrounds/grass_castle/4.png');
 
     // Sprites
-    this.load.spritesheet('phori', 'assets/phaser_assets/sprites/temp_player.png', 23, 38);
+    this.load.spritesheet('phori', 'assets/phaser_assets/sprites/phori.png', 23, 30);
     this.load.spritesheet('gumball_machine', 'assets/phaser_assets/sprites/gumball_machine.png', 25, 33);
     this.load.spritesheet('red_gumball', 'assets/phaser_assets/sprites/projectiles/red_projectile.png', 8, 8);
     this.load.spritesheet('blue_gumball', 'assets/phaser_assets/sprites/projectiles/blue_projectile.png', 8, 8);
@@ -120,7 +120,7 @@ Euphoria.Preloader.prototype = {
 
 
 
-    this.load.spritesheet('player', 'assets/phaser_assets/sprites/temp_player.png', 23, 38);
+    // this.load.spritesheet('player', 'assets/phaser_assets/sprites/temp_player.png', 23, 38);
     this.load.spritesheet('dino_red', 'assets/phaser_assets/sprites/dinos/dino_red.png', 18, 18);
     this.load.spritesheet('dino_blue', 'assets/phaser_assets/sprites/dinos/dino_blue.png', 18, 18);
     this.load.spritesheet('dino_yellow', 'assets/phaser_assets/sprites/dinos/dino_yellow.png', 18, 18);

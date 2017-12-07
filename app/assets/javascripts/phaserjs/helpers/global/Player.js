@@ -133,13 +133,13 @@ var PLAYER = {
     this.sprite.scale.setTo(WORLD.scale);
 
     // Add animations
-    this.sprite.animations.add('left-fall', [1, 0], 36, true).speed = 10;
-    this.sprite.animations.add('left-jump', [3, 2], 36, true).speed = 10;
-    this.sprite.animations.add('left-run', [11, 10, 9, 8, 7, 6, 5, 4], 36, true).speed = 13;
-    this.sprite.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
-    this.sprite.animations.add('right-run', [24, 25, 26, 27, 28, 29, 30, 31], 36, true).speed = 13;
-    this.sprite.animations.add('right-jump', [32, 33], 36, true).speed = 10;
-    this.sprite.animations.add('right-fall', [34, 35], 36, true).speed = 10;
+    this.sprite.animations.add('left-fall', [35, 34], 36, true).speed = 10;
+    this.sprite.animations.add('left-jump', [33, 32], 36, true).speed = 10;
+    this.sprite.animations.add('right-run', [12, 13, 14, 15, 16, 17, 18, 19], 36, true).speed = 13;
+    this.sprite.animations.add('idle', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 36, true).speed = 13;
+    this.sprite.animations.add('left-run', [27, 26, 25, 24, 23, 22, 21, 20], 36, true).speed = 13;
+    this.sprite.animations.add('right-jump', [28, 29], 36, true).speed = 10;
+    this.sprite.animations.add('right-fall', [30, 31], 36, true).speed = 10;
 
     // Camera movement
     game.physics.arcade.enable(this.sprite);
@@ -217,7 +217,7 @@ var PLAYER = {
 
     // Emote
     this.emote.position.x = this.sprite.position.x;
-    this.emote.position.y = this.sprite.position.y - 18;
+    this.emote.position.y = this.sprite.position.y - 23;
 
     this.deathEmote.position.x = this.sprite.position.x;
     this.deathEmote.position.y = this.sprite.position.y - 30;

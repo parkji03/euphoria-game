@@ -25,7 +25,7 @@ var WORLD = {
 
   createHoneycomb: function(game, x, y, group) {
     var honeycomb = group.create(x, y, 'honeycomb');
-    honeycomb.scale.setTo(WORLD.scale);
+    honeycomb.scale.setTo(2);
     game.physics.arcade.enable(honeycomb);
     honeycomb.body.allowGravity = false;
     honeycomb.body.immovable = true;
@@ -58,7 +58,7 @@ var WORLD = {
       honeycomb.kill();
       UI.scoreCount++;
       UI.scoreText.text = UI.scoreCount.pad(3);
-      UI.happyBarProgressWidth = UI.happyBarProgressLength;
+      UI.happyBarProgress.width = UI.happyBarProgressLength;
     }, null, game);
   },
 

@@ -32,7 +32,7 @@ Euphoria.World1.prototype = {
   },
 
   render: function() {
-    this.game.debug.text(this.game.time.fps || '--', 1260, 400, "#00ff00");
-    this.game.debug.spriteInfo(PLAYER.sprite, 800, 400);
+    this.game.debug.text(this.game.time.fps || '--', 10, 100, "#00ff00");
+    this.game.debug.spriteInfo(PLAYER.sprite, 10, 116);
   }
 };
