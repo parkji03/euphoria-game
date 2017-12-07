@@ -106,6 +106,7 @@ var WORLD1_INTERACTION = {
 
     // Add gumball machines by hand
     var m0 = MOB.createGumballMachine(game, 400, 400, MOB.gumballMachines, 'right');
+    // m0.triggered = true;
     var m1 = MOB.createGumballMachine(game, 500, 400, MOB.gumballMachines, 'left');
 
 

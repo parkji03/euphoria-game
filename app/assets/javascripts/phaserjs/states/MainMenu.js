@@ -195,12 +195,12 @@ Euphoria.MainMenu.prototype = {
     this.dinoEmote.animations.add('dotdotdot', [3, 4, 5, 4, 5, 4], 78, true).speed = 4;
     this.dinoEmote.animations.play('dotdotdot');
 
-    this.mainMenuCharacter = this.add.sprite(-350, 616, 'player');
+    this.mainMenuCharacter = this.add.sprite(-350, 628, 'phori');
     this.mainMenuCharacter.scale.setTo(gameHardScale);
     this.physics.arcade.enable(this.mainMenuCharacter);
-    this.mainMenuCharacter.animations.add('left-run', [11, 10, 9, 8, 7, 6, 5, 4], 36, true).speed = 13;
-    this.mainMenuCharacter.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
-    this.mainMenuCharacter.animations.add('right-run', [24, 25, 26, 27, 28, 29, 30, 31], 36, true).speed = 13;
+    this.mainMenuCharacter.animations.add('right-run', [12, 13, 14, 15, 16, 17, 18, 19], 36, true).speed = 13;
+    this.mainMenuCharacter.animations.add('idle', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 36, true).speed = 13;
+    this.mainMenuCharacter.animations.add('left-run', [27, 26, 25, 24, 23, 23], 36, true).speed = 13;
     this.mainMenuCharacter.moveDirection = 1;
     this.mainMenuCharacter.moveLeftBound = -300;
     this.mainMenuCharacter.moveRightBound = 1700;
@@ -281,7 +281,7 @@ Euphoria.MainMenu.prototype = {
     this.dinoEmote.position.y = this.mainMenuMobs.children[3].position.y - 24;
 
     this.mainMenuCharEmote.position.x = this.mainMenuCharacter.position.x;
-    this.mainMenuCharEmote.position.y = this.mainMenuCharacter.position.y - 18;
+    this.mainMenuCharEmote.position.y = this.mainMenuCharacter.position.y - 23;
 
 
     // Move background
