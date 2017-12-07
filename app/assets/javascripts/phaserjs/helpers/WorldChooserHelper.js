@@ -12,6 +12,12 @@ var WORLD_CHOOSER = {
   gc6: null,
   gc7: null,
 
+  createSigns: function(game, x, y) {
+    WORLD.signs = game.add.group();
+    WORLD.signs.enableBody = true;
+
+    WORLD.createSign(game, 10, 600, WORLD.signs, 'Use  \" W A S D \"  to move.');
+  },
 
   createDoor: function(game, x, y) {
     var door = this.doors.create(x, y, 'door');
@@ -88,6 +94,7 @@ var WORLD_CHOOSER = {
 
     this.createDoors(game);
     this.createPointers(game);
+    this.createSigns(game);
   },
 
   updateDoorCollision(game) {
@@ -115,6 +122,7 @@ var WORLD_CHOOSER = {
 
   update: function(game) {
     this.updateDoorCollision(game);
+    WORLD.updateSignCollision(game);
 
     // Move clouds
     this.gc4.tilePosition.x -= 0.06;

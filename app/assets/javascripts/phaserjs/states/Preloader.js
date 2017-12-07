@@ -91,6 +91,7 @@ Euphoria.Preloader.prototype = {
     this.load.spritesheet('pink_gumball', 'assets/phaser_assets/sprites/projectiles/pink_projectile.png', 8, 8);
     this.load.spritesheet('gumball', 'assets/phaser_assets/sprites/gumball.png', 64, 64);
     this.load.spritesheet('honeycomb', 'assets/phaser_assets/sprites/food/food_18.png', 16, 16);
+    this.load.spritesheet('sign', 'assets/phaser_assets/sprites/food/food_16.png', 16, 16);
 
     // Interactions
     this.load.spritesheet('emoticons', 'assets/phaser_assets/interactions/emoticons.png', 16, 16);
