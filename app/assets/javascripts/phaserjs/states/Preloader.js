@@ -82,6 +82,7 @@ Euphoria.Preloader.prototype = {
 
     // Sprites
     this.load.spritesheet('phori', 'assets/phaser_assets/sprites/phori.png', 23, 30);
+    this.load.spritesheet('barry', 'assets/phaser_assets/sprites/barry.png', 23, 30);
     this.load.spritesheet('gumball_machine', 'assets/phaser_assets/sprites/gumball_machine.png', 25, 33);
     this.load.spritesheet('red_gumball', 'assets/phaser_assets/sprites/projectiles/red_projectile.png', 8, 8);
     this.load.spritesheet('blue_gumball', 'assets/phaser_assets/sprites/projectiles/blue_projectile.png', 8, 8);
@@ -92,7 +93,11 @@ Euphoria.Preloader.prototype = {
     this.load.spritesheet('gumball', 'assets/phaser_assets/sprites/gumball.png', 64, 64);
     this.load.spritesheet('honeycomb', 'assets/phaser_assets/sprites/food/food_18.png', 16, 16);
     this.load.image('sign', 'assets/phaser_assets/sprites/sign.png');
-
+    this.load.spritesheet('red_gummy_bear', 'assets/phaser_assets/sprites/red_gummy_bear.png', 30, 40);
+    this.load.spritesheet('blue_gummy_bear', 'assets/phaser_assets/sprites/blue_gummy_bear.png', 30, 40);
+    this.load.spritesheet('yellow_gummy_bear', 'assets/phaser_assets/sprites/yellow_gummy_bear.png', 30, 40);
+    this.load.spritesheet('green_gummy_bear', 'assets/phaser_assets/sprites/green_gummy_bear.png', 30, 40);
+    this.load.spritesheet('orange_gummy_bear', 'assets/phaser_assets/sprites/orange_gummy_bear.png', 30, 40);
 
     // Interactions
     this.load.spritesheet('emoticons', 'assets/phaser_assets/interactions/emoticons.png', 16, 16);

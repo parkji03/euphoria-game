@@ -112,7 +112,8 @@ var WORLD_CHOOSER = {
           // Door is unlocked... so player can press E to travel to world
           UI.showBottomOverlay("Press E to open the door.");
           if (PLAYER.keyE.isDown) {
-            PLAYER.alive = false;
+            PLAYER.stop = true;
+            PLAYER.sprite.animations.play('idle');
             door.animations.play('open', 8, false);
           }
         }

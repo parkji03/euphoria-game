@@ -319,7 +319,6 @@ var UI = {
     this.happyBarProgress = game.add.image(160, 25, 'happy_bar_progress');
     this.happyBarProgress.scale.setTo(2);
     this.happyBarProgress.fixedToCamera = true;
-    // this.happyBarProgress.width = 396;
     this.happyBarProgressLength = this.happyBarProgress.width;
     this.happyBarTenth = this.happyBarProgressLength / 10;
     this.happyBarHundredth = this.happyBarTenth / 10;
