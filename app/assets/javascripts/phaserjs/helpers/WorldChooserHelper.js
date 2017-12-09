@@ -12,7 +12,7 @@ var WORLD_CHOOSER = {
   gc6: null,
   gc7: null,
 
-  createSigns: function(game, x, y) {
+  createSigns: function(game) {
     WORLD.signs = game.add.group();
     WORLD.signs.enableBody = true;
 

@@ -1,6 +1,6 @@
 var PLAYER = {
   // Values
-  velocity: 500,
+  velocity: 420,
   jump: -700,
   alive: true,
   direction: 'right',
@@ -134,6 +134,8 @@ var PLAYER = {
     this.alive = true;
     this.sprite = game.add.sprite(x, y, 'barry');
     this.sprite.scale.setTo(WORLD.scale);
+    // this.sprite.body.maxVelocity = new Phaser.Point(500, 500);
+    // this.sprite.tint = 0x444444;
 
     // Add animations
     this.sprite.animations.add('left-fall', [35, 34], 47, true).speed = 10;

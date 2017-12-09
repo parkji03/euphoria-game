@@ -1,4 +1,5 @@
 Euphoria.MainMenu = function(game) {
+  this.game = game;
   // Background parallax
   this.menu_jg_1 = null;
   this.menu_jg_2 = null;
@@ -57,7 +58,10 @@ Euphoria.MainMenu = function(game) {
 Euphoria.MainMenu.prototype = {
   create: function() {
     this.physics.startSystem(Phaser.Physics.ARCADE);
-    this.physics.arcade.gravity.y = 0;
+    this.physics.arcade.gravity.y = 2000;
+    // this.camera.x = this.world.centerX;
+    // this.camera.y = this.world.centerY;
+
     // Let player fall below the world
     // this.physics.arcade.checkCollision.down = false
     // Set the background
@@ -128,9 +132,9 @@ Euphoria.MainMenu.prototype = {
     // logoShadow.alpha = 0.6;
 
     // Logo
-    this.logo = this.add.sprite(this.world.centerX, this.world.centerY - 192, 'logo');
+    this.logo = this.add.sprite(650, 208, 'logo');
+    // this.logo.fixedToCamera = true;
     this.logo.anchor.setTo(0.5, 0.5);
-
 
     // this.add.tween(logoShadow).from( { y: -200 }, 2000, Phaser.Easing.Bounce.Out, true)
     this.add.tween(this.logo).from( { y: -200 }, 2000, Phaser.Easing.Bounce.Out, true);
@@ -145,55 +149,121 @@ Euphoria.MainMenu.prototype = {
     // Create sprites
     this.mainMenuMobs = this.add.group();
 
-    var tempMob2 = this.mainMenuMobs.create(-490, 638, 'dino_red');
-    tempMob2.scale.setTo(2);
+    var tempMob2 = this.mainMenuMobs.create(-490, 600, 'red_gummy_bear');
+
+
     this.physics.arcade.enable(tempMob2);
-    tempMob2.animations.add('left-charge', [5, 4, 3, 2, 1, 0], 48, true).speed = 15;
-    tempMob2.animations.add('right-charge', [42, 43, 44, 45, 46, 47], 48, true).speed = 15;
+    tempMob2.body.bounce.set(1);
+    tempMob2.body.gravity.set(0, -1200);
+    tempMob2.anchor.setTo(0.5)
+    tempMob2.scale.setTo(-1.5, 1.5);
+
+    // tempMob2.animations.add('left-charge', [5, 4, 3, 2, 1, 0], 48, true).speed = 15;
+    // tempMob2.animations.add('right-charge', [42, 43, 44, 45, 46, 47], 48, true).speed = 15;
     tempMob2.moveDirection = 1;
+    tempMob2.rotationLimit = 12;
+    // tempMob2.moveLeftBound = -300;
+    // tempMob2.moveRightBound = 1700;
     tempMob2.moveLeftBound = -300;
     tempMob2.moveRightBound = 1700;
     tempMob2.moveSpeed = 3;
-    tempMob2.animations.play('right-charge');
 
-    var tempMob1 = this.mainMenuMobs.create(-450, 638, 'dino_blue');
-    tempMob1.scale.setTo(2);
+    var initRotationDirection = Math.floor(Math.random() * 2);
+    if (initRotationDirection == 1) {
+      tempMob2.rotationDirection = 1;
+    }
+    else {
+      tempMob2.rotationDirection = -1;
+    }
+    tempMob2.rotationLimit = 12;
+
+
+    var tempMob1 = this.mainMenuMobs.create(-550, 600, 'green_gummy_bear');
+
+
     this.physics.arcade.enable(tempMob1);
-    tempMob1.animations.add('left-charge', [5, 4, 3, 2, 1, 0], 48, true).speed = 15;
-    tempMob1.animations.add('right-charge', [42, 43, 44, 45, 46, 47], 48, true).speed = 15;
+    tempMob1.body.bounce.set(1);
+    tempMob1.body.gravity.set(0, -1200);
+    tempMob1.anchor.setTo(0.5)
+    tempMob1.scale.setTo(-1.5, 1.5);
+
     tempMob1.moveDirection = 1;
+    tempMob1.rotationLimit = 12;
     tempMob1.moveLeftBound = -300;
     tempMob1.moveRightBound = 1700;
     tempMob1.moveSpeed = 3;
-    tempMob1.animations.play('right-charge');
 
-    var tempMob3 = this.mainMenuMobs.create(-530, 638, 'dino_green');
-    tempMob3.scale.setTo(2);
+    var initRotationDirection = Math.floor(Math.random() * 2);
+    if (initRotationDirection == 1) {
+      tempMob1.rotationDirection = 1;
+    }
+    else {
+      tempMob1.rotationDirection = -1;
+    }
+    tempMob1.rotationLimit = 12;
+
+    var tempMob3 = this.mainMenuMobs.create(-610, 600, 'yellow_gummy_bear');
+
     this.physics.arcade.enable(tempMob3);
-    tempMob3.animations.add('left-charge', [5, 4, 3, 2, 1, 0], 48, true).speed = 15;
-    tempMob3.animations.add('right-charge', [42, 43, 44, 45, 46, 47], 48, true).speed = 15;
+    tempMob3.body.bounce.set(1);
+    tempMob3.body.gravity.set(0, -1200);
+    tempMob3.anchor.setTo(0.5)
+    tempMob3.scale.setTo(-1.5, 1.5);
+
     tempMob3.moveDirection = 1;
+    tempMob3.rotationLimit = 12;
     tempMob3.moveLeftBound = -300;
     tempMob3.moveRightBound = 1700;
     tempMob3.moveSpeed = 3;
-    tempMob3.animations.play('right-charge');
 
-    var tempMob4 = this.mainMenuMobs.create(-200, 638, 'dino_yellow');
-    tempMob4.scale.setTo(2);
-    this.physics.arcade.enable(tempMob4);
-    tempMob4.animations.add('left-charge', [19, 18, 17, 16, 15, 14], 48, true).speed = 8;
-    tempMob4.animations.add('right-charge', [28, 29, 30, 31, 32, 33], 48, true).speed = 8;
-    tempMob4.moveDirection = 1;
-    tempMob4.moveLeftBound = -200;
-    tempMob4.moveRightBound = 1400;
-    tempMob4.moveSpeed = 1.5;
-    tempMob4.animations.play('right-charge');
+    var initRotationDirection = Math.floor(Math.random() * 2);
+    if (initRotationDirection == 1) {
+      tempMob3.rotationDirection = 1;
+    }
+    else {
+      tempMob3.rotationDirection = -1;
+    }
+    tempMob3.rotationLimit = 12;
+    // tempMob2.animations.play('right-charge');
 
-    this.dinoEmote = this.add.sprite(0, 0, 'emoticons');
-    this.dinoEmote.scale.setTo(gameHardScale);
-    // this.dinoEmote.animations.add('dotdotdot', [42, 42, 18, 18, 19, 19, 20, 20], 78, true).speed = 4;
-    this.dinoEmote.animations.add('dotdotdot', [3, 4, 5, 4, 5, 4], 78, true).speed = 4;
-    this.dinoEmote.animations.play('dotdotdot');
+    // var tempMob1 = this.mainMenuMobs.create(-450, 638, 'dino_blue');
+    // tempMob1.scale.setTo(2);
+    // this.physics.arcade.enable(tempMob1);
+    // // tempMob1.animations.add('left-charge', [5, 4, 3, 2, 1, 0], 48, true).speed = 15;
+    // // tempMob1.animations.add('right-charge', [42, 43, 44, 45, 46, 47], 48, true).speed = 15;
+    // tempMob1.moveDirection = 1;
+    // tempMob1.moveLeftBound = -300;
+    // tempMob1.moveRightBound = 1700;
+    // tempMob1.moveSpeed = 3;
+    // tempMob1.animations.play('right-charge');
+    //
+    // var tempMob3 = this.mainMenuMobs.create(-530, 638, 'dino_green');
+    // tempMob3.scale.setTo(2);
+    // this.physics.arcade.enable(tempMob3);
+    // tempMob3.animations.add('left-charge', [5, 4, 3, 2, 1, 0], 48, true).speed = 15;
+    // tempMob3.animations.add('right-charge', [42, 43, 44, 45, 46, 47], 48, true).speed = 15;
+    // tempMob3.moveDirection = 1;
+    // tempMob3.moveLeftBound = -300;
+    // tempMob3.moveRightBound = 1700;
+    // tempMob3.moveSpeed = 3;
+    // tempMob3.animations.play('right-charge');
+    //
+    // var tempMob4 = this.mainMenuMobs.create(-200, 638, 'dino_yellow');
+    // tempMob4.scale.setTo(2);
+    // this.physics.arcade.enable(tempMob4);
+    // tempMob4.animations.add('left-charge', [19, 18, 17, 16, 15, 14], 48, true).speed = 8;
+    // tempMob4.animations.add('right-charge', [28, 29, 30, 31, 32, 33], 48, true).speed = 8;
+    // tempMob4.moveDirection = 1;
+    // tempMob4.moveLeftBound = -200;
+    // tempMob4.moveRightBound = 1400;
+    // tempMob4.moveSpeed = 1.5;
+    // tempMob4.animations.play('right-charge');
+
+    // this.dinoEmote = this.add.sprite(0, 0, 'emoticons');
+    // this.dinoEmote.scale.setTo(gameHardScale);
+    // // this.dinoEmote.animations.add('dotdotdot', [42, 42, 18, 18, 19, 19, 20, 20], 78, true).speed = 4;
+    // this.dinoEmote.animations.add('dotdotdot', [3, 4, 5, 4, 5, 4], 78, true).speed = 4;
+    // this.dinoEmote.animations.play('dotdotdot');
 
     this.mainMenuCharacter = this.add.sprite(-350, 628, 'phori');
     this.mainMenuCharacter.scale.setTo(gameHardScale);
@@ -211,32 +281,6 @@ Euphoria.MainMenu.prototype = {
     this.mainMenuCharEmote.animations.add('scramble', [27, 28, 29, 28, 29], 78, true).speed = 4;
     this.mainMenuCharEmote.animations.play('scramble');
 
-    // this.topLeftSprite = this.add.sprite(190, 207, 'player');
-    // this.topLeftSprite.scale.setTo(gameHardScale);
-    // this.topLeftSprite.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
-    // this.topLeftSprite.animations.play('idle');
-    //
-    // this.topLeftEmote = this.add.sprite(190, 186, 'emoticons');
-    // this.topLeftEmote.scale.setTo(gameHardScale);
-    // this.topLeftEmote.animations.add('exclamation', [2, 2, 2], 78, true).speed = 4;
-    // this.topLeftEmote.animations.play('exclamation');
-    //
-    // this.topRightSprite = this.add.sprite(1110, 207, 'player');
-    // this.topRightSprite.scale.setTo(-gameHardScale, gameHardScale);
-    // this.topRightSprite.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
-    // this.topRightSprite.animations.play('idle');
-    //
-    // this.bottomLeftSprite = this.add.sprite(190, 423, 'player');
-    // this.bottomLeftSprite.scale.setTo(gameHardScale);
-    // this.bottomLeftSprite.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
-    // this.bottomLeftSprite.animations.play('idle');
-    //
-    // // this.bottomRightSprite = this.add.sprite()
-    // this.bottomRightSprite = this.add.sprite(1110, 423, 'player');
-    // this.bottomRightSprite.scale.setTo(-gameHardScale, gameHardScale);
-    // this.bottomRightSprite.animations.add('idle', [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 36, true).speed = 13;
-    // this.bottomRightSprite.animations.play('idle');
-
     UI.createBottomText(this);
     UI.showBottomOverlay('Press Enter to play.');
     this.add.tween(UI.bottomText).to( { alpha: 0 }, 1100, Phaser.Easing.Linear.None, true, 0, 500, true);
@@ -250,6 +294,8 @@ Euphoria.MainMenu.prototype = {
   },
 
   update: function() {
+    // this.physics.arcade.collide(this.tempMob1, this.mainMenuLayer);
+
     this.physics.arcade.collide(this.mainMenuCharacter, this.mainMenuLayer);
 
     if (this.mainMenuCharacter.position.x > this.mainMenuCharacter.moveRightBound) {
@@ -263,22 +309,42 @@ Euphoria.MainMenu.prototype = {
     this.mainMenuCharacter.position.x += this.mainMenuCharacter.moveDirection * 3;
 
     this.physics.arcade.collide(this.mainMenuMobs, this.mainMenuLayer);
-    this.mainMenuMobs.forEach( function(dino) {
-      if (dino.position.x > dino.moveRightBound) {
-        dino.moveDirection = -1;
-        dino.animations.play('left-charge');
+    this.mainMenuMobs.forEach(function(gummyBear) {
+      if (gummyBear.angle > gummyBear.rotationLimit) {
+        gummyBear.rotationDirection = -1;
       }
-      else if (dino.position.x < dino.moveLeftBound) {
-        dino.moveDirection = 1;
-        dino.animations.play('right-charge');
+      else if (gummyBear.angle < -gummyBear.rotationLimit) {
+        gummyBear.rotationDirection = 1;
+      }
+      gummyBear.angle += gummyBear.rotationDirection * 0.65;
+
+      if (gummyBear.position.x > gummyBear.moveRightBound) {
+        gummyBear.moveDirection = -1;
+        gummyBear.scale.setTo(1.5);
+      }
+      else if (gummyBear.position.x < gummyBear.moveLeftBound) {
+        gummyBear.moveDirection = 1;
+        gummyBear.scale.setTo(-1.5, 1.5);
       }
 
-      dino.position.x += dino.moveDirection * dino.moveSpeed;
-
+      gummyBear.position.x += gummyBear.moveDirection * gummyBear.moveSpeed;
     }, this);
+    // this.mainMenuMobs.forEach( function(dino) {
+    //   if (dino.position.x > dino.moveRightBound) {
+    //     dino.moveDirection = -1;
+    //     dino.animations.play('left-charge');
+    //   }
+    //   else if (dino.position.x < dino.moveLeftBound) {
+    //     dino.moveDirection = 1;
+    //     dino.animations.play('right-charge');
+    //   }
+    //
+    //   dino.position.x += dino.moveDirection * dino.moveSpeed;
+    //
+    // }, this);
 
-    this.dinoEmote.position.x = this.mainMenuMobs.children[3].position.x;
-    this.dinoEmote.position.y = this.mainMenuMobs.children[3].position.y - 24;
+    // this.dinoEmote.position.x = this.mainMenuMobs.children[3].position.x;
+    // this.dinoEmote.position.y = this.mainMenuMobs.children[3].position.y - 24;
 
     this.mainMenuCharEmote.position.x = this.mainMenuCharacter.position.x;
     this.mainMenuCharEmote.position.y = this.mainMenuCharacter.position.y - 23;
@@ -311,7 +377,7 @@ Euphoria.MainMenu.prototype = {
       align: "center"
     });
     txt.anchor.setTo(0.5, 0.5);
-  }
+  },
   // create: function () {
   //
   // 		//	We've already preloaded our assets, so let's kick right into the Main Menu itself.
@@ -342,4 +408,7 @@ Euphoria.MainMenu.prototype = {
   // 		this.state.start('Game');
   //
   // 	}
+  render: function() {
+    // this.game.debug.spriteInfo(this.logo, 32, 32);
+  },
 };

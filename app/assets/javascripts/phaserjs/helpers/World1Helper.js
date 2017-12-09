@@ -3,10 +3,23 @@ var WORLD1 = {
   width: 5760,
   height: 1100,
 
+  createSigns: function(game) {
+    WORLD.signs = game.add.group();
+    WORLD.signs.enableBody = true;
+
+    WORLD.createSign(game, 100, 622, WORLD.signs, "Keep your eye on the Sweet-o-Meter!");
+    WORLD.createSign(game, 2417, 334, WORLD.signs, "BEWARE OF FALLING GUMBALLS!");
+
+    // WORLD.createSign(game, 295, 526, WORLD.signs, "Collect honeycombs to refresh the Sweet-o-Meter.")
+  },
+
   createClouds: function(game) {
     WORLD.clouds = game.add.group();
     var cloud1 = WORLD.createCloud(game, 820, 1080, WORLD.clouds);
-    WORLD.addCloudMotion(game, cloud1, 820, 1080, 3000, "Sine.easeIn", "Sine.easeOut", 0, 500);
+    WORLD.addCloudMotion(game, cloud1, 820, 1080, 3000, "Sine.easeIn", "Sine.easeOut", 0, 510);
+    var cloud2 = WORLD.createCloud(game, 2650, 200, WORLD.clouds);
+    WORLD.addCloudMotion(game, cloud2, 2650, 200, 3000, "Sine.easeOut", "Sine.easeIn", -500, 0);
+
   },
 
   bgClouds: null,
@@ -49,23 +62,26 @@ var WORLD1 = {
     WORLD.worldLayer = WORLD.map.createLayer('Layer1');
     WORLD.worldLayer.setScale(WORLD.scale);
     WORLD.worldLayer.resizeWorld();
+    // WORLD.worldLayer.tint = 0xbbcf19;
 
     WORLD.mobBlockLayer = WORLD.map.createLayer('Mob Block Layer');
     WORLD.mobBlockLayer.setScale(WORLD.scale);
     WORLD.mobBlockLayer.resizeWorld();
 
     WORLD.map.setCollisionBetween(0, 45, true, WORLD.worldLayer);
-    WORLD.map.setCollision([47], true, WORLD.mobBlockLayer);
+    WORLD.map.setCollision([50], true, WORLD.mobBlockLayer);
     WORLD.enableSpikeCollision(game);
 
-    WORLD.mobBlockLayer.alpha = .5;
+    WORLD.mobBlockLayer.alpha = 0;
 
-    // Test
     this.createClouds(game);
+    this.createSigns(game);
   },
 
   update: function(game) {
     this.updateBackground(game);
+    WORLD.updateSignCollision(game);
+
   },
 };
 
@@ -82,6 +98,9 @@ var WORLD1_INTERACTION = {
     this.gumball.checkWorldBounds = true;
     this.gumball.events.onOutOfBounds.add(function() {
       WORLD1_INTERACTION.gumball.kill();
+      MOB.gumballMachines.children[0].triggered = true;
+      // MOB.gumballMachines.children[1].triggered = true;
+
       // WORLD1_INTERACTION.createGumball(game);
     }, game);
   },
@@ -90,25 +109,45 @@ var WORLD1_INTERACTION = {
     WORLD.collectibles = game.add.group();
 
     // Add collectibles by hand
-    WORLD.createCollectible(game, 764, 610, WORLD.collectibles);
-    WORLD.createCollectible(game, 804, 610, WORLD.collectibles);
-    WORLD.createCollectible(game, 844, 610, WORLD.collectibles);
+    // WORLD.createCollectible(game, 764, 610, WORLD.collectibles);
+    // WORLD.createCollectible(game, 804, 610, WORLD.collectibles);
+    // WORLD.createCollectible(game, 844, 610, WORLD.collectibles);
   },
 
   createHoneycombs: function(game) {
     WORLD.honeycombs = game.add.group();
-
-    WORLD.createHoneycomb(game, 400, 400, WORLD.honeycombs);
+    // WORLD.createHoneycomb(game, 295, 526, WORLD.honeycombs);
+    WORLD.createHoneycomb(game, 804, 610, WORLD.honeycombs);
+    WORLD.createHoneycomb(game, 2341, 537, WORLD.honeycombs);
   },
 
   createGumballMachines: function(game) {
     MOB.gumballMachines = game.add.group();
 
     // Add gumball machines by hand
-    var m0 = MOB.createGumballMachine(game, 400, 400, MOB.gumballMachines, 'right');
-    m0.triggered = true;
-    var m1 = MOB.createGumballMachine(game, 500, 400, MOB.gumballMachines, 'left');
-    m1.triggered = true;
+    // var m0 = MOB.createGumballMachine(game, 400, 400, MOB.gumballMachines, 'right');
+    // m0.triggered = true;
+    var m1 = MOB.createGumballMachine(game, 2154, 610, MOB.gumballMachines, 'left');
+    // var m2 = MOB.createGumballMachine(game, 2298, 530, MOB.gumballMachines, 'left');
+
+    // m1.triggered = true;
+    // m2.triggered = true;
+
+
+
+  },
+
+  createGummyBears: function(game) {
+    MOB.gummyBears = game.add.group();
+
+    // GAME, X, Y, TYPE, GROUP, MOVE?, FACE_DIRECTION, DROP_BULLETS?
+    // idle
+    MOB.createGummyBear(game, 1660, 372, 'green_gummy_bear', MOB.gummyBears, false, 'left', false);
+    MOB.createGummyBear(game, 1610, 372, 'yellow_gummy_bear', MOB.gummyBears, false, 'right', false);
+
+    MOB.createGummyBear(game, 550, 410, 'red_gummy_bear', MOB.gummyBears, true, null, false);
+    MOB.createGummyBear(game, 2649, 130, 'orange_gummy_bear', MOB.gummyBears, false, 'left', true);
+
 
   },
 
@@ -118,10 +157,12 @@ var WORLD1_INTERACTION = {
     this.createHoneycombs(game);
     this.createCollectibles(game);
     this.createGumballMachines(game);
+    this.createGummyBears(game);
 
   },
 
   update: function(game) {
+
     if (PLAYER.sprite.body.position.x > 1300 && !this.gumballTriggered) {
       game.physics.arcade.enable(this.gumball);
       this.gumball.body.velocity.x = -700;

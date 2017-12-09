@@ -320,6 +320,7 @@ var UI = {
     this.happyBarProgress.scale.setTo(2);
     this.happyBarProgress.fixedToCamera = true;
     this.happyBarProgressLength = this.happyBarProgress.width;
+    // this.happyBarProgress.width = 1;
     this.happyBarTenth = this.happyBarProgressLength / 10;
     this.happyBarHundredth = this.happyBarTenth / 10;
     var happyBarProgressPointer = this.happyBarProgress;

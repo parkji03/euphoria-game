@@ -49,7 +49,7 @@ var WORLD = {
     honeycomb.body.immovable = true;
 
     honeycomb.origin = honeycomb.position.y;
-    honeycomb.floatSpeed = (Math.floor(Math.random() * 7) + 1) / 10.0;
+    honeycomb.floatSpeed = (Math.floor(Math.random() * 4) + 1) / 10.0;
     var initDirection = Math.floor(Math.random() * 2);
     if (initDirection === 1) {
       honeycomb.floatDirection = 1;
@@ -187,8 +187,26 @@ var WORLD = {
   },
 
   enableSpikeCollision: function(game) {
-    this.map.setTileIndexCallback(this.spikeID, function(sprite) {
-      if (sprite.key === 'phori') {
+    this.map.setTileIndexCallback(46, function(sprite) {
+      if (sprite.key === 'barry') {
+        PLAYER.death(game);
+      }
+    }, game, WORLD.worldLayer);
+
+    this.map.setTileIndexCallback(47, function(sprite) {
+      if (sprite.key === 'barry') {
+        PLAYER.death(game);
+      }
+    }, game, WORLD.worldLayer);
+
+    this.map.setTileIndexCallback(48, function(sprite) {
+      if (sprite.key === 'barry') {
+        PLAYER.death(game);
+      }
+    }, game, WORLD.worldLayer);
+
+    this.map.setTileIndexCallback(49, function(sprite) {
+      if (sprite.key === 'barry') {
         PLAYER.death(game);
       }
     }, game, WORLD.worldLayer);

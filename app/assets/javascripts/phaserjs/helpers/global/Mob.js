@@ -1,9 +1,121 @@
 var MOB = {
 
-  // nextFire: null,
-  // fireRate: null,
   gumballMachines: null,
-  // bullets: null,
+  gummyBears: null,
+
+  createGummyBear: function(game, x, y, type, group, move, direction, dropBullets) {
+    var gummyBear = group.create(x, y, type);
+    gummyBear.scale.setTo(WORLD.scale);
+    game.physics.arcade.enable(gummyBear);
+    gummyBear.body.collisionWorldBounds = true;
+    gummyBear.body.bounce.set(1);
+    gummyBear.body.gravity.set(0, -1000);
+    gummyBear.anchor.setTo(0.5);
+
+    // gummyBear.animations.add('', [0], 0, true);
+
+    var initRotationDirection = Math.floor(Math.random() * 2);
+    if (initRotationDirection == 1) {
+      gummyBear.rotationDirection = 1;
+    }
+    else {
+      gummyBear.rotationDirection = -1;
+    }
+    gummyBear.rotationLimit = 12;
+
+    var initMoveDirection = Math.floor(Math.random() * 2);
+    if (initMoveDirection == 1) {
+      gummyBear.moveDirection = 1;
+      gummyBear.scale.x *= -1; // if going to the right, flip sprite horizontally
+    }
+    else {
+      gummyBear.moveDirection = -1;
+    }
+
+    gummyBear.initMoveSpeed = 100;
+    gummyBear.moveSpeed = 100;
+    gummyBear.isMoving = move;
+    if (!move) {
+      gummyBear.body.bounce.set(0);
+    }
+    if (direction === 'left') {
+      gummyBear.scale.setTo(WORLD.scale);
+    }
+    else if (direction === 'right') {
+      gummyBear.scale.setTo(-WORLD.scale, WORLD.scale);
+    }
+
+    if (dropBullets) {
+      gummyBear.bullets = this.createGummyBearBullets(game, type);
+    }
+  },
+
+  createGummyBearBullets(game, type) {
+    var bullets = game.add.group();
+    bullets.enableBody = true;
+    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+
+    if (type === 'red_gummy_bear') {
+      bullets.createMultiple(50, 'red_gumball');
+    }
+    else if (type === 'green_gummy_bear') {
+      bullets.createMultiple(50, 'green_gumball');
+    }
+    else if (type === 'yellow_gummy_bear') {
+      bullets.createMultiple(50, 'yellow_gumball');
+    }
+    else if (type === 'orange_gummy_bear') {
+      bullets.createMultiple(50, 'orange_gumball');
+    }
+    else if (type === 'blue_gummy_bear') {
+      bullets.createMultiple(50, 'blue_gumball');
+    }
+
+    bullets.setAll('checkWorldBounds', true);
+    bullets.setAll('outOfBoundsKill', true);
+    bullets.setAll('body.allowGravity', false);
+    return bullets;
+  },
+
+  // TODO: ADD BULLET MOVEMENT
+  updateGummyBearMovement: function(game) {
+    game.physics.arcade.collide(this.gummyBears, WORLD.worldLayer);
+    game.physics.arcade.overlap(PLAYER.sprite, this.gummyBears, function(player, gummyBear) {
+      PLAYER.death(game);
+    }, null, game);
+
+    this.gummyBears.forEach(function(gummyBear) {
+
+      var onCloud = game.physics.arcade.collide(gummyBear, WORLD.clouds, function(sprite, platform) {
+        if (sprite.body.touching.down) {
+          // Make player position follow platform deltaX and Y
+          sprite.body.position.x = sprite.body.position.x + platform.deltaX;
+          sprite.body.position.y = sprite.body.position.y + platform.deltaY;
+        }
+      });
+
+      // Gummy bear rotation
+      if (gummyBear.isMoving) {
+        if (gummyBear.angle > gummyBear.rotationLimit) {
+          gummyBear.rotationDirection = -1;
+        }
+        else if (gummyBear.angle < -gummyBear.rotationLimit) {
+          gummyBear.rotationDirection = 1;
+        }
+        gummyBear.angle += gummyBear.rotationDirection * 0.5;
+
+        // Gummy bear movement
+        if (game.physics.arcade.collide(MOB.gummyBears, WORLD.mobBlockLayer)) {
+          gummyBear.moveDirection *= -1;
+          gummyBear.scale.x *= -1;
+
+        }
+        gummyBear.moveSpeed = gummyBear.initMoveSpeed + (1 - UI.happyBarPercent) * 100;
+        console.log(gummyBear.moveSpeed);
+        gummyBear.body.velocity.x = gummyBear.moveDirection * gummyBear.moveSpeed;
+      }
+    }, game);
+  },
 
   createGumballMachine: function(game, x, y, group, direction) {
     var gumballMachine = group.create(x, y, 'gumball_machine');
@@ -61,27 +173,13 @@ var MOB = {
     return bullets;
   },
 
-  // createBullets: function(game) {
-  //   this.nextFire = 0;
-  //   this.fireRate = 100;
-  //   this.bullets = game.add.group();
-  //   this.bullets.enableBody = true;
-  //   this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
-  //
-  //   // bullets.callAll('animations.add', 'animations', 'fire', [0,1,2,3,4,5,6], 5, true);
-  //   // bullets.callAll('play', null, 'fire');
-  //
-  //
-  //
-  // },
-
   updateGumballMachineMovement: function(game) {
     game.physics.arcade.collide(this.gumballMachines, WORLD.worldLayer);
     MOB.gumballMachines.forEach(function(gumballMachine) {
       if (gumballMachine.triggered) {
         gumballMachine.animations.play('shoot').speed = gumballMachine.initSpeed + (1 - UI.happyBarPercent) * 10;
-        // gumballMachine.bulletSpeed = gumballMachine.initBulletSpeed;
-        gumballMachine.fireRate = gumballMachine.initFireRate - (1 - UI.happyBarPercent) * 2200;
+        gumballMachine.bulletSpeed = gumballMachine.initBulletSpeed + (1 - UI.happyBarPercent) * 70;
+        gumballMachine.fireRate = gumballMachine.initFireRate - (1 - UI.happyBarPercent) * 1700;
         if (game.time.now > gumballMachine.nextFire && gumballMachine.bullets.countDead() > 0) {
           gumballMachine.nextFire = game.time.now + gumballMachine.fireRate;
           var bullet = gumballMachine.bullets.getFirstDead();
@@ -113,5 +211,6 @@ var MOB = {
 
   update: function(game) {
     this.updateGumballMachineMovement(game);
+    this.updateGummyBearMovement(game);
   },
 };
