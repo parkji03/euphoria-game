@@ -1,0 +1,1 @@
+Euphoria.WorldChooser=function(t){this.game=t},Euphoria.WorldChooser.prototype={create:function(){WORLD_CHOOSER.create(this),PLAYER.create(this,10,600),UI.create(this)},update:function(){PLAYER.update(this),WORLD.update(this),UI.update(this),WORLD_CHOOSER.update(this)},render:function(){}};

@@ -97,7 +97,7 @@ var WORLD_CHOOSER = {
     this.createSigns(game);
   },
 
-  updateDoorCollision(game) {
+  updateDoorCollision: function(game) {
     game.physics.arcade.overlap(PLAYER.sprite, this.doors, function(player, door) {
       if (door.animations.currentAnim.frame === 4) {
         game.time.events.add(500, function() {

@@ -50,7 +50,7 @@ var MOB = {
     }
   },
 
-  createGummyBearBullets(game, type) {
+  createGummyBearBullets: function(game, type) {
     var bullets = game.add.group();
     bullets.enableBody = true;
     bullets.physicsBodyType = Phaser.Physics.ARCADE;

@@ -35,7 +35,7 @@ var WORLD = {
     // sign.signMax = max;
   },
 
-  updateSignCollision(game) {
+  updateSignCollision: function(game) {
     game.physics.arcade.overlap(PLAYER.sprite, this.signs, function(player, sign) {
       UI.showBottomOverlay(sign.signText);
     }, null, game);
