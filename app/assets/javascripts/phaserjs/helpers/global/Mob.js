@@ -161,7 +161,7 @@ var MOB = {
         bullets.createMultiple(1, 'green_gumball');
       }
       else if (random === 3) {
-        bullets.createMultiple(1, 'yellow_gumball');
+        bullets.createMultiple(1, 'green_gumball');
         bullets.createMultiple(1, 'red_gumball');
         bullets.createMultiple(1, 'blue_gumball');
       }
