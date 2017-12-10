@@ -122,12 +122,36 @@ Euphoria.Preloader.prototype = {
     this.load.spritesheet('pointer', 'assets/phaser_assets/temp/pointer.png', 20, 48);
     this.load.spritesheet('collectible', 'assets/phaser_assets/sprites/coin.png', 18, 18);
 
+    // Music
+    this.load.audio('jump', 'assets/phaser_assets/sounds/jump.ogg');
+    this.load.audio('click', 'assets/phaser_assets/sounds/button_click.ogg');
+
+    this.load.audio('intro', 'assets/phaser_assets/sounds/intro.ogg');
+    this.load.audio('intro_loop', 'assets/phaser_assets/sounds/intro_loop.ogg');
+    this.load.audio('theme', 'assets/phaser_assets/sounds/theme.ogg');
+
+    // "Silly Fun" Kevin MacLeod (incompetech.com)
+    // Licensed under Creative Commons: By Attribution 3.0 License
+    // http://creativecommons.org/licenses/by/3.0/
+    this.load.audio('silly_fun', 'assets/phaser_assets/sounds/silly_fun.mp3');
+
+    // "Bit Quest" Kevin MacLeod (incompetech.com)
+    // Licensed under Creative Commons: By Attribution 3.0 License
+    // http://creativecommons.org/licenses/by/3.0/
+    this.load.audio('bit_quest', 'assets/phaser_assets/sounds/bit_quest.mp3');
+
+    // Rhinoceros (Boss fight?)
 
 
 
 
 
-    // this.load.spritesheet('player', 'assets/phaser_assets/sprites/temp_player.png', 23, 38);
+
+
+
+
+
+
     this.load.spritesheet('dino_red', 'assets/phaser_assets/sprites/dinos/dino_red.png', 18, 18);
     this.load.spritesheet('dino_blue', 'assets/phaser_assets/sprites/dinos/dino_blue.png', 18, 18);
     this.load.spritesheet('dino_yellow', 'assets/phaser_assets/sprites/dinos/dino_yellow.png', 18, 18);
@@ -161,10 +185,10 @@ Euphoria.Preloader.prototype = {
   //	If you don't have any music in your game then put the game.state.start line into the create function and delete
   //	the update function completely.
 
-  // if (this.cache.isSoundDecoded('titleMusic') && this.ready == false)
-  // {
-  //   this.ready = true;
-  //   this.state.start('MainMenu');
-  // }
+    if (this.cache.isSoundDecoded('bit_quest') && this.ready == false)
+    {
+      this.ready = true;
+      this.state.start('MainMenu');
+    }
   }
 };

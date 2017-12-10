@@ -117,6 +117,7 @@ var UI = {
     this.menu4.inputEnabled = true;
     this.menu4.events.onInputDown.addOnce(function() {
       UI.menuTriggered = false;
+      game.sound.play('click');
       menuBackdrop.kill();
       UI.menuOverlay.kill();
       UI.menu1.kill();
@@ -135,6 +136,7 @@ var UI = {
     this.menu5.inputEnabled = true;
     this.menu5.events.onInputDown.addOnce(function() {
       UI.menuTriggered = false;
+      game.sound.play('click');
       menuBackdrop.kill();
       UI.menuOverlay.kill();
       UI.menu1.kill();
@@ -369,6 +371,7 @@ var UI = {
     // Trigger menu button
     this.menuButtonUI = game.add.button(1204, 10, 'menu_button_ui', function() {
       if (!UI.menuTriggered) {
+        game.sound.play('click');
         UI.createMenu(game);
       }
     }, game);

@@ -203,6 +203,7 @@ var PLAYER = {
       // if (PLAYER.keyW.isDown && PLAYER.alive) {
       if (this.keyW.isDown && this.alive && standing) {
         this.sprite.body.velocity.y = this.jump;
+        game.sound.play('jump');
         if (this.sprite.body.velocity.y > 0) {
           this.sprite.animations.play('right-jump');
         }
