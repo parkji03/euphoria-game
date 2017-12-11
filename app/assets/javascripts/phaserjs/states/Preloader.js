@@ -98,6 +98,7 @@ Euphoria.Preloader.prototype = {
     this.load.spritesheet('yellow_gummy_bear', 'assets/phaser_assets/sprites/yellow_gummy_bear.png', 30, 40);
     this.load.spritesheet('green_gummy_bear', 'assets/phaser_assets/sprites/green_gummy_bear.png', 30, 40);
     this.load.spritesheet('orange_gummy_bear', 'assets/phaser_assets/sprites/orange_gummy_bear.png', 30, 40);
+    this.load.spritesheet('door', 'assets/phaser_assets/sprites/door.png', 39, 50);
 
     // Interactions
     this.load.spritesheet('emoticons', 'assets/phaser_assets/interactions/emoticons.png', 16, 16);
@@ -118,7 +119,6 @@ Euphoria.Preloader.prototype = {
 
     // Temp
     this.load.image('wooden_sign', 'assets/phaser_assets/temp/wooden_sign.png');
-    this.load.spritesheet('door', 'assets/phaser_assets/temp/door_39x50.png', 39, 50);
     this.load.spritesheet('pointer', 'assets/phaser_assets/temp/pointer.png', 20, 48);
     this.load.spritesheet('collectible', 'assets/phaser_assets/sprites/coin.png', 18, 18);
 

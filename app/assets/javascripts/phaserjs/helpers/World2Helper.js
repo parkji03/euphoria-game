@@ -20,6 +20,12 @@ var WORLD2 = {
   },
 
   createClouds: function(game) {
+    WORLD.clouds = game.add.group();
+    var cloud1 = WORLD.createCloud(game, 500, 500, WORLD.clouds);
+    var cloud2 = WORLD.createCloud(game, 600, 600, WORLD.clouds);
+    var cloud3 = WORLD.createCloud(game, 700, 700, WORLD.clouds);
+    // var cloud4 = WORLD.createCloud(game, 500, 500, WORLD.clouds);
+    // var cloud5 = WORLD.createCloud(game, 500, 500, WORLD.clouds);
 
   },
 
@@ -69,6 +75,10 @@ var WORLD2 = {
     WORLD.updateDoorCollision(game);
     WORLD.updateSignCollision(game);
   },
+
+  dispatchUI: function(game) {
+    UI.centerText.signal.dispatch("LEVEL 2");
+  },
 };
 
 var WORLD2_INTERACTION = {
@@ -77,18 +87,54 @@ var WORLD2_INTERACTION = {
   },
 
   createGumballMachines: function(game) {
+    MOB.gumballMachines = game.add.group();
+    // MOB.createGumballMachine(game, 1614, 50, MOB.gumballMachines, 'left', true);
+    // MOB.createGumballMachine(game, 1614, 146, MOB.gumballMachines, 'left', true);
+    // MOB.createGumballMachine(game, 1614, 242, MOB.gumballMachines, 'left', true);
+    // MOB.createGumballMachine(game, 1614, 338, MOB.gumballMachines, 'left', true);
+    // MOB.createGumballMachine(game, 1614, 434, MOB.gumballMachines, 'left', true);
+    // MOB.createGumballMachine(game, 1614, 530, MOB.gumballMachines, 'left', true);
+
+    // MOB.createGumballMachine(game, 1650, 50, MOB.gumballMachines, 'right', true);
+    // MOB.createGumballMachine(game, 1650, 146, MOB.gumballMachines, 'right', true);
+    // MOB.createGumballMachine(game, 1650, 242, MOB.gumballMachines, 'right', true);
+    // MOB.createGumballMachine(game, 1650, 338, MOB.gumballMachines, 'right', true);
+    // MOB.createGumballMachine(game, 1650, 434, MOB.gumballMachines, 'right', true);
+    // MOB.createGumballMachine(game, 1650, 530, MOB.gumballMachines, 'right', true);
+
+    // MOB.gumballMachines.children[0].triggered = true;
+    // MOB.gumballMachines.children[1].triggered = true;
+    // MOB.gumballMachines.children[2].triggered = true;
+    // MOB.gumballMachines.children[3].triggered = true;
+    // MOB.gumballMachines.children[4].triggered = true;
+    // MOB.gumballMachines.children[5].triggered = true;
+    // MOB.gumballMachines.children[6].triggered = true;
+    // MOB.gumballMachines.children[7].triggered = true;
+    // MOB.gumballMachines.children[8].triggered = true;
+    // MOB.gumballMachines.children[9].triggered = true;
+    // MOB.gumballMachines.children[10].triggered = true;
+    // MOB.gumballMachines.children[11].triggered = true;
+
 
   },
 
   createGummyBears: function(game) {
+    MOB.gummyBears = game.add.group();
 
+    MOB.createGummyBear(game, 100, 100, 'green_gummy_bear', MOB.gummyBears, false, 'left', false, true);
   },
 
   create: function(game) {
+    // this.createHoneycombs(game);
+    this.createGumballMachines(game);
+    this.createGummyBears(game);
+
 
   },
 
   update: function(game) {
+    // WORLD.updateHoneycombMovement(game);
+    // WORLD.enableHoneycombCollision(game);
 
   }
 };

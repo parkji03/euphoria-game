@@ -177,7 +177,7 @@ var MOB = {
     }, game);
   },
 
-  createGumballMachine: function(game, x, y, group, direction) {
+  createGumballMachine: function(game, x, y, group, direction, randomize) {
     var gumballMachine = group.create(x, y, 'gumball_machine');
     gumballMachine.triggered = false;
     gumballMachine.anchor.setTo(0.5);
@@ -199,7 +199,7 @@ var MOB = {
     gumballMachine.nextFire = 0;
     gumballMachine.bulletSpeed = 200;
     gumballMachine.bullets = this.createGumballMachineBullets(game);
-
+    gumballMachine.randomize = randomize;
     return gumballMachine;
   },
 
@@ -242,6 +242,10 @@ var MOB = {
         gumballMachine.fireRate = gumballMachine.initFireRate - (1 - UI.happyBarPercent) * 1700;
         if (game.time.now > gumballMachine.nextFire && gumballMachine.bullets.countDead() > 0) {
           gumballMachine.nextFire = game.time.now + gumballMachine.fireRate;
+          console.log(gumballMachine.nextFire);
+          if (gumballMachine.randomize) {
+            gumballMachine.nextFire = game.time.now + getRandomInt(950, 1250);
+          }
           var bullet = gumballMachine.bullets.getFirstDead();
           if (gumballMachine.shootDirection === 'left') {
             bullet.reset(gumballMachine.position.x - 13, gumballMachine.position.y + 10);

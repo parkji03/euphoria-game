@@ -12,18 +12,19 @@ Euphoria.World2.prototype = {
     WORLD2_INTERACTION.create(this);
 
     // Mobs
-    // MOB.create(this);
+    MOB.create(this);
 
     // Player
     PLAYER.create(this, 10, 614);
 
     // UI
     UI.create(this);
+    WORLD2.dispatchUI(this);
   },
 
   update: function() {
     PLAYER.update(this);
-    // MOB.update(this);
+    MOB.update(this);
     WORLD.update(this);
     UI.update(this);
     WORLD2.update(this);
