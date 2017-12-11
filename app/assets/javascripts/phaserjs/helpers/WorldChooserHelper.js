@@ -1,7 +1,8 @@
 var WORLD_CHOOSER = {
   // doors: null,
   door1Locked: false,
-  door2Locked: true,
+  // TODO: Change for production
+  door2Locked: false,
   door3Locked: true,
 
   gc1: null,

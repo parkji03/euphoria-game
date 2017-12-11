@@ -9,9 +9,10 @@ Euphoria.World2.prototype = {
     WORLD2.create(this);
 
     // Interaction
-    // WORLD2_INTERACTION.create(this);
+    WORLD2_INTERACTION.create(this);
 
     // Mobs
+    // MOB.create(this);
 
     // Player
     PLAYER.create(this, 10, 614);
@@ -22,7 +23,7 @@ Euphoria.World2.prototype = {
 
   update: function() {
     PLAYER.update(this);
-    MOB.update(this);
+    // MOB.update(this);
     WORLD.update(this);
     UI.update(this);
     WORLD2.update(this);

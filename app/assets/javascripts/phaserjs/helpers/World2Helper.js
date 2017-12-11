@@ -1,6 +1,6 @@
 var WORLD2 = {
-  width: 0,
-  height: 0,
+  width: 4080,
+  height: 1100,
 
   bgClouds: null,
   bgCastle: null,
@@ -13,7 +13,10 @@ var WORLD2 = {
   },
 
   createDoors: function(game) {
+    WORLD.doors = game.add.group();
+    WORLD.doors.enableBody = true;
 
+    WORLD.createDoor(game, 3846, 475, 'World3', false);
   },
 
   createClouds: function(game) {
@@ -21,11 +24,14 @@ var WORLD2 = {
   },
 
   createBackground: function(game) {
-
+    this.bg1 = game.add.tileSprite(0, 0, WORLD2.width, WORLD2.height, 'gc_1');
+    this.bgClouds = game.add.tileSprite(0, 0, WORLD2.width, WORLD2.height, 'clouds')
+    this.bg2 = game.add.tileSprite(0, 0, WORLD2.width, WORLD2.height, 'gc_2');
   },
 
   updateBackground: function(game){
-
+    this.bgClouds.tilePosition.x -= 0.08
+    this.bg2.x = game.camera.x * 0.05
   },
 
   create: function(game) {

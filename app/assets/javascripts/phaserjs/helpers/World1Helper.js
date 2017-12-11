@@ -17,7 +17,7 @@ var WORLD1 = {
     WORLD.doors = game.add.group();
     WORLD.doors.enableBody = true;
 
-    WORLD.createDoor(game, 5377, 475, 'World2', false);
+    WORLD.createDoor(game, 5379, 475, 'World2', false);
   },
 
   createClouds: function(game) {
@@ -160,7 +160,7 @@ var WORLD1_INTERACTION = {
 
     // FALLING
     MOB.createGummyBear(game, 3167, 200, 'yellow_gummy_bear', MOB.gummyBears, true, null, false, false);
-    MOB.createGummyBear(game, 3430, 200, 'green_gummy_bear', MOB.gummyBears, true, null, false, false);
+    MOB.createGummyBear(game, 3350, 200, 'green_gummy_bear', MOB.gummyBears, true, null, false, false);
 
     //2607
     //3020
