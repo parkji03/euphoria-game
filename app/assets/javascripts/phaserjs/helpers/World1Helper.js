@@ -8,9 +8,16 @@ var WORLD1 = {
     WORLD.signs.enableBody = true;
 
     WORLD.createSign(game, 100, 622, WORLD.signs, "Keep your eye on the Sweet-o-Meter!");
-    WORLD.createSign(game, 2417, 334, WORLD.signs, "BEWARE OF FALLING GUMBALLS!");
+    WORLD.createSign(game, 2417, 334, WORLD.signs, "BEWARE OF FALLING GUMMY BEARS!");
 
     // WORLD.createSign(game, 295, 526, WORLD.signs, "Collect honeycombs to refresh the Sweet-o-Meter.")
+  },
+
+  createDoors: function(game) {
+    WORLD.doors = game.add.group();
+    WORLD.doors.enableBody = true;
+
+    WORLD.createDoor(game, 5377, 475, 'World2', false);
   },
 
   createClouds: function(game) {
@@ -19,7 +26,8 @@ var WORLD1 = {
     WORLD.addCloudMotion(game, cloud1, 820, 1080, 3000, "Sine.easeIn", "Sine.easeOut", 0, 510);
     var cloud2 = WORLD.createCloud(game, 2650, 200, WORLD.clouds);
     WORLD.addCloudMotion(game, cloud2, 2650, 200, 3000, "Sine.easeOut", "Sine.easeIn", -500, 0);
-
+    var cloud3 = WORLD.createCloud(game, 3350, 200, WORLD.clouds);
+    WORLD.addCloudMotion(game, cloud3, 3350, 200, 3000, "Sine.easeIn", "Sine.easeOut", -500, 0);
   },
 
   bgClouds: null,
@@ -76,10 +84,12 @@ var WORLD1 = {
 
     this.createClouds(game);
     this.createSigns(game);
+    this.createDoors(game);
   },
 
   update: function(game) {
     this.updateBackground(game);
+    WORLD.updateDoorCollision(game);
     WORLD.updateSignCollision(game);
 
   },
@@ -140,14 +150,24 @@ var WORLD1_INTERACTION = {
   createGummyBears: function(game) {
     MOB.gummyBears = game.add.group();
 
-    // GAME, X, Y, TYPE, GROUP, MOVE?, FACE_DIRECTION, DROP_BULLETS?
+    // GAME, X, Y, TYPE, GROUP, MOVE?, FACE_DIRECTION, DROP_BULLETS?, CLOUD_COLLIDE?
     // idle
-    MOB.createGummyBear(game, 1660, 372, 'green_gummy_bear', MOB.gummyBears, false, 'left', false);
-    MOB.createGummyBear(game, 1610, 372, 'yellow_gummy_bear', MOB.gummyBears, false, 'right', false);
+    MOB.createGummyBear(game, 1660, 372, 'green_gummy_bear', MOB.gummyBears, false, 'left', false, true);
+    MOB.createGummyBear(game, 1610, 372, 'yellow_gummy_bear', MOB.gummyBears, false, 'right', false, true);
 
-    MOB.createGummyBear(game, 550, 410, 'red_gummy_bear', MOB.gummyBears, true, null, false);
-    MOB.createGummyBear(game, 2649, 130, 'orange_gummy_bear', MOB.gummyBears, false, 'left', true);
+    // Moving
+    MOB.createGummyBear(game, 550, 410, 'red_gummy_bear', MOB.gummyBears, true, null, false, true);
 
+    // FALLING
+    MOB.createGummyBear(game, 3167, 200, 'yellow_gummy_bear', MOB.gummyBears, true, null, false, false);
+    MOB.createGummyBear(game, 3430, 200, 'green_gummy_bear', MOB.gummyBears, true, null, false, false);
+
+    //2607
+    //3020
+
+    // On cloud
+    MOB.createGummyBear(game, 2649, 130, 'orange_gummy_bear', MOB.gummyBears, false, 'left', true, true);
+    MOB.createGummyBear(game, 3349, 130, 'blue_gummy_bear', MOB.gummyBears, false, 'left', true, true);
 
   },
 

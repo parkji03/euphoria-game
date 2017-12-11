@@ -1,5 +1,5 @@
 var WORLD_CHOOSER = {
-  doors: null,
+  // doors: null,
   door1Locked: false,
   door2Locked: true,
   door3Locked: true,
@@ -19,31 +19,27 @@ var WORLD_CHOOSER = {
     WORLD.createSign(game, 38, 600, WORLD.signs, 'Use  \" W A S D \"  to move.');
   },
 
-  createDoor: function(game, x, y) {
-    var door = this.doors.create(x, y, 'door');
-    door.scale.setTo(3);
-    door.body.allowGravity = false;
-    door.animations.add('open', [0, 1, 2, 3, 4], 5, true).onComplete.add(function() {
-      // console.log(door.startState);
-      // TODO: Do something when door opens
-    });
-    door.animations.frame = 0;
-  },
+  // createDoor: function(game, x, y) {
+  //   var door = this.doors.create(x, y, 'door');
+  //   door.scale.setTo(3);
+  //   door.body.allowGravity = false;
+  //   door.animations.add('open', [0, 1, 2, 3, 4], 5, true).onComplete.add(function() {
+  //     // console.log(door.startState);
+  //     // TODO: Do something when door opens
+  //   });
+  //   door.animations.frame = 0;
+  // },
 
   createDoors: function(game) {
-    this.doors = game.add.group();
-    this.doors.enableBody = true;
+    WORLD.doors = game.add.group();
+    WORLD.doors.enableBody = true;
 
-    this.createDoor(game, 470, 403);
-    this.createDoor(game, 928, 139);
-    this.createDoor(game, 1384, 403);
+    WORLD.createDoor(game, 470, 403, 'World1', false);
+    WORLD.createDoor(game, 928, 139, 'World2', true);
+    WORLD.createDoor(game, 1384, 403, 'World3', true);
 
-    this.doors.children[0].state = 'World1';
-    this.doors.children[0].locked = this.door1Locked;
-    this.doors.children[1].state = 'World2';
-    this.doors.children[1].locked = this.door2Locked;
-    this.doors.children[2].state = 'World3';
-    this.doors.children[2].locked = this.door3Locked;
+    WORLD.doors.children[1].locked = this.door2Locked;
+    WORLD.doors.children[2].locked = this.door3Locked;
 
   },
 
@@ -57,13 +53,14 @@ var WORLD_CHOOSER = {
   },
 
   createPointers: function(game) {
-    this.doors.children[0].pointer = this.createPointer(game, this.doors.children[0]);
-    this.doors.children[1].pointer = this.createPointer(game, this.doors.children[1]);
-    this.doors.children[2].pointer = this.createPointer(game, this.doors.children[2]);
+    WORLD.doors.children[0].pointer = this.createPointer(game, WORLD.doors.children[0]);
+    WORLD.doors.children[1].pointer = this.createPointer(game, WORLD.doors.children[1]);
+    WORLD.doors.children[2].pointer = this.createPointer(game, WORLD.doors.children[2]);
   },
 
   create: function(game) {
     WORLD.enablePhysics(game);
+    MUSIC.worldChooserTheme.play();
 
     // WORLD.createBackground(game);
     this.gc1 = game.add.tileSprite(0, 0, 1920, 1080, 'gc_1');
@@ -97,32 +94,11 @@ var WORLD_CHOOSER = {
     this.createSigns(game);
   },
 
-  updateDoorCollision: function(game) {
-    game.physics.arcade.overlap(PLAYER.sprite, this.doors, function(player, door) {
-      if (door.animations.currentAnim.frame === 4) {
-        game.time.events.add(500, function() {
-          game.state.start(door.state);
-        });
-      }
-      else {
-        if (door.locked) {
-          UI.showBottomOverlay("This door is locked.");
-        }
-        else {
-          // Door is unlocked... so player can press E to travel to world
-          UI.showBottomOverlay("Press E to open the door.");
-          if (PLAYER.keyE.isDown) {
-            PLAYER.stop = true;
-            PLAYER.sprite.animations.play('idle');
-            door.animations.play('open', 8, false);
-          }
-        }
-      }
-    }, null, game);
-  },
+
 
   update: function(game) {
-    this.updateDoorCollision(game);
+    // this.updateDoorCollision(game);
+    WORLD.updateDoorCollision(game);
     WORLD.updateSignCollision(game);
 
     // Move clouds
@@ -136,7 +112,7 @@ var WORLD_CHOOSER = {
 
 
     // If the door is locked, no pointers...
-    this.doors.forEach(function(door) {
+    WORLD.doors.forEach(function(door) {
       if (!door.locked) {
         door.pointer.visible = true;
       }

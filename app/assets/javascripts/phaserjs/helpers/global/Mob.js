@@ -3,7 +3,7 @@ var MOB = {
   gumballMachines: null,
   gummyBears: null,
 
-  createGummyBear: function(game, x, y, type, group, move, direction, dropBullets) {
+  createGummyBear: function(game, x, y, type, group, move, direction, dropBullets, cloudCollide) {
     var gummyBear = group.create(x, y, type);
     gummyBear.scale.setTo(WORLD.scale);
     game.physics.arcade.enable(gummyBear);
@@ -11,8 +11,35 @@ var MOB = {
     gummyBear.body.bounce.set(1);
     gummyBear.body.gravity.set(0, -1000);
     gummyBear.anchor.setTo(0.5);
-
+    gummyBear.cloudCollide = cloudCollide;
     // gummyBear.animations.add('', [0], 0, true);
+
+    if (!cloudCollide) {
+      gummyBear.body.bounce.set(0.7);
+      gummyBear.checkWorldBounds = true;
+      gummyBear.events.onOutOfBounds.add(function() {
+        gummyBear.moveDirection *= -1;
+        gummyBear.scale.x *= -1;
+        var randomGummy = getRandomInt(1, 5);
+        if (randomGummy === 1) {
+          gummyBear.loadTexture('red_gummy_bear', 0);
+        }
+        else if (randomGummy === 2) {
+          gummyBear.loadTexture('blue_gummy_bear', 0);
+        }
+        else if (randomGummy === 3) {
+          gummyBear.loadTexture('green_gummy_bear', 0);
+        }
+        else if (randomGummy === 4) {
+          gummyBear.loadTexture('yellow_gummy_bear', 0);
+        }
+        else if (randomGummy === 5) {
+          gummyBear.loadTexture('orange_gummy_bear', 0);
+        }
+        gummyBear.reset(getRandomInt(x - 100, x + 100), 0);
+      }, game);
+    }
+
 
     var initRotationDirection = Math.floor(Math.random() * 2);
     if (initRotationDirection == 1) {
@@ -46,11 +73,19 @@ var MOB = {
     }
 
     if (dropBullets) {
-      gummyBear.bullets = this.createGummyBearBullets(game, type);
+      gummyBear.dropTrigger = true;
+
+      gummyBear.initFireRate = 800;
+      // gummyBear.initBulletSpeed = 300;
+
+      gummyBear.fireRate = 1500;
+      gummyBear.nextFire = 0;
+      // gummyBear.bulletSpeed = 300;
+      gummyBear.bullets = this.createGummyBearBullets(game, type, true);
     }
   },
 
-  createGummyBearBullets: function(game, type) {
+  createGummyBearBullets: function(game, type, drop) {
     var bullets = game.add.group();
     bullets.enableBody = true;
     bullets.physicsBodyType = Phaser.Physics.ARCADE;
@@ -73,7 +108,9 @@ var MOB = {
 
     bullets.setAll('checkWorldBounds', true);
     bullets.setAll('outOfBoundsKill', true);
-    bullets.setAll('body.allowGravity', false);
+    if (!drop) {
+      bullets.setAll('body.allowGravity', false);
+    }
     return bullets;
   },
 
@@ -85,14 +122,17 @@ var MOB = {
     }, null, game);
 
     this.gummyBears.forEach(function(gummyBear) {
-
-      var onCloud = game.physics.arcade.collide(gummyBear, WORLD.clouds, function(sprite, platform) {
-        if (sprite.body.touching.down) {
-          // Make player position follow platform deltaX and Y
-          sprite.body.position.x = sprite.body.position.x + platform.deltaX;
-          sprite.body.position.y = sprite.body.position.y + platform.deltaY;
-        }
-      });
+      if (gummyBear.cloudCollide) {
+        // console.log(gummyBear.key);
+        var onCloud = game.physics.arcade.collide(gummyBear, WORLD.clouds, function(sprite, platform) {
+          // console.log(gummyBear.key);
+          if (sprite.body.touching.down) {
+            // Make player position follow platform deltaX and Y
+            sprite.body.position.x = sprite.body.position.x + platform.deltaX;
+            sprite.body.position.y = sprite.body.position.y + platform.deltaY;
+          }
+        });
+      }
 
       // Gummy bear rotation
       if (gummyBear.isMoving) {
@@ -111,9 +151,29 @@ var MOB = {
 
         }
         gummyBear.moveSpeed = gummyBear.initMoveSpeed + (1 - UI.happyBarPercent) * 100;
-        console.log(gummyBear.moveSpeed);
+        // console.log(gummyBear.moveSpeed);
         gummyBear.body.velocity.x = gummyBear.moveDirection * gummyBear.moveSpeed;
       }
+
+      if (gummyBear.dropTrigger) {
+        gummyBear.fireRate = gummyBear.initFireRate - (1 - UI.happyBarPercent) * (gummyBear.initFireRate / 2);
+        if (game.time.now > gummyBear.nextFire && gummyBear.bullets.countDead() > 0) {
+          gummyBear.nextFire = game.time.now + gummyBear.fireRate;
+          var bullet = gummyBear.bullets.getFirstDead();
+          bullet.reset(gummyBear.position.x, gummyBear.position.y + 10);
+        }
+      }
+
+      game.physics.arcade.collide(gummyBear.bullets, WORLD.worldLayer, function(bullet, layer) {
+        bullet.kill();
+      });
+
+      game.physics.arcade.overlap(PLAYER.sprite, gummyBear.bullets, function(player, bullet) {
+        if (PLAYER.alive) {
+          bullet.kill();
+        }
+        PLAYER.death(game);
+      }, null, game);
     }, game);
   },
 

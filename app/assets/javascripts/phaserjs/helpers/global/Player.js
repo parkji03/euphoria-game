@@ -200,10 +200,11 @@ var PLAYER = {
 
       // Jump animations
       // NOTE: change this for production/development
-      // if (PLAYER.keyW.isDown && PLAYER.alive) {
-      if (this.keyW.isDown && this.alive && standing) {
+      if (PLAYER.keyW.isDown && PLAYER.alive) {
+      // if (this.keyW.isDown && this.alive && standing) {
         this.sprite.body.velocity.y = this.jump;
-        game.sound.play('jump');
+        // game.sound.play('jump');
+        MUSIC.jump.play();
         if (this.sprite.body.velocity.y > 0) {
           this.sprite.animations.play('right-jump');
         }
@@ -238,6 +239,7 @@ var PLAYER = {
     if (PLAYER.alive) {
       UI.deathRetryText.visible = true;
       PLAYER.alive = false;
+      MUSIC.hit.play();
 
       UI.updateDeathCount();
 

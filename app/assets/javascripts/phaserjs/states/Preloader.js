@@ -61,7 +61,7 @@ Euphoria.Preloader.prototype = {
     this.load.tilemap('main_menu_map', 'assets/phaser_assets/maps/main_menu_map.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.tilemap('map_worldchooser', 'assets/phaser_assets/maps/world_chooser.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.tilemap('map_world1', 'assets/phaser_assets/maps/world1.json', null, Phaser.Tilemap.TILED_JSON);
-    // this.load.tilemap('map_world2', 'assets/phaser_assets/maps/world2.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.tilemap('map_world2', 'assets/phaser_assets/maps/world2.json', null, Phaser.Tilemap.TILED_JSON);
     // this.load.tilemap('map_world3', 'assets/phaser_assets/maps/world3.json', null, Phaser.Tilemap.TILED_JSON);
 
     // Background
@@ -122,12 +122,14 @@ Euphoria.Preloader.prototype = {
     this.load.spritesheet('pointer', 'assets/phaser_assets/temp/pointer.png', 20, 48);
     this.load.spritesheet('collectible', 'assets/phaser_assets/sprites/coin.png', 18, 18);
 
-    // Music
+    // Sounds
     this.load.audio('jump', 'assets/phaser_assets/sounds/jump.ogg');
     this.load.audio('click', 'assets/phaser_assets/sounds/button_click.ogg');
+    this.load.audio('collect', 'assets/phaser_assets/sounds/collect.ogg');
+    this.load.audio('hit', 'assets/phaser_assets/sounds/hit.ogg');
 
-    this.load.audio('intro', 'assets/phaser_assets/sounds/intro.ogg');
-    this.load.audio('intro_loop', 'assets/phaser_assets/sounds/intro_loop.ogg');
+    // this.load.audio('intro', 'assets/phaser_assets/sounds/intro.ogg');
+    // this.load.audio('intro_loop', 'assets/phaser_assets/sounds/intro_loop.ogg');
     this.load.audio('theme', 'assets/phaser_assets/sounds/theme.ogg');
 
     // "Silly Fun" Kevin MacLeod (incompetech.com)

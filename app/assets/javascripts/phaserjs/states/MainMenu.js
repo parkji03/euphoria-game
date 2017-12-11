@@ -59,12 +59,14 @@ Euphoria.MainMenu = function(game) {
 
 Euphoria.MainMenu.prototype = {
   create: function() {
+    MUSIC.create(this);
+    MUSIC.mainMenuTheme.play();
     // var intro = new Phaser.Sound(this, 'intro', 1, true);
     // intro.play();
-    this.intro = this.add.audio('bit_quest');
-    this.intro.loop = true;
-    this.intro.volume = 0.5;
-    this.intro.play();
+    // this.intro = this.add.audio('bit_quest');
+    // this.intro.loop = true;
+    // this.intro.volume = 0.5;
+    // this.intro.play();
 
     this.physics.startSystem(Phaser.Physics.ARCADE);
     this.physics.arcade.gravity.y = 2000;
@@ -295,13 +297,15 @@ Euphoria.MainMenu.prototype = {
     this.add.tween(UI.bottomText).to( { alpha: 0 }, 1100, Phaser.Easing.Linear.None, true, 0, 500, true);
 
     var gamePointer = this;
-    var introPointer = this.intro;
+    // var introPointer = this.intro;
 
     var menuEnter = this.input.keyboard.addKey(Phaser.KeyCode.ENTER);
     menuEnter.onDown.addOnce(function() {
-      gamePointer.sound.play('click');
-      introPointer.stop();
-      introPointer.destroy();
+      // gamePointer.sound.play('click');
+      MUSIC.click.play();
+      MUSIC.mainMenuTheme.stop();
+      // introPointer.stop();
+      // introPointer.destroy();
       gamePointer.state.start('WorldChooser');
     }, this);
   },
