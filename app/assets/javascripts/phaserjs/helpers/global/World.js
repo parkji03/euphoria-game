@@ -26,6 +26,15 @@ var WORLD = {
   signs: null,
   doors: null,
 
+  createPointer: function(game, door) {
+    var pointer = game.add.sprite(door.position.x + 43, door.position.y - 80, 'pointer');
+    pointer.scale.setTo(1.5);
+    pointer.animations.add('point', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 24, true);
+    pointer.animations.play('point');
+    pointer.visible = false;
+    return pointer;
+  },
+
   createDoor: function(game, x, y, toState, locked) {
     var door = this.doors.create(x, y, 'door');
     door.scale.setTo(3);

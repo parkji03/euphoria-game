@@ -4,6 +4,9 @@ Euphoria.World2 = function(game) {
 
 Euphoria.World2.prototype = {
   create: function() {
+    if (!MUSIC.world1Theme.isPlaying) {
+      MUSIC.world1Theme.play();
+    }
 
     // World
     WORLD2.create(this);
@@ -15,9 +18,8 @@ Euphoria.World2.prototype = {
     MOB.create(this);
 
     // Player
-    // PLAYER.create(this, 10, 614);
-    PLAYER.create(this, 2800, 100);
-
+    PLAYER.create(this, 10, 614);
+    // PLAYER.create(this, 2800, 100);
 
     // UI
     UI.create(this);

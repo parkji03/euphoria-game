@@ -17,6 +17,7 @@ var PLAYER = {
   keyD: null,
   keyE: null,
   keySpaceBar: null,
+  cursors: null,
 
   createGameKeys: function(game) {
     this.keyW = game.input.keyboard.addKey(Phaser.KeyCode.W);
@@ -24,6 +25,7 @@ var PLAYER = {
     this.keyD = game.input.keyboard.addKey(Phaser.KeyCode.D);
     this.keyE = game.input.keyboard.addKey(Phaser.KeyCode.E);
     this.keySpaceBar = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
+    this.cursors = game.input.keyboard.createCursorKeys();
   },
 
   createEmote: function(game) {
@@ -184,11 +186,11 @@ var PLAYER = {
 
     // Left and right animations
     if (!UI.menuTriggered && !this.stop) {
-      if (this.keyA.isDown && this.alive) {
+      if ((this.cursors.left.isDown || this.keyA.isDown) && this.alive) {
         this.sprite.body.velocity.x = -1 * this.velocity;
         this.sprite.animations.play('left-run');
       }
-      else if (this.keyD.isDown && this.alive) {
+      else if ((this.cursors.right.isDown || this.keyD.isDown) && this.alive) {
         this.sprite.body.velocity.x = this.velocity;
         this.sprite.animations.play('right-run');
       }
@@ -200,8 +202,8 @@ var PLAYER = {
 
       // Jump animations
       // NOTE: change this for production/development
-      // if (PLAYER.keyW.isDown && PLAYER.alive) {
-      if (this.keyW.isDown && this.alive && standing) {
+      if (PLAYER.keyW.isDown && PLAYER.alive) {
+      // if ((this.cursors.up.isDown || this.keyW.isDown) && this.alive && standing) {
         this.sprite.body.velocity.y = this.jump;
         // game.sound.play('jump');
         MUSIC.jump.play();
