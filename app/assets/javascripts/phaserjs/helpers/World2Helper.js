@@ -21,9 +21,16 @@ var WORLD2 = {
 
   createClouds: function(game) {
     WORLD.clouds = game.add.group();
-    var cloud1 = WORLD.createCloud(game, 500, 500, WORLD.clouds);
-    var cloud2 = WORLD.createCloud(game, 600, 600, WORLD.clouds);
-    var cloud3 = WORLD.createCloud(game, 700, 700, WORLD.clouds);
+    var cloud1 = WORLD.createCloud(game, 920, 700, WORLD.clouds);
+    WORLD.addCloudMotion(game, cloud1, 920, 700, 3000, "Sine.easeIn", "Sine.easeOut", 470, 0);
+    var cloud2 = WORLD.createCloud(game, 1270, 700, WORLD.clouds);
+    WORLD.addCloudMotion(game, cloud2, 1270, 700, 3000, "Sine.easeIn", "Sine.easeOut", -470, 0);
+    //
+    // var cloud3 = WORLD.createCloud(game, 450, 200, WORLD.clouds);
+    // WORLD.addCloudMotion(game, cloud3, 450, 200, 5000, "Sine.easeIn", "Sine.easeOut", -470, 0);
+
+    var cloud3 = WORLD.createCloud(game, 1740, 200, WORLD.clouds);
+    WORLD.addCloudMotion(game, cloud3, 1740, 200, 6000, "Sine.easeIn", "Sine.easeOut", 1270, 0);
     // var cloud4 = WORLD.createCloud(game, 500, 500, WORLD.clouds);
     // var cloud5 = WORLD.createCloud(game, 500, 500, WORLD.clouds);
 
@@ -82,18 +89,25 @@ var WORLD2 = {
 };
 
 var WORLD2_INTERACTION = {
+  // trollGummyBearTriggered: false,
+
+  // createTrollGummyBear: function(game) {
+  //   MOB.createGummyBear(game, 300, 50, 'red_gummy_bear', MOB.gummyBears, false, 'left', false, true);
+  // },
+
   createHoneycombs: function(game) {
 
   },
 
   createGumballMachines: function(game) {
     MOB.gumballMachines = game.add.group();
-    // MOB.createGumballMachine(game, 1614, 50, MOB.gumballMachines, 'left', true);
-    // MOB.createGumballMachine(game, 1614, 146, MOB.gumballMachines, 'left', true);
-    // MOB.createGumballMachine(game, 1614, 242, MOB.gumballMachines, 'left', true);
-    // MOB.createGumballMachine(game, 1614, 338, MOB.gumballMachines, 'left', true);
-    // MOB.createGumballMachine(game, 1614, 434, MOB.gumballMachines, 'left', true);
-    // MOB.createGumballMachine(game, 1614, 530, MOB.gumballMachines, 'left', true);
+    MOB.createGumballMachine(game, 1936, 626, MOB.gumballMachines, 'left', false);
+    // MOB.createGumballMachine(game, 1514, 266, MOB.gumballMachines, 'right', true);
+    // MOB.createGumballMachine(game, 1719, 266, MOB.gumballMachines, 'left', true);
+    // MOB.createGumballMachine(game, 1426, 386, MOB.gumballMachines, 'right', true);
+    // MOB.createGumballMachine(game, 1808, 386, MOB.gumballMachines, 'left', true);
+    // MOB.createGumballMachine(game, 1514, 506, MOB.gumballMachines, 'right', true);
+    // MOB.createGumballMachine(game, 1719, 506, MOB.gumballMachines, 'left', true);
 
     // MOB.createGumballMachine(game, 1650, 50, MOB.gumballMachines, 'right', true);
     // MOB.createGumballMachine(game, 1650, 146, MOB.gumballMachines, 'right', true);
@@ -102,7 +116,7 @@ var WORLD2_INTERACTION = {
     // MOB.createGumballMachine(game, 1650, 434, MOB.gumballMachines, 'right', true);
     // MOB.createGumballMachine(game, 1650, 530, MOB.gumballMachines, 'right', true);
 
-    // MOB.gumballMachines.children[0].triggered = true;
+    MOB.gumballMachines.children[0].triggered = true;
     // MOB.gumballMachines.children[1].triggered = true;
     // MOB.gumballMachines.children[2].triggered = true;
     // MOB.gumballMachines.children[3].triggered = true;
@@ -121,18 +135,28 @@ var WORLD2_INTERACTION = {
   createGummyBears: function(game) {
     MOB.gummyBears = game.add.group();
 
+    // Idle
     MOB.createGummyBear(game, 100, 100, 'green_gummy_bear', MOB.gummyBears, false, 'left', false, true);
+    // MOB.createGummyBear(game, 157, -600, 'red_gummy_bear', MOB.gummyBears, false, 'left', false, true);
+
+
+    // On cloud shooting
+    MOB.createGummyBear(game, 1739, 130, 'orange_gummy_bear', MOB.gummyBears, false, 'left', true, true);
+
   },
 
   create: function(game) {
+    // this.trollGummyBearTriggered = false;
     // this.createHoneycombs(game);
     this.createGumballMachines(game);
     this.createGummyBears(game);
-
-
   },
 
   update: function(game) {
+    // if (!this.trollGummyBearTriggered && PLAYER.sprite.body.position.y < 612) {
+    //   this.createTrollGummyBear(game);
+    //   this.trollGummyBearTriggered = true;
+    // }
     // WORLD.updateHoneycombMovement(game);
     // WORLD.enableHoneycombCollision(game);
 

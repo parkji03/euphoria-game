@@ -15,7 +15,9 @@ Euphoria.World2.prototype = {
     MOB.create(this);
 
     // Player
-    PLAYER.create(this, 10, 614);
+    // PLAYER.create(this, 10, 614);
+    PLAYER.create(this, 2800, 100);
+
 
     // UI
     UI.create(this);

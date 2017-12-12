@@ -242,7 +242,7 @@ var MOB = {
         gumballMachine.fireRate = gumballMachine.initFireRate - (1 - UI.happyBarPercent) * 1700;
         if (game.time.now > gumballMachine.nextFire && gumballMachine.bullets.countDead() > 0) {
           gumballMachine.nextFire = game.time.now + gumballMachine.fireRate;
-          console.log(gumballMachine.nextFire);
+          // console.log(gumballMachine.nextFire);
           if (gumballMachine.randomize) {
             gumballMachine.nextFire = game.time.now + getRandomInt(950, 1250);
           }
