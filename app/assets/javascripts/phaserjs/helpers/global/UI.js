@@ -117,6 +117,8 @@ var UI = {
     this.menu4.inputEnabled = true;
     this.menu4.events.onInputDown.addOnce(function() {
       UI.menuTriggered = false;
+      // game.sound.play('click');
+      MUSIC.click.play();
       menuBackdrop.kill();
       UI.menuOverlay.kill();
       UI.menu1.kill();
@@ -124,6 +126,9 @@ var UI = {
       UI.menu3.kill();
       UI.menu4.kill();
       UI.menu5.kill();
+
+      MUSIC.world1Theme.stop();
+      MUSIC.worldChooserTheme.stop();
 
       game.state.start('MainMenu');
     }, game);
@@ -135,6 +140,8 @@ var UI = {
     this.menu5.inputEnabled = true;
     this.menu5.events.onInputDown.addOnce(function() {
       UI.menuTriggered = false;
+      // game.sound.play('click');
+      MUSIC.click.play();
       menuBackdrop.kill();
       UI.menuOverlay.kill();
       UI.menu1.kill();
@@ -319,8 +326,8 @@ var UI = {
     this.happyBarProgress = game.add.image(160, 25, 'happy_bar_progress');
     this.happyBarProgress.scale.setTo(2);
     this.happyBarProgress.fixedToCamera = true;
-    // this.happyBarProgress.width = 396;
     this.happyBarProgressLength = this.happyBarProgress.width;
+    // this.happyBarProgress.width = 1;
     this.happyBarTenth = this.happyBarProgressLength / 10;
     this.happyBarHundredth = this.happyBarTenth / 10;
     var happyBarProgressPointer = this.happyBarProgress;
@@ -369,6 +376,8 @@ var UI = {
     // Trigger menu button
     this.menuButtonUI = game.add.button(1204, 10, 'menu_button_ui', function() {
       if (!UI.menuTriggered) {
+        // game.sound.play('click');
+        MUSIC.click.play();
         UI.createMenu(game);
       }
     }, game);

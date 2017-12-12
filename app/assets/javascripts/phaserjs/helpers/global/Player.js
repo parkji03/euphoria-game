@@ -1,8 +1,10 @@
 var PLAYER = {
   // Values
-  velocity: 500,
+  velocity: 420,
   jump: -700,
   alive: true,
+  direction: 'right',
+  stop: false,
 
   // Sprite
   sprite: null,
@@ -127,19 +129,23 @@ var PLAYER = {
 
   create: function(game, x, y) {
     this.createGameKeys(game);
+    this.stop = false;
     // Create sprite
     this.alive = true;
-    this.sprite = game.add.sprite(x, y, 'phori');
+    this.sprite = game.add.sprite(x, y, 'barry');
     this.sprite.scale.setTo(WORLD.scale);
+    // this.sprite.body.maxVelocity = new Phaser.Point(500, 500);
+    // this.sprite.tint = 0x444444;
 
     // Add animations
-    this.sprite.animations.add('left-fall', [35, 34], 36, true).speed = 10;
-    this.sprite.animations.add('left-jump', [33, 32], 36, true).speed = 10;
-    this.sprite.animations.add('right-run', [12, 13, 14, 15, 16, 17, 18, 19], 36, true).speed = 13;
-    this.sprite.animations.add('idle', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 36, true).speed = 13;
-    this.sprite.animations.add('left-run', [27, 26, 25, 24, 23, 22, 21, 20], 36, true).speed = 13;
-    this.sprite.animations.add('right-jump', [28, 29], 36, true).speed = 10;
-    this.sprite.animations.add('right-fall', [30, 31], 36, true).speed = 10;
+    this.sprite.animations.add('left-fall', [35, 34], 47, true).speed = 10;
+    this.sprite.animations.add('left-jump', [33, 32], 47, true).speed = 10;
+    this.sprite.animations.add('right-run', [12, 13, 14, 15, 16, 17, 18, 19], 47, true).speed = 13;
+    this.sprite.animations.add('idle', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 47, true).speed = 13;
+    this.sprite.animations.add('left-run', [27, 26, 25, 24, 23, 22, 21, 20], 47, true).speed = 13;
+    this.sprite.animations.add('right-jump', [28, 29], 47, true).speed = 10;
+    this.sprite.animations.add('right-fall', [30, 31], 47, true).speed = 10;
+    this.sprite.animations.add('death', [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46], 47, true).speed = 13;
 
     // Camera movement
     game.physics.arcade.enable(this.sprite);
@@ -177,7 +183,7 @@ var PLAYER = {
     var standing = this.sprite.body.touching.down && onCloud || this.sprite.body.onFloor();
 
     // Left and right animations
-    if (!UI.menuTriggered) {
+    if (!UI.menuTriggered && !this.stop) {
       if (this.keyA.isDown && this.alive) {
         this.sprite.body.velocity.x = -1 * this.velocity;
         this.sprite.animations.play('left-run');
@@ -187,7 +193,9 @@ var PLAYER = {
         this.sprite.animations.play('right-run');
       }
       else {
-        this.sprite.animations.play('idle');
+        if (this.alive) {
+          this.sprite.animations.play('idle');
+        }
       }
 
       // Jump animations
@@ -195,6 +203,8 @@ var PLAYER = {
       // if (PLAYER.keyW.isDown && PLAYER.alive) {
       if (this.keyW.isDown && this.alive && standing) {
         this.sprite.body.velocity.y = this.jump;
+        // game.sound.play('jump');
+        MUSIC.jump.play();
         if (this.sprite.body.velocity.y > 0) {
           this.sprite.animations.play('right-jump');
         }
@@ -205,15 +215,17 @@ var PLAYER = {
 
       // Falling animations
       if (this.sprite.body.velocity.y > 0) {
-        if (this.sprite.body.velocity.x < 0) {
-          this.sprite.animations.play('left-fall');
-        }
-        else {
-          this.sprite.animations.play('right-fall');
+        if (this.alive) {
+
+          if (this.sprite.body.velocity.x < 0) {
+            this.sprite.animations.play('left-fall');
+          }
+          else {
+            this.sprite.animations.play('right-fall');
+          }
         }
       }
     }
-
 
     // Emote
     this.emote.position.x = this.sprite.position.x;
@@ -227,11 +239,13 @@ var PLAYER = {
     if (PLAYER.alive) {
       UI.deathRetryText.visible = true;
       PLAYER.alive = false;
+      MUSIC.hit.play();
 
       UI.updateDeathCount();
 
       //emote
       this.deathEmote.visible = true;
+      PLAYER.sprite.animations.play('death', 13, false);
 
       PLAYER.keySpaceBar.onDown.add(function() {
         if (!UI.menuTriggered) {

@@ -24,10 +24,50 @@ var WORLD = {
   honeycombs: null,
 
   signs: null,
+  doors: null,
+
+  createDoor: function(game, x, y, toState, locked) {
+    var door = this.doors.create(x, y, 'door');
+    door.scale.setTo(3);
+    door.body.allowGravity = false;
+    door.animations.add('open', [0, 1, 2, 3, 4], 5, true).onComplete.add(function() {
+      // console.log(door.startState);
+      // TODO: Do something when door opens
+    });
+    door.animations.frame = 0;
+    door.state = toState;
+    door.locked = locked;
+  },
+
+  updateDoorCollision: function(game) {
+    game.physics.arcade.overlap(PLAYER.sprite, WORLD.doors, function(player, door) {
+      if (door.animations.currentAnim.frame === 4) {
+        game.time.events.add(500, function() {
+          MUSIC.worldChooserTheme.stop();
+          // MUSIC.world1Theme.stop();
+          game.state.start(door.state);
+        });
+      }
+      else {
+        if (door.locked) {
+          UI.showBottomOverlay("This door is locked.");
+        }
+        else {
+          // Door is unlocked... so player can press E to travel to world
+          UI.showBottomOverlay("Press E to open the door.");
+          if (PLAYER.keyE.isDown) {
+            PLAYER.stop = true;
+            PLAYER.sprite.animations.play('idle');
+            door.animations.play('open', 8, false);
+          }
+        }
+      }
+    }, null, game);
+  },
 
   createSign: function(game, x, y, group, text) {
     var sign = group.create(x, y, 'sign');
-    sign.scale.setTo(WORLD.scale);
+    sign.scale.setTo(1.2);
     sign.body.allowGravity = false;
     sign.signText = text;
     // sign.signColor = color;
@@ -35,7 +75,7 @@ var WORLD = {
     // sign.signMax = max;
   },
 
-  updateSignCollision(game) {
+  updateSignCollision: function(game) {
     game.physics.arcade.overlap(PLAYER.sprite, this.signs, function(player, sign) {
       UI.showBottomOverlay(sign.signText);
     }, null, game);
@@ -49,7 +89,7 @@ var WORLD = {
     honeycomb.body.immovable = true;
 
     honeycomb.origin = honeycomb.position.y;
-    honeycomb.floatSpeed = (Math.floor(Math.random() * 7) + 1) / 10.0;
+    honeycomb.floatSpeed = (Math.floor(Math.random() * 4) + 1) / 10.0;
     var initDirection = Math.floor(Math.random() * 2);
     if (initDirection === 1) {
       honeycomb.floatDirection = 1;
@@ -73,6 +113,7 @@ var WORLD = {
 
   enableHoneycombCollision: function(game) {
     game.physics.arcade.overlap(PLAYER.sprite, this.honeycombs, function(player, honeycomb) {
+      MUSIC.collect.play();
       honeycomb.kill();
       UI.scoreCount++;
       UI.scoreText.text = UI.scoreCount.pad(3);
@@ -187,8 +228,26 @@ var WORLD = {
   },
 
   enableSpikeCollision: function(game) {
-    this.map.setTileIndexCallback(this.spikeID, function(sprite) {
-      if (sprite.key === 'phori') {
+    this.map.setTileIndexCallback(46, function(sprite) {
+      if (sprite.key === 'barry') {
+        PLAYER.death(game);
+      }
+    }, game, WORLD.worldLayer);
+
+    this.map.setTileIndexCallback(47, function(sprite) {
+      if (sprite.key === 'barry') {
+        PLAYER.death(game);
+      }
+    }, game, WORLD.worldLayer);
+
+    this.map.setTileIndexCallback(48, function(sprite) {
+      if (sprite.key === 'barry') {
+        PLAYER.death(game);
+      }
+    }, game, WORLD.worldLayer);
+
+    this.map.setTileIndexCallback(49, function(sprite) {
+      if (sprite.key === 'barry') {
         PLAYER.death(game);
       }
     }, game, WORLD.worldLayer);

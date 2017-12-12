@@ -1,0 +1,1 @@
+var CANVAS={create:function(){},update:function(){}};

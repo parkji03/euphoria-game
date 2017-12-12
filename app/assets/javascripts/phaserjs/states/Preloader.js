@@ -61,7 +61,7 @@ Euphoria.Preloader.prototype = {
     this.load.tilemap('main_menu_map', 'assets/phaser_assets/maps/main_menu_map.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.tilemap('map_worldchooser', 'assets/phaser_assets/maps/world_chooser.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.tilemap('map_world1', 'assets/phaser_assets/maps/world1.json', null, Phaser.Tilemap.TILED_JSON);
-    // this.load.tilemap('map_world2', 'assets/phaser_assets/maps/world2.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.tilemap('map_world2', 'assets/phaser_assets/maps/world2.json', null, Phaser.Tilemap.TILED_JSON);
     // this.load.tilemap('map_world3', 'assets/phaser_assets/maps/world3.json', null, Phaser.Tilemap.TILED_JSON);
 
     // Background
@@ -82,6 +82,7 @@ Euphoria.Preloader.prototype = {
 
     // Sprites
     this.load.spritesheet('phori', 'assets/phaser_assets/sprites/phori.png', 23, 30);
+    this.load.spritesheet('barry', 'assets/phaser_assets/sprites/barry.png', 23, 30);
     this.load.spritesheet('gumball_machine', 'assets/phaser_assets/sprites/gumball_machine.png', 25, 33);
     this.load.spritesheet('red_gumball', 'assets/phaser_assets/sprites/projectiles/red_projectile.png', 8, 8);
     this.load.spritesheet('blue_gumball', 'assets/phaser_assets/sprites/projectiles/blue_projectile.png', 8, 8);
@@ -91,7 +92,13 @@ Euphoria.Preloader.prototype = {
     this.load.spritesheet('pink_gumball', 'assets/phaser_assets/sprites/projectiles/pink_projectile.png', 8, 8);
     this.load.spritesheet('gumball', 'assets/phaser_assets/sprites/gumball.png', 64, 64);
     this.load.spritesheet('honeycomb', 'assets/phaser_assets/sprites/food/food_18.png', 16, 16);
-    this.load.spritesheet('sign', 'assets/phaser_assets/sprites/food/food_16.png', 16, 16);
+    this.load.image('sign', 'assets/phaser_assets/sprites/sign.png');
+    this.load.spritesheet('red_gummy_bear', 'assets/phaser_assets/sprites/red_gummy_bear.png', 30, 40);
+    this.load.spritesheet('blue_gummy_bear', 'assets/phaser_assets/sprites/blue_gummy_bear.png', 30, 40);
+    this.load.spritesheet('yellow_gummy_bear', 'assets/phaser_assets/sprites/yellow_gummy_bear.png', 30, 40);
+    this.load.spritesheet('green_gummy_bear', 'assets/phaser_assets/sprites/green_gummy_bear.png', 30, 40);
+    this.load.spritesheet('orange_gummy_bear', 'assets/phaser_assets/sprites/orange_gummy_bear.png', 30, 40);
+    this.load.spritesheet('door', 'assets/phaser_assets/sprites/door.png', 39, 50);
 
     // Interactions
     this.load.spritesheet('emoticons', 'assets/phaser_assets/interactions/emoticons.png', 16, 16);
@@ -112,16 +119,41 @@ Euphoria.Preloader.prototype = {
 
     // Temp
     this.load.image('wooden_sign', 'assets/phaser_assets/temp/wooden_sign.png');
-    this.load.spritesheet('door', 'assets/phaser_assets/temp/door_39x50.png', 39, 50);
     this.load.spritesheet('pointer', 'assets/phaser_assets/temp/pointer.png', 20, 48);
     this.load.spritesheet('collectible', 'assets/phaser_assets/sprites/coin.png', 18, 18);
 
+    // Sounds
+    this.load.audio('jump', 'assets/phaser_assets/sounds/jump.ogg');
+    this.load.audio('click', 'assets/phaser_assets/sounds/button_click.ogg');
+    this.load.audio('collect', 'assets/phaser_assets/sounds/collect.ogg');
+    this.load.audio('hit', 'assets/phaser_assets/sounds/hit.ogg');
+
+    // this.load.audio('intro', 'assets/phaser_assets/sounds/intro.ogg');
+    // this.load.audio('intro_loop', 'assets/phaser_assets/sounds/intro_loop.ogg');
+    this.load.audio('theme', 'assets/phaser_assets/sounds/theme.ogg');
+
+    // "Silly Fun" Kevin MacLeod (incompetech.com)
+    // Licensed under Creative Commons: By Attribution 3.0 License
+    // http://creativecommons.org/licenses/by/3.0/
+    this.load.audio('silly_fun', 'assets/phaser_assets/sounds/silly_fun.mp3');
+
+    // "Bit Quest" Kevin MacLeod (incompetech.com)
+    // Licensed under Creative Commons: By Attribution 3.0 License
+    // http://creativecommons.org/licenses/by/3.0/
+    this.load.audio('bit_quest', 'assets/phaser_assets/sounds/bit_quest.mp3');
+
+    // Rhinoceros (Boss fight?)
 
 
 
 
 
-    // this.load.spritesheet('player', 'assets/phaser_assets/sprites/temp_player.png', 23, 38);
+
+
+
+
+
+
     this.load.spritesheet('dino_red', 'assets/phaser_assets/sprites/dinos/dino_red.png', 18, 18);
     this.load.spritesheet('dino_blue', 'assets/phaser_assets/sprites/dinos/dino_blue.png', 18, 18);
     this.load.spritesheet('dino_yellow', 'assets/phaser_assets/sprites/dinos/dino_yellow.png', 18, 18);
@@ -155,10 +187,10 @@ Euphoria.Preloader.prototype = {
   //	If you don't have any music in your game then put the game.state.start line into the create function and delete
   //	the update function completely.
 
-  // if (this.cache.isSoundDecoded('titleMusic') && this.ready == false)
-  // {
-  //   this.ready = true;
-  //   this.state.start('MainMenu');
-  // }
+    if (this.cache.isSoundDecoded('bit_quest') && this.ready == false)
+    {
+      this.ready = true;
+      this.state.start('MainMenu');
+    }
   }
 };

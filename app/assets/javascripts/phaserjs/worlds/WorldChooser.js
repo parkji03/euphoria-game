@@ -4,6 +4,7 @@ Euphoria.WorldChooser = function(game) {
 
 Euphoria.WorldChooser.prototype = {
   create: function() {
+    // this.sound.play('theme');
     // World
     WORLD_CHOOSER.create(this);
 
