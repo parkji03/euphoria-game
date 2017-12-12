@@ -99,6 +99,7 @@ Euphoria.Preloader.prototype = {
     this.load.spritesheet('green_gummy_bear', 'assets/phaser_assets/sprites/green_gummy_bear.png', 30, 40);
     this.load.spritesheet('orange_gummy_bear', 'assets/phaser_assets/sprites/orange_gummy_bear.png', 30, 40);
     this.load.spritesheet('door', 'assets/phaser_assets/sprites/door.png', 39, 50);
+    this.load.spritesheet('rainbow', 'assets/phaser_assets/sprites/rainbow.png', 30, 20);
 
     // Interactions
     this.load.spritesheet('emoticons', 'assets/phaser_assets/interactions/emoticons.png', 16, 16);

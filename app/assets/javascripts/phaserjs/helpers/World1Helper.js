@@ -17,7 +17,7 @@ var WORLD1 = {
     WORLD.doors = game.add.group();
     WORLD.doors.enableBody = true;
 
-    WORLD.createDoor(game, 5379, 475, 'World2', false);
+    WORLD.createDoor(game, 5379, 475, 'World2', true);
   },
 
   createClouds: function(game) {

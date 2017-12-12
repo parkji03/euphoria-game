@@ -101,8 +101,11 @@ var WORLD2_INTERACTION = {
 
   createGumballMachines: function(game) {
     MOB.gumballMachines = game.add.group();
-    MOB.createGumballMachine(game, 1936, 626, MOB.gumballMachines, 'left', false);
-    // MOB.createGumballMachine(game, 1514, 266, MOB.gumballMachines, 'right', true);
+    MOB.createGumballMachine(game, 2050, 626, MOB.gumballMachines, 'left', false);
+
+
+    // 2nd part
+    MOB.createGumballMachine(game, 3486, 458, MOB.gumballMachines, 'left', false);
     // MOB.createGumballMachine(game, 1719, 266, MOB.gumballMachines, 'left', true);
     // MOB.createGumballMachine(game, 1426, 386, MOB.gumballMachines, 'right', true);
     // MOB.createGumballMachine(game, 1808, 386, MOB.gumballMachines, 'left', true);
@@ -117,7 +120,7 @@ var WORLD2_INTERACTION = {
     // MOB.createGumballMachine(game, 1650, 530, MOB.gumballMachines, 'right', true);
 
     MOB.gumballMachines.children[0].triggered = true;
-    // MOB.gumballMachines.children[1].triggered = true;
+    MOB.gumballMachines.children[1].triggered = true;
     // MOB.gumballMachines.children[2].triggered = true;
     // MOB.gumballMachines.children[3].triggered = true;
     // MOB.gumballMachines.children[4].triggered = true;
@@ -138,7 +141,10 @@ var WORLD2_INTERACTION = {
     // Idle
     MOB.createGummyBear(game, 100, 100, 'green_gummy_bear', MOB.gummyBears, false, 'left', false, true);
     // MOB.createGummyBear(game, 157, -600, 'red_gummy_bear', MOB.gummyBears, false, 'left', false, true);
+    MOB.createGummyBear(game, 3566, 540, 'red_gummy_bear', MOB.gummyBears, false, 'left', false, true);
 
+    // Moving
+    MOB.createGummyBear(game, 2988, 560, 'green_gummy_bear', MOB.gummyBears, true, null, false, true);
 
     // On cloud shooting
     MOB.createGummyBear(game, 1739, 130, 'orange_gummy_bear', MOB.gummyBears, false, 'left', true, true);
