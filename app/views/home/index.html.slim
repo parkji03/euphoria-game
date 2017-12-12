@@ -16,23 +16,37 @@
 #arrow
   a[href="#down-arrow"]
     img#down-arrow[ src="/assets/arrow.png"]
-  a[href="/play"]  
+  a[href="/play"]
     img#play[ src="assets/play_button.png"]
 
 .awards
   .price-banner
 
 .trailer
-  #trailer-video
+  / #trailer-video
+  //uncomment if you want to add a Youtube emmeded video later
+  .game-info
+    .text-box.border-right
 
-.gifs
-  .row
-    .col-md-4.grid
-      .gif-container.primary
-        img[src="/assets/rectangle.png" data-type="idle"]
-    .col-md-4.grid
-      .gif-container.secondary
-        img#game-gif[src="/assets/rectangle.png" data-type="run"]
-    .col-md-4.grid
-      .gif-container.primary
-        img#game-gif[src="/assets/rectangle.png" data-type="idle"]
+      p
+        span.meet-barry
+          | Meet Barry!
+        |  Yep, just your average guy in a bear suit. What's more to explain about that? Barry can teach you a lot about life.
+        |  Like how sometimes all you need is a mysterious door to open, a nice
+    .text-box.border-left
+      p
+        | peice of honeycomb to suck on, and a whole lot of gummy bears.
+        |  But be warned, too much of a good thing can be...
+        |  deadly. Besides, how long can the euphoria of life really last?
+
+/ .gifs
+/   .row
+/     .col-md-4.grid
+/       .gif-container.primary
+/         img[src="/assets/rectangle.png" data-type="idle"]
+/     .col-md-4.grid
+/       .gif-container.secondary
+/         img#game-gif[src="/assets/rectangle.png" data-type="run"]
+/     .col-md-4.grid
+/       .gif-container.primary
+/         img#game-gif[src="/assets/rectangle.png" data-type="idle"]
