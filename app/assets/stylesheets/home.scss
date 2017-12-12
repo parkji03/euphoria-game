@@ -140,25 +140,20 @@
   100% { background-position: 0px -1800px; }
 }
 
-.trailer{
-  height: 50%;
+.game-info {
+  height: 100%;
   background-color: $dark-dirt;
   text-align: center;
-}
-
-.game-info {
   color:  $main;
   font-size: 2.25em;
   width: auto;
   margin:auto;
-
 }
 
 .text-box {
   float: left;
   width: 50%;
   margin: 0 auto;
-
 }
 
 .meet-barry {
@@ -180,6 +175,24 @@
 #trailer-video{
   margin: auto;
 }
+
+.screenshot{
+  width: 100%;
+  height:auto;
+  margin-bottom: 5%;
+
+  img {
+    height: inherit;
+    width: inherit;
+    margin: auto;
+    margin-top: 10%;
+    width: 1000px;
+    height: 624px;
+
+  }
+
+}
+
 
 .gifs {
   background-color: $dark-dirt;
