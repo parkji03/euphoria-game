@@ -29,3 +29,23 @@
 
 .main
   #game-container
+
+
+javascript:
+  // window.onload = function() {
+  //   if(!window.location.hash) {
+  //       window.location = window.location + '#loaded';
+  //       window.location.reload();
+  //   }
+  // }
+  $(document).ready(function(){
+    //Check if the current URL contains '#'
+    if(document.URL.indexOf("#")==-1){
+        // Set the URL to whatever it was plus "#".
+        url = document.URL+"#";
+        location = "#";
+
+        //Reload the page
+        location.reload(true);
+    }
+  });
