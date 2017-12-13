@@ -202,8 +202,8 @@ var PLAYER = {
 
       // Jump animations
       // NOTE: change this for production/development
-      if (PLAYER.keyW.isDown && PLAYER.alive) {
-      // if ((this.cursors.up.isDown || this.keyW.isDown) && this.alive && standing) {
+      // if (PLAYER.keyW.isDown && PLAYER.alive) {
+      if ((this.cursors.up.isDown || this.keyW.isDown) && this.alive && standing) {
         this.sprite.body.velocity.y = this.jump;
         // game.sound.play('jump');
         MUSIC.jump.play();

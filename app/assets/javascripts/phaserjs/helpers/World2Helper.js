@@ -24,7 +24,7 @@ var WORLD2 = {
     WORLD.doors.enableBody = true;
 
     // WORLD.createDoor(game, 3846, 475, 'World3', true);
-    WORLD.createDoor(game, 230, 284, 'World3', false);
+    WORLD.createDoor(game, 230, 284, 'World3', true);
     // console.log(WORLD.doors.children)
 
   },
