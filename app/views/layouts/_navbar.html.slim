@@ -16,7 +16,8 @@ nav#euphoria-navbar.navbar.navbar-default.navbar-fixed-top.transition
         / li = link_to "Some random link", '#', class: "euphoria-link transition"
         / li = link_to "What do I put here?", '#', class: "euphoria-link transition"
         / li = link_to "I dunno, something I guess", '#', class: "euphoria-link transition"
-        - unless current_user
-          li = link_to "Sign in", '#', class: "euphoria-link transition", 'data-toggle': 'modal', 'data-target': '#sign-in-modal'
-        - else
-          li = link_to "Sign out", destroy_user_session_path, method: :delete, class: "euphoria-link transition"
+        
+        / - unless current_user
+        /   li = link_to "Sign in", '#', class: "euphoria-link transition", 'data-toggle': 'modal', 'data-target': '#sign-in-modal'
+        / - else
+        /   li = link_to "Sign out", destroy_user_session_path, method: :delete, class: "euphoria-link transition"
