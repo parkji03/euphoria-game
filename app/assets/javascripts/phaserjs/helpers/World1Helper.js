@@ -13,11 +13,16 @@ var WORLD1 = {
     // WORLD.createSign(game, 295, 526, WORLD.signs, "Collect honeycombs to refresh the Sweet-o-Meter.")
   },
 
+  createPointers: function(game) {
+    WORLD.doors.children[0].pointer = WORLD.createPointer(game, WORLD.doors.children[0]);
+    WORLD.doors.children[0].pointer.visible = true;
+  },
+
   createDoors: function(game) {
     WORLD.doors = game.add.group();
     WORLD.doors.enableBody = true;
 
-    WORLD.createDoor(game, 5379, 475, 'World2', true);
+    WORLD.createDoor(game, 5379, 475, 'World2', false);
   },
 
   createClouds: function(game) {
@@ -85,6 +90,7 @@ var WORLD1 = {
     this.createClouds(game);
     this.createSigns(game);
     this.createDoors(game);
+    this.createPointers(game);
   },
 
   update: function(game) {

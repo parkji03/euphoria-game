@@ -2,7 +2,7 @@ var WORLD_CHOOSER = {
   // doors: null,
   door1Locked: false,
   // TODO: Change for production
-  door2Locked: true,
+  door2Locked: false,
   door3Locked: true,
 
   gc1: null,
@@ -44,19 +44,10 @@ var WORLD_CHOOSER = {
 
   },
 
-  createPointer: function(game, door) {
-    var pointer = game.add.sprite(door.position.x + 43, door.position.y - 80, 'pointer');
-    pointer.scale.setTo(1.5);
-    pointer.animations.add('point', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 24, true);
-    pointer.animations.play('point');
-    pointer.visible = false;
-    return pointer;
-  },
-
   createPointers: function(game) {
-    WORLD.doors.children[0].pointer = this.createPointer(game, WORLD.doors.children[0]);
-    WORLD.doors.children[1].pointer = this.createPointer(game, WORLD.doors.children[1]);
-    WORLD.doors.children[2].pointer = this.createPointer(game, WORLD.doors.children[2]);
+    WORLD.doors.children[0].pointer = WORLD.createPointer(game, WORLD.doors.children[0]);
+    WORLD.doors.children[1].pointer = WORLD.createPointer(game, WORLD.doors.children[1]);
+    WORLD.doors.children[2].pointer = WORLD.createPointer(game, WORLD.doors.children[2]);
   },
 
   create: function(game) {
