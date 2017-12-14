@@ -35,6 +35,14 @@ var UI = {
     strokeThickness: 6
   },
 
+  creditStyle: {
+    font: "20px 8bit_wonder",
+    fill: "#FFF",
+    align: 'center',
+    stroke: '#000000',
+    strokeThickness: 6
+  },
+
   // Labels
   deathCounterText: null,
   deathCount: 0,
@@ -92,6 +100,48 @@ var UI = {
     this.menu1.inputEnabled = true;
     this.menu1.events.onInputDown.add(function() {
       // TODO: trigger an event
+      MUSIC.click.play();
+      // menuBackdrop.kill();
+      UI.menuOverlay.kill();
+      UI.menu1.kill();
+      UI.menu2.kill();
+      UI.menu3.kill();
+      UI.menu4.kill();
+      UI.menu5.kill();
+
+      var text1 = game.add.text(100, 120, 'Game: Ji', UI.creditStyle);
+      var text2 = game.add.text(100, 150, 'Art: Brandon', UI.creditStyle);
+      var text3 = game.add.text(100, 180, 'Music: Chase Dessauer', UI.creditStyle);
+
+      var text4 = game.add.text(100, 300, "Silly Fun - Kevin MacLeod (incompetech.com)", UI.creditStyle);
+      var text5 = game.add.text(100, 330, "Bit Quest - Kevin MacLeod (incompetech.com)", UI.creditStyle);
+      var text6 = game.add.text(100, 360, "Licensed under Creative Commons: By Attribution 3.0 License", UI.creditStyle);
+      var text7 = game.add.text(100, 390, "http://creativecommons.org/licenses/by/3.0/", UI.creditStyle);
+
+      // NOTE: closes about section
+      var text8 = game.add.text(100, 500, "Close", UI.creditStyle);
+      text8.inputEnabled = true;
+      text8.events.onInputDown.add(function() {
+        menuBackdrop.kill();
+        UI.menuTriggered = false;
+        MUSIC.click.play();
+        text1.kill();
+        text2.kill();
+        text3.kill();
+        text4.kill();
+        text5.kill();
+        text6.kill();
+        text7.kill();
+        text8.kill();
+      }, game);
+
+      // var text2 = game.add.text(0, 0, 'Music: ', this.fontStyle1);
+      // var text3 = game.add.text(0, 0, 'Music: ', this.fontStyle1);
+      // var text4 = game.add.text(0, 0, 'Music: ', this.fontStyle1);
+      // var text5 = game.add.text(0, 0, 'Music: ', this.fontStyle1);
+      // var text6 = game.add.text(0, 0, 'Music: ', this.fontStyle1);
+
+
     }, game);
 
     this.menu2 = game.add.text(game.camera.width / 2, game.camera.height / 2 - 60, 'Rankings', this.fontStyle3);
